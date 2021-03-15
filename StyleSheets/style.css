@@ -1,0 +1,154 @@
+﻿/*
+* {
+    padding: 0; 
+    margin: 0; 
+}
+body {
+	
+}
+h1 {
+    font: bold 32px Times;
+	color: #666;
+	text-align: center;
+	padding: 20px 0;    
+}
+#container {
+    width: 700px;
+    margin: 10px auto;
+}
+
+.mGrid { width: 100%; background-color: #fff; margin: 5px 0 10px 0; border: solid 1px #525252; border-collapse:collapse; }
+    .mGrid td { padding: 2px; border: solid 1px #c1c1c1; color: #717171; }
+    .mGrid th { padding: 4px 2px; color: #fff; background: #424242 url(../css/grd_head.png) repeat-x top; border-left: solid 1px #525252; font-size: 0.9em; }
+.mGrid .alt { background: #fcfcfc url(../css/grd_alt.png) repeat-x top; }
+.mGrid .pgr {background: #424242 url(../css/grd_pgr.png) repeat-x top; }
+    .mGrid .pgr table { margin: 5px 0; }
+    .mGrid .pgr td { border-width: 0; padding: 0 6px; border-left: solid 1px #666; font-weight: bold; color: #fff; line-height: 12px; }   
+    .mGrid .pgr a { color: #666; text-decoration: none; }
+    .mGrid .pgr a:hover { color: #000; text-decoration: none; }
+
+*/
+
+
+/*GridViewCSS Soft Grey Style*/
+.GridViewStyle_Newgrid
+{
+    font-family: Arial, Sans-Serif;
+    font-size:small;
+    table-layout: auto;
+    border-collapse: collapse;
+    border:#91a7b4 1px solid;
+}
+/*Header and Pager styles*/
+.HeaderStyle_Newgrid, .PagerStyle_Newgrid /*Common Styles*/
+{
+    background-image: url(YahooSprite.gif);
+    background-position:top;
+    background-repeat:repeat-x;
+    background-color:#d1dbe0;
+}
+.HeaderStyle_Newgrid th
+{
+    padding: 5px;
+    color: #16387c;
+}
+.HeaderStyle_Newgrid a
+{
+    text-decoration:none;
+    color:#16387c;
+    display:block;
+    text-align:left;
+    font-weight:normal;
+}
+.PagerStyle_Newgrid table
+{
+    text-align:center;
+    margin:auto;
+}
+.PagerStyle_Newgrid table td
+{
+    border:0px;
+    padding:5px;
+}
+.PagerStyle_Newgrid td
+{
+    border-top: #91a7b4 1px solid;
+}
+.PagerStyle_Newgrid a
+{
+    color:#16387c;
+    text-decoration:none;
+    padding:2px 10px 2px 10px;
+    border-top:solid 1px #fff;
+    border-right:solid 1px #91a7b4;
+    border-bottom:solid 1px #91a7b4;
+    border-left:solid 1px #fff;
+}
+.PagerStyle_Newgrid span
+{
+    font-weight:bold;
+    color:#16387c;
+    text-decoration:none;
+    padding:2px 10px 2px 10px;
+}
+/*RowStyles*/
+.RowStyle_Newgrid td, .AltRowStyle_Newgrid td, .SelectedRowStyle_Newgrid td, .EditRowStyle_Newgrid td /*Common Styles*/
+{
+    padding: 3px;
+    border-right: solid 1px #91a7b4;
+}
+.RowStyle_Newgrid td
+{
+    background-color: #f1f5f6;
+}
+.AltRowStyle_Newgrid td
+{
+    background-color: #9ab2ca;
+	background-image: url(YahooSprite.gif);
+    background-position:0 -80px;
+    background-repeat:repeat-x;
+}
+.SelectedRowStyle_Newgrid td
+{
+    background-color: #fcb814;
+	background-image: url(YahooSprite.gif);
+    background-position:center;
+    background-repeat:repeat-x;
+}
+
+
+
+
+div.dd_chk_select_cust
+{
+    font-size: 13px !important;
+    font-weight:bold !important;
+}
+
+div.dd_chk_select_cust div#caption
+{
+	height: 17px !important;
+	top: 0px !important;
+}
+
+div.dd_chk_drop_cust div#checks
+{
+	border-style: Solid !important;
+	border-width: 1px !important;
+	border-color: Black !important;
+}
+
+div.dd_chk_select_cust:hover
+{
+	background-image: url("/Styles/hoverButton.gif") !important;
+	cursor: pointer;
+}
+
+.chkbox INPUT
+{
+ COLOR: black;
+ border-style: none;
+ font-family: Tahoma;
+ font-size: 11px;
+ margin-right: 5px
+}

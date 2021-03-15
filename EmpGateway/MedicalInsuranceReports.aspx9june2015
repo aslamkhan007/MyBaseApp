@@ -1,0 +1,429 @@
+<%@ Page Language="VB" MasterPageFile="MasterPage.master" AutoEventWireup="false" CodeFile="MedicalInsuranceReports.aspx.vb" Inherits="MedicalReports" title="Medical Reports" %>
+<%@ Register Src="FlashMessage.ascx" TagName="FlashMessage" TagPrefix="uc1" %>
+
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<%@ Register assembly="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" namespace="CrystalDecisions.Web" tagprefix="CR" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+    <script language="JavaScript" type="text/javascript" >
+
+    function clickButton(e, buttonid) {
+        var evt = e ? e : window.event;
+        var bt = document.getElementById(buttonid);
+        if (bt) {
+            if (evt.keyCode == 13) {
+                bt.click();
+
+                return false;
+            }
+        }
+
+    }
+
+    function ValidateNumeric() {
+        var keyCode = window.event.keyCode;
+        if (keyCode > 57 || keyCode < 4)
+            window.event.returnValue = false;
+    }
+
+ 
+</script>
+
+
+
+     
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+ 
+
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+   <ContentTemplate> 
+    <table style="width:100%;" >
+        <tr>
+            <td class="tableheader" align="center">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Panel ID="PanelFirst" runat="server" >
+                    <table style="width:100%;">
+                        
+                        <tr>
+                            <td class="labelcells" style="width: 95px" width="130">
+                                <asp:Label ID="Label7" runat="server" Height="16px" Width="89px" 
+                                    style="text-align: left">Company</asp:Label>
+                            </td>
+                            <td class="textcells" style="width: 152px">
+                                <asp:TextBox ID="TxtCompany" runat="server" CssClass="textbox" TabIndex="0"></asp:TextBox>
+                                <cc1:AutoCompleteExtender ID="ComExt" runat="server" CompletionInterval="100" 
+                                    CompletionListCssClass="autocomplete_ListItem " ContextKey="" 
+                                    MinimumPrefixLength="0" ServiceMethod="GetCom" ServicePath="~/CityService.asmx" 
+                                    TargetControlID="TxtCompany">
+                                </cc1:AutoCompleteExtender>
+                                <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender2" runat="server" 
+                                    TargetControlID="TxtCompany" WatermarkCssClass="normalfld" 
+                                    WatermarkText="JCT LIMITED">
+                                </cc1:TextBoxWatermarkExtender>
+                            </td>
+                            <td class="labelcells" style="width: 66px">
+                                <asp:Label ID="Label8" runat="server" Height="16px" Width="63px" 
+                                    style="text-align: left">Area</asp:Label>
+                            </td>
+                            <td class="textcells">
+                                <asp:TextBox ID="TxtArea" runat="server" CssClass="textbox" TabIndex="1"></asp:TextBox>
+                                <cc1:AutoCompleteExtender ID="AreaExt" runat="server" CompletionInterval="100" 
+                                    CompletionListCssClass="autocomplete_ListItem " ContextKey="" 
+                                    MinimumPrefixLength="0" ServiceMethod="GetArea" ServicePath="~/CityService.asmx" 
+                                    TargetControlID="TxtArea">
+                                </cc1:AutoCompleteExtender>
+                                <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" 
+                                    TargetControlID="TxtArea" WatermarkCssClass="normalfld" WatermarkText="ALL">
+                                </cc1:TextBoxWatermarkExtender>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="labelcells" style="width: 95px" width="130">
+                                <asp:Label ID="Label32" runat="server" Height="16px" style="text-align: left" 
+                                    Width="89px">Division</asp:Label>
+                            </td>
+                            <td class="textcells" colspan="3">
+                             <asp:TextBox ID="TxtDivision" runat="server" CssClass="textbox" TabIndex="1"></asp:TextBox>
+                                <cc1:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server" CompletionInterval="100" 
+                                    CompletionListCssClass="autocomplete_ListItem " ContextKey="" 
+                                    MinimumPrefixLength="0" ServiceMethod="GetDiv" ServicePath="~/CityService.asmx" 
+                                    TargetControlID="TxtDivision">
+                                </cc1:AutoCompleteExtender>
+                                <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender9" runat="server" 
+                                    TargetControlID="TxtDivision" WatermarkCssClass="normalfld" 
+                                    WatermarkText="ALL">
+                                </cc1:TextBoxWatermarkExtender>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td class="labelcells" style="width: 95px">
+                                <asp:Label ID="Label27" runat="server" Text="Parent Department" Width="130px" 
+                                    style="text-align: left"></asp:Label>
+                            </td>
+                            <td class="textcells" colspan="3">
+                                                    <asp:TextBox ID="TxtParentDepartment" runat="server" CssClass="textbox"                                                               
+                                    TabIndex="2" Width="400px" AutoPostBack="True" ></asp:TextBox>
+                                                            <cc1:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" 
+                                                                CompletionInterval="100" CompletionListCssClass="autocomplete_ListItem " 
+                                                                 MinimumPrefixLength="0" ServiceMethod="GetParentDepartment" 
+                                                                ServicePath="~/CityService.asmx" 
+                                                        TargetControlID="TxtParentDepartment">
+                                                            </cc1:AutoCompleteExtender>
+                                                            <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender5" runat="server" 
+                                                                TargetControlID="TxtParentDepartment" WatermarkCssClass="normalfld" 
+                                                                WatermarkText="ALL">
+                                                            </cc1:TextBoxWatermarkExtender>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td class="labelcells" style="width: 95px">
+                                <asp:Label ID="Label25" runat="server" Height="16px" Width="117px" 
+                                    style="text-align: left">Department</asp:Label>
+                            </td>
+                            <td class="textcells" colspan="3">
+                                <asp:TextBox ID="TxtDepartment" runat="server" CssClass="textbox" 
+                                    TabIndex="3" Width="400px"></asp:TextBox>
+                                <cc1:AutoCompleteExtender ID="DepartmentExt" runat="server" 
+                                    CompletionInterval="100" CompletionListCssClass="autocomplete_ListItem " 
+                                    MinimumPrefixLength="0" ServiceMethod="GetDepartment" 
+                                    ServicePath="~/CityService.asmx" TargetControlID="TxtDepartment" 
+                                    UseContextKey="True">
+                                </cc1:AutoCompleteExtender>
+                                <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender3" runat="server" 
+                                    TargetControlID="TxtDepartment" WatermarkCssClass="normalfld" 
+                                    WatermarkText="ALL">
+                                </cc1:TextBoxWatermarkExtender>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="labelcells" style="width: 95px">
+                                <asp:Label ID="Label26" runat="server" Text="Designation" 
+                                    style="text-align: left" Width="130px"></asp:Label>
+                                </td>
+                            <td class="textcells" colspan="3">
+                             <asp:TextBox ID="TxtDesignation" runat="server" CssClass="textbox" 
+                                    ReadOnly="False" TabIndex="4" Width="350px" AutoPostBack="True"></asp:TextBox>
+                                                            <cc1:AutoCompleteExtender ID="DesgExt" runat="server" CompletionInterval="100" 
+                                                                CompletionListCssClass="autocomplete_ListItem " 
+                                                                MinimumPrefixLength="0" ServiceMethod="GetDesg" ServicePath="~/CityService.asmx" 
+                                                                TargetControlID="TxtDesignation">
+                                                            </cc1:AutoCompleteExtender>
+                                                            <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender4" runat="server" 
+                                                                TargetControlID="TxtDesignation" WatermarkCssClass="normalfld" 
+                                                                WatermarkText="ALL">
+                                                            </cc1:TextBoxWatermarkExtender>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td class="labelcells" style="width: 95px">
+                                <asp:Label ID="Label28" runat="server" Text="Category" style="text-align: left" 
+                                    Width="130px"></asp:Label>
+                            </td>
+                            <td class="textcells" colspan="3">
+                               <asp:TextBox ID="TxtCategory" runat="server" CssClass="textbox" 
+                                                                ReadOnly="False" TabIndex="7" Width="78px" 
+                                    MaxLength="4"></asp:TextBox>
+                                                            <cc1:AutoCompleteExtender ID="TxtCategory_AutoCompleteExtender" runat="server" 
+                                                                CompletionInterval="100" CompletionListCssClass="autocomplete_ListItem " 
+                                                                 MinimumPrefixLength="0" ServiceMethod="GetCatg" 
+                                                                ServicePath="~/CityService.asmx" 
+                                    TargetControlID="TxtCategory" UseContextKey="True">
+                                                            </cc1:AutoCompleteExtender>
+                                                            <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender6" runat="server" 
+                                                                TargetControlID="TxtCategory" WatermarkCssClass="normalfld" 
+                                                                WatermarkText="ALL">
+                                                            </cc1:TextBoxWatermarkExtender>
+                               </td>
+                        </tr>
+                        <tr>
+                            <td class="labelcells" style="width: 95px">
+                                <asp:Label ID="Label29" runat="server" Text="Card No From"></asp:Label>
+                            </td>
+                            <td class="textcells" style="width: 152px">
+                            <asp:TextBox ID="TxtCardFrom" runat="server" CssClass="textbox" MaxLength="4" 
+                                                                ReadOnly="False" TabIndex="7" Width="48px"  OnKeyPress="ValidateNumeric()"></asp:TextBox>
+                                                            <cc1:AutoCompleteExtender ID="CardFr" runat="server" CompletionInterval="100" 
+                                                                CompletionListCssClass="autocomplete_ListItem " ContextKey="" 
+                                                                MinimumPrefixLength="0" ServiceMethod="GetCard" ServicePath="CityService.asmx" 
+                                                                TargetControlID="TxtCardFrom">
+                                                            </cc1:AutoCompleteExtender>
+                                                            <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender7" runat="server" 
+                                                                TargetControlID="TxtCardFrom" WatermarkCssClass="normalfld" 
+                                                                WatermarkText="ALL">
+                                                            </cc1:TextBoxWatermarkExtender>
+                            </td>
+                            <td class="labelcells" style="width: 66px">    <asp:Label ID="Label30" runat="server" Text="Card No To" Width="72px"></asp:Label>
+                            </td>
+                                              <td class="textcells">
+                                                            <asp:TextBox ID="TxtCardTo" runat="server" CssClass="textbox" MaxLength="4" 
+                                                                ReadOnly="False" TabIndex="8" Width="48px"  OnKeyPress="ValidateNumeric()"></asp:TextBox>
+                                                            <cc1:AutoCompleteExtender ID="CardTo" runat="server" CompletionInterval="100" 
+                                                                CompletionListCssClass="autocomplete_ListItem " ContextKey="" 
+                                                                MinimumPrefixLength="0" ServiceMethod="GetCard" ServicePath="~/CityService.asmx" 
+                                                                TargetControlID="TxtCardTo">
+                                                            </cc1:AutoCompleteExtender>
+                                                            <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender8" runat="server" 
+                                                                TargetControlID="TxtCardTo" WatermarkCssClass="normalfld" WatermarkText="ALL">
+                                                            </cc1:TextBoxWatermarkExtender>
+                                                        </td>
+                        </tr>
+                        <tr>
+                            <td class="labelcells" style="width: 95px">
+                                <asp:Label ID="Label35" runat="server" Text="Dependent"></asp:Label>
+                            </td>
+                            <td class="textcells" style="width: 152px">
+                                <asp:DropDownList ID="TxtDependent" runat="server" CssClass="combobox">
+                                    <asp:ListItem>ALL</asp:ListItem>
+                                    <asp:ListItem>Y</asp:ListItem>
+                                    <asp:ListItem>N</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td class="labelcells" style="width: 66px">
+                                &nbsp;</td>
+                            <td class="textcells">
+                                &nbsp;</td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Panel ID="PanelSecond" runat="server" BorderWidth="1">
+                
+                    <table style="width:100%;" border="2" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td class="labelcells" style="color: #FF3300;" colspan="4">
+                                Please choose any one option pair out of these four(DOJ/DOR/DOB/DOC)</td>
+                        </tr>
+                              <tr>
+                                  <td class="labelcells" style="width: 79px">
+                                      <asp:Label ID="Label17" runat="server" Height="16px" style="text-align: left" 
+                                          Width="154px">Date Of Joining From</asp:Label>
+                                  </td>
+                                  <td class="textcells" style="width: 128px">
+                                      <asp:TextBox ID="TxtEffFrom" runat="server" accessKey="d" CssClass="textbox" 
+                                          MaxLength="8" tabIndex="8" Width="68px"></asp:TextBox>
+                                      <cc1:MaskedEditValidator ID="MEV1" runat="server" ControlExtender="MEE1" 
+                                          ControlToValidate="TxtEffFrom" Display="Dynamic" Font-Names="verdana" 
+                                          Height="5px" InvalidValueMessage="*" TooltipMessage="MM/DD" Width="16px"></cc1:MaskedEditValidator>
+                                      <cc1:CalendarExtender ID="CalFrom" runat="server" Animated="False" 
+                                          Format="MM/dd/yyyy" TargetControlID="TxtEffFrom">
+                                      </cc1:CalendarExtender>
+                                      <cc1:MaskedEditExtender ID="MEE1" runat="server" Mask="99/99/9999" 
+                                          MaskType="Date" TargetControlID="TxtEffFrom">
+                                      </cc1:MaskedEditExtender>
+                                  </td>
+                                  <td class="labelcells" style="width: 92px">
+                                      <asp:Label ID="Label31" runat="server" Height="16px" Width="126px">Date Of Joinning To</asp:Label>
+                                  </td>
+                                  <td class="textcells">
+                                      <asp:TextBox ID="TxtEffTo" runat="server" CssClass="textbox" MaxLength="8" 
+                                          tabIndex="9" Width="70px"></asp:TextBox>
+                                      <cc1:MaskedEditValidator ID="MEV2" runat="server" ControlExtender="MEE2" 
+                                          ControlToValidate="TxtEffTo" Display="Dynamic" Font-Names="verdana" 
+                                          Height="5px" InvalidValueMessage="*" TooltipMessage="MM/DD"></cc1:MaskedEditValidator>
+                                      <cc1:CalendarExtender ID="CalTo" runat="server" Animated="False" 
+                                          Format="MM/dd/yyyy" PopupPosition="BottomRight" 
+                                          TargetControlID="TxtEffTo">
+                                      </cc1:CalendarExtender>
+                                      <cc1:MaskedEditExtender ID="MEE2" runat="server" Mask="99/99/9999" 
+                                          MaskType="Date" TargetControlID="TxtEffTo">
+                                      </cc1:MaskedEditExtender>
+                                  </td>
+                        </tr>
+                              <tr>
+                                 <td class="labelcells" style="width: 79px">
+                                <asp:Label ID="Label1" runat="server" Height="16px" Width="163px">Date Of Retirement From</asp:Label>
+                                </td>
+                            <td class="labelcells" style="width: 128px">
+                                <asp:TextBox ID="TxtDORFr" runat="server" CssClass="textbox" MaxLength="8" 
+                                    tabIndex="15" Width="68px"></asp:TextBox>
+                                <cc1:CalendarExtender ID="CalDORFr" runat="server" Animated="False" 
+                                    Format="MM/dd/yyyy" PopupPosition="BottomRight" 
+                                    TargetControlID="TxtDORFr">
+                                </cc1:CalendarExtender>
+                                <cc1:MaskedEditExtender ID="MEE3" runat="server" Mask="99/99/9999" 
+                                    MaskType="Date" TargetControlID="TxtDORFr">
+                                </cc1:MaskedEditExtender>
+                                                            <cc1:MaskedEditValidator ID="MEV3" runat="server" 
+                                                                ControlExtender="MEE3" ControlToValidate="TxtDORFr" 
+                                                                Display="Dynamic" InvalidValueMessage="The Date is invalid " 
+                                                                TooltipMessage="MM/DD"></cc1:MaskedEditValidator>
+                                </td>
+                             <td class="labelcells" style="width: 92px">
+                                                            <asp:Label ID="Label21" runat="server" Height="16px" Width="150px">Date Of Retirement To</asp:Label>
+                                                        </td>
+                                                        <td class="textcells">
+                                                            <asp:TextBox ID="TxtDORTo" runat="server" CssClass="textbox" MaxLength="8" 
+                                                                tabIndex="12" Width="70px"></asp:TextBox>
+                                                            <cc1:MaskedEditValidator ID="MEV4" runat="server" 
+                                                                ControlExtender="MEE4" ControlToValidate="TxtDORTo" 
+                                                                Display="Dynamic" InvalidValueMessage="The Date is invalid " 
+                                                                TooltipMessage="MM/DD">     </cc1:MaskedEditValidator>
+                                                            <cc1:CalendarExtender ID="CalDORTo" runat="server" Animated="False" 
+                                                                Format="MM/dd/yyyy" TargetControlID="TxtDORTo" PopupPosition="BottomRight">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:MaskedEditExtender ID="MEE4" runat="server" 
+                                                                Mask="99/99/9999" MaskType="Date" TargetControlID="TxtDORTo">
+                                                            </cc1:MaskedEditExtender>
+                                                        </td>
+                        </tr>
+                        <tr>
+                             <td class="labelcells" style="width: 79px">
+                                                            <asp:Label ID="Label2" runat="server" Height="16px" Width="150px" 
+                                                                style="text-align: left">Date Of Birth From</asp:Label>
+                                                        </td>
+                                                        <td class="textcells">
+                                                            <asp:TextBox ID="TxtDOBFR" runat="server" CssClass="textbox" MaxLength="8" 
+                                                                tabIndex="12" Width="70px"></asp:TextBox>
+                                                            <cc1:MaskedEditValidator ID="MEV5" runat="server" 
+                                                                ControlExtender="MEE5" ControlToValidate="TxtDOBFR" 
+                                                                Display="Dynamic" InvalidValueMessage="The Date is invalid " 
+                                                                TooltipMessage="MM/DD">     </cc1:MaskedEditValidator>
+                                                            <cc1:CalendarExtender ID="CalendarExtender1" runat="server" Animated="False" 
+                                                                Format="MM/dd/yyyy" TargetControlID="TxtDOBFR" PopupPosition="BottomRight">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:MaskedEditExtender ID="MEE5" runat="server" 
+                                                                Mask="99/99/9999" MaskType="Date" TargetControlID="TxtDOBFR">
+                                                            </cc1:MaskedEditExtender>
+                                                        </td>
+                             <td class="labelcells" style="width: 92px">
+                                                            <asp:Label ID="Label3" runat="server" Height="16px" Width="150px" 
+                                                                style="text-align: left">Date Of Birth To</asp:Label>
+                                                        </td>
+                                                        <td class="textcells">
+                                                            <asp:TextBox ID="TxtDOBTO" runat="server" CssClass="textbox" MaxLength="8" 
+                                                                tabIndex="12" Width="70px"></asp:TextBox>
+                                                            <cc1:MaskedEditValidator ID="MEV6" runat="server" 
+                                                                ControlExtender="MEE6" ControlToValidate="TxtDOBTO" 
+                                                                Display="Dynamic" InvalidValueMessage="The Date is invalid " 
+                                                                TooltipMessage="MM/DD">     </cc1:MaskedEditValidator>
+                                                            <cc1:CalendarExtender ID="CalendarExtender2" runat="server" Animated="False" 
+                                                                Format="MM/dd/yyyy" TargetControlID="TxtDOBTO" PopupPosition="BottomRight">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:MaskedEditExtender ID="MEE6" runat="server" 
+                                                                Mask="99/99/9999" MaskType="Date" TargetControlID="TxtDOBTO">
+                                                            </cc1:MaskedEditExtender>
+                                                        </td>
+                        </tr>
+                        <tr>
+                            <td class="labelcells" style="width: 79px">
+                                 <asp:Label ID="Label4" runat="server" Height="16px" Width="160px" 
+                                     style="text-align: left">Date Of Confirm. From</asp:Label>
+                                                        </td>
+                                                        <td class="textcells">
+                                                            <asp:TextBox ID="TxtConFr" runat="server" CssClass="textbox" MaxLength="8" 
+                                                                tabIndex="12" Width="70px"></asp:TextBox>
+                                                            <cc1:MaskedEditValidator ID="MEV7" runat="server" 
+                                                                ControlExtender="MEE7" ControlToValidate="TxtConFr" 
+                                                                Display="Dynamic" InvalidValueMessage="The Date is invalid " 
+                                                                TooltipMessage="MM/DD">     </cc1:MaskedEditValidator>
+                                                            <cc1:CalendarExtender ID="CalendarExtender3" runat="server" Animated="False" 
+                                                                Format="MM/dd/yyyy" TargetControlID="TxtConFr" PopupPosition="BottomRight">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:MaskedEditExtender ID="MEE7" runat="server" 
+                                                                Mask="99/99/9999" MaskType="Date" TargetControlID="TxtConFr">
+                                                            </cc1:MaskedEditExtender>
+                                                        </td>
+                             <td class="labelcells" style="width: 92px">
+                                                            <asp:Label ID="Label5" runat="server" Height="16px" Width="150px" 
+                                                                style="text-align: left">Date Of Confirm.To</asp:Label>
+                                                        </td>
+                                                        <td class="textcells">
+                                                            <asp:TextBox ID="TxtConTo" runat="server" CssClass="textbox" MaxLength="8" 
+                                                                tabIndex="16" Width="70px"></asp:TextBox>
+                                                            <cc1:MaskedEditValidator ID="MEV8" runat="server" 
+                                                                ControlExtender="MEE8" ControlToValidate="TxtConTo" 
+                                                                Display="Dynamic" InvalidValueMessage="The Date is invalid " 
+                                                                TooltipMessage="MM/DD">     </cc1:MaskedEditValidator>
+                                                            <cc1:CalendarExtender ID="CalendarExtender4" runat="server" Animated="False" 
+                                                                Format="MM/dd/yyyy" TargetControlID="TxtConTo" PopupPosition="BottomRight">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:MaskedEditExtender ID="MEE8" runat="server" 
+                                                                Mask="99/99/9999" MaskType="Date" TargetControlID="TxtConTo">
+                                                            </cc1:MaskedEditExtender></td>
+                        </tr>
+                    </table>
+                
+                </asp:Panel>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Panel ID="PanelFourth" runat="server">
+                    <table style="width:100%;" cellpadding="0" cellspacing="0">
+                        
+                        <tr>
+                           <td class="buttonbackbar" style="height: 16px; text-align: center;">
+                                                            <asp:LinkButton ID="CmdOK" runat="server" CausesValidation="False" 
+                                                                CssClass="buttonc" Height="22px" tabIndex="15" Width="84px">Ok</asp:LinkButton>
+                                                            <asp:LinkButton ID="CmdCancel" runat="server" CausesValidation="False" 
+                                                                CssClass="buttonc" Height="22px" tabIndex="16" Width="84px">Clear</asp:LinkButton>
+                                                             
+                         </td>
+                        </tr>
+                       <%-- <tr>
+                            <td>
+                                <asp:Button id="Button1" onclick="Button1_Click" runat="server" Height="0px" Width="0px"
+                                CssClass="buttondisable" CausesValidation="False" Text="Button"></asp:Button> 
+                            </td>
+                        </tr>--%>
+                      </table> 
+                 </asp:Panel>
+           </td>
+        </tr> 
+                        
+    </table>
+    </ContentTemplate>
+    </asp:UpdatePanel>
+</asp:Content>
+

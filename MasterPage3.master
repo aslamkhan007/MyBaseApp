@@ -1,0 +1,189 @@
+<%@ Master Language="VB" CodeFile="MasterPage3.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="formatingsheet.css" />
+
+    <script type="text/javascript" src="Banner/swfobject.js"></script>
+
+    <script type="text/javascript">
+        var flashvars = {};
+        flashvars.settingsXML = "banner/settings.xml";
+        var params = {};
+        params.scale = "noscale";
+        params.salign = "tl";
+        params.wmode = "transparent";
+        var attributes = {};
+        //swfobject.embedSWF("banner/banner.swf", "BannerDiv", "700", "260", "9.0.0", false, flashvars, params, attributes);
+        
+    </script>
+
+    <script src="Carousel/swfobject.js" type="text/javascript"></script>
+
+    <%--    <script type="text/javascript">
+        swfobject.embedSWF("Corausel2/Carousel.swf", "carousel1", "300", "100", "9.0.0", false, { xmlfile: "Corausel2/transparent1.xml", loaderColor: "0x000000" }, { wmode: "transparent" });
+    </script>--%>
+
+    <script type="text/javascript">
+        var flashvars = {};
+        flashvars.settingsXML = "carousel/settings.xml";
+        flashvars.backgroundColor = "0";
+        var params = {};
+        params.scale = "noscale";
+        params.salign = "tl";
+        params.wmode = "transparent";
+        var attributes = {};
+        swfobject.embedSWF("carousel/carousel.swf", "Carousel1", "930", "350", "9.0.0", false, flashvars, params, attributes);
+    </script>
+
+    <script type="text/javascript">
+    swfobject.embedSWF("swfs/clock.swf",  // flash file
+    "Clock",   // div id
+    "100", "100",  // width and height
+    "9.0.0",       // flash palyer version
+    false,         // autoinstall 
+    {},  // flashvars
+    {wmode: "transparent" }, 
+//    {bgcolor: "#CCCCCC" },  // parameter
+    {});                   // attributes
+</script>
+    <style type="text/css">
+        #CarouselDiv
+        {
+            height: 100px;
+        }
+        .style55
+        {
+            height: 99px;
+            }
+        .style58
+        {
+            width: 480px;
+            height: 27px;
+        }
+        .style59
+        {
+            width: 0px;
+            height: 27px;
+        }
+        .style60
+        {
+            height: 27px;
+        }
+        .style61
+        {
+            height: 10px;
+        }
+        .style62
+        {
+            height: 233px;
+        }
+        </style>
+</head>
+<body style="margin : 0px; text-align: center;">
+    <form id="form1" runat="server">
+    <table cellpadding="0" cellspacing="0" 
+        style="background-position: center top; width: 100%;
+        height: 100px; background-image: url('Image/App_Header_Background.png'); background-repeat: no-repeat;">
+        <tr>
+            <td style="text-align: right;" class="style55">
+                <div id="Clock" style="height: 100px; width: 100px">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;" class="Normal">
+                <table cellpadding="0" cellspacing="0" style="width: 100%; font-weight: bold; font-size: 8pt;
+                    background-image: none; font-family: tahoma; height: 20px; text-align: left;">
+                    <tr>
+                        <td style="background-repeat: repeat-x;" class="style58">
+                            <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="DimGray" Height="16px">Root Node</asp:LinkButton><span
+                                style="color: #333333"> &nbsp;- </span>
+                            <asp:LinkButton ID="LinkButton2" runat="server" ForeColor="DimGray" Height="16px">IT Home</asp:LinkButton><span
+                                style="color: #333333">&nbsp;- </span>
+                            <asp:LinkButton ID="LinkButton3" runat="server" ForeColor="DimGray" Height="16px">LinkButton</asp:LinkButton>
+                        </td>
+                        <td class="style59">
+                        </td>
+                        <td style="background-repeat: repeat-x; text-align: right" valign="middle" class="style60">
+                            <asp:Label ID="Label1" runat="server" ForeColor="DimGray" Height="16px" Text="Search"></asp:Label>
+                            &nbsp;<asp:TextBox ID="TextBox1" runat="server" CssClass="textbox"></asp:TextBox>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div style="text-align: center">
+    <table style="width: 990px; text-align: center; margin: 0; vertical-align: top; height: 100%;"
+        cellpadding="0" cellspacing="0" align = "center">
+        <tr>
+            <td style="width: 30px; background-repeat: repeat-y; height: 33px; text-align: center;
+                background-image: url(Image/BackShadow.png);">
+                <div style="width: 30px;">
+                </div>
+            </td>
+            <td style="vertical-align: top; background-repeat: repeat-y; height: 33px; text-align: center">
+                <table style="width: 100%; text-align: left;" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="middle" class="Normal">
+                            <div style="width: 930px;">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background-position-y: bottom; background-image: url(Image/ShadowBar.png);
+                            background-repeat: repeat-x; height: 11px; text-align: left; font-weight: bold;
+                            font-size: 8pt; font-family: tahoma;" valign="top">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" class="style61">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                <table cellpadding="0" cellspacing="0" style="width:100%;">
+    <tr>
+        <td colspan="3" 
+            style="background-image: url('Image/DisplayAreaBack.png'); " 
+            class="style62">
+                <div id="Carousel1" style="width: 100%">
+                </div>
+            </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="Image/Frame%20temp.png" style="width: 300px; height: 195px" /></td>
+        <td>
+            <img src="Image/Frame%20temp.png" style="width: 300px; height: 195px" /></td>
+        <td>
+            <img src="Image/Frame%20temp.png" style="width: 300px; height: 195px" /></td>
+    </tr>
+</table>
+                            </asp:ContentPlaceHolder>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="background-position-x: right; width: 17px; background-repeat: repeat-y;
+                height: 33px; text-align: center; background-image: url(Image/BackShadow.png);">
+                <div style="width: 30px;">
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+    <table style="width: 100%;" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="background-position: center; width: 100%; background-image: url('Image/footer_background.png');
+                background-repeat: no-repeat;">
+                <div style="background-position: center; background-repeat: no-repeat; height: 100px;
+                    width: 990px;">
+                </div>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

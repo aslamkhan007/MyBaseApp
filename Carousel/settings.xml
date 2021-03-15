@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<General_Properties>
+	<rotationAngle value="10" />
+	<rotationAngleType value="path" />
+	<thumbWidth value="350" />
+	<thumbHeight value="250" />
+	<radiusX value="300" />
+	<radiusY value="50" />
+	<centerX value="450" />
+	<centerY value="125" />
+	<perspective value="10" />
+	<useBlur value="false" />
+	<blurIntensity value="6" />
+	<useAlpha value="true" />
+	<alphaIntensity value="9" />
+	<backgroundColor value="0" />
+	<carouselWidth value="900" />
+	<carouselHeight value="350" />
+	<showCenteredImage value="false" />
+	<centeredImageAlpha value="50" />
+	<imagesXML value="carousel/images.xml" />
+	<useMouseWheel value="false" />
+</General_Properties>
+
+<Rotation_Properties>
+	<rotateOnRollOver value="both" />
+	<onRollOverSpeed value="15" />
+	<onRollOutSpeed value="3" />
+	<stoppingSpeed value="10" />
+	<stopOnRollOver value="false" />
+	<inverseRotation value="none" />
+	<buttonsX value="110" />
+	<buttonsY value="310" />
+	<buttonsDistance value="300" />
+	<buttonSymbol value="but1" />
+</Rotation_Properties>
+
+<Reflection_Properties>
+	<useReflection value="true" />
+	<reflectionAlpha value="20" />
+	<reflectionSpread value="10" />
+	<reflectionDistance value="1" />
+</Reflection_Properties>
+
+<Roll_Over_Properties>
+	<rollOverBehavior value="smooth" />
+	<brightnessOver value="45" />
+	<brightnessOut value="-25" />
+	<brightnessSpeed value="7" />
+</Roll_Over_Properties>
+
+<Tooltip_Properties>
+	<visibility value="frontmost" />
+	<position value="bottom" />
+	<appearance value="top" />
+	<backColor value="0xeeeeee" />
+	<backAlpha value="25" />
+	<cornerRadius value="3" />
+	<easingFunction value="Regular" />
+	<easingDuration value="0.5" />
+	<fontFace value="Verdana" />
+	<fontSize value="10" />
+	<fontColor value="0x333333" />
+</Tooltip_Properties>
+
+<Frame_Properties>
+	<imageFrames value="selected" />
+	<frameThickness value="4" />
+	<frameColor value="0xeeeeee" />
+	<frameAlpha value="70" />
+	<frameRadius value="5" />
+</Frame_Properties>

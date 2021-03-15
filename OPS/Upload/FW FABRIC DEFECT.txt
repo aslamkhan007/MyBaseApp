@@ -1,0 +1,230 @@
+From:	Sharma, Vijay K | R&D | Phg.
+Sent:	Thursday, March 13, 2014 11:17 AM
+To:	Planning Cotton
+Cc:	Venkat Bangalore; Singh, Arwinder | R&D | Phg.; Chand Kishor | R&D | Phg.; 
+Mahajan, Rohit | Marketing | Phg.; Uppal, Umrao S | Marketing | Phg.; 
+Kapoor, R K | HOO (Technical) | Phg.; Kapoor, Rajesh | HOO (Office) | Phg.
+Subject:	FW: FABRIC DEFECT
+
+Dear Sir , 
+ 
+We have to replenish the below quantity in Sort No.Y/D P 53291(Shade Blue Chambray) and 
+Sort No.Y/D P 53298 ( Shade Pink Chambray) , Customer M/S Vidhi Clothing , Banglore .
+ 
+Sort No.         Shade               RM No.                    Quantity Reqd.(m) 
+53291        Blue Chambray        3102                        461m (100m FOC + 361m against replacement) 
+53298        Pink Chambray        3622                        140m (FOC) 
+ 
+ 
+These quantity is urgently required as the  fabric is on production line at the customer end .
+Kindly advise the tentative date on urgent basis when these quantitires will be available to be 
+despatched 
+to the customer .
+ 
+ 
+Regds.
+VK Sharma   
+ 
+ 
+-----Original Message----- 
+From: Venkat Bangalore  
+Sent: Thursday, March 13, 2014 10:11 AM 
+To: Sharma, Vijay K | R&D | Phg.; Senthil | Bangalore 
+Cc: Singh, Arwinder | R&D | Phg.; Chand Kishor | R&D | Phg.; Mahajan, Rohit | Marketing | Phg.; Uppal, 
+Umrao S | Marketing | Phg.; Kapoor, R K | HOO (Technical) | Phg. 
+Subject: RE: FABRIC DEFECT
+Dear Sharmaji,
+
+We had forwarded your observation/proposals to customer.. In the mean time.. pls advise if customer 
+agrees with in how many days will you be able to supply FOC goods. 
+
+Best Regards
+Venkat JCT Bangalore
+
+From: Sharma, Vijay K | R&D | Phg.  
+Sent: Wednesday, March 12, 2014 4:30 PM 
+To: Venkat Bangalore; Senthil | Bangalore 
+Cc: Singh, Arwinder | R&D | Phg.; Chand Kishor | R&D | Phg.; Mahajan, Rohit | Marketing | Phg.; Uppal, 
+Umrao S | Marketing | Phg.; Kapoor, R K | HOO (Technical) | Phg. 
+Subject: FW: FABRIC DEFECT
+
+Dear Mr. Venkat ,  
+ 
+A )  Regarding Defect issue in Slub, knots & Streak marks,in Sort No.53291 YDP (shade- Blue 
+Chambray)
+    , the customer has mentioned panel rejection due to these defects and is asking for 100 mtr 
+debit/FOC, 
+     which which may be given. And also roll nos. 632_67 mtrs ; 637_144 mtrs & 630_150 mtrs (total=361 
+mtrs)  
+     may be taken back.   
+
+ B)  Regarding CSV issue in Shade Pink Chambray , we have checked our Grouping record and our 
+observation is  as under :  
+
+SORT-53298YDP
+PO-003622/2014
+SHADE-Pink Chambray 
+ORDER QNTY--1400 MTRS
+PKD QNTY--1713
+PASS--          1229m
+Noticeable CSV— 484m 
+
+Roll Nos.having noticeable cs is as under : 
+ 
+Order 
+SortNo 
+Shade 
+Party 
+BoltNo 
+Meters 
+Lot 
+Bale No.
+RMG/003622/2014  
+YDP53298 
+YARN DYED 
+VIDHI CLOTHING COMPANY 
+AH2246 
+29
+2
+CRPEH 8372    
+RMG/003622/2014  
+YDP53298 
+YARN DYED 
+VIDHI CLOTHING COMPANY 
+FH3127 
+107
+2
+CRPEH 8363    
+RMG/003622/2014  
+YDP53298 
+YARN DYED 
+VIDHI CLOTHING COMPANY 
+FH3133 
+128
+2
+CRPEH 8367    
+RMG/003622/2014  
+YDP53298 
+YARN DYED 
+VIDHI CLOTHING COMPANY 
+FH3134 
+23
+2
+CRPEH 8372    
+RMG/003622/2014  
+YDP53298 
+YARN DYED 
+VIDHI CLOTHING COMPANY 
+FH3136 
+100
+2
+CRPEH 8369    
+RMG/003622/2014  
+YDP53298 
+YARN DYED 
+VIDHI CLOTHING COMPANY 
+FH3137 
+97
+2
+CRPEH 8370    
+
+
+As per above CSV details, 6 rolls(484m) fabric has been packed in shade Pink Chambray with noticeable 
+CSV which 
+may be used with CSV marker and accordingly 10% extra consumption (approx.50m) fabric may be 
+given on FOC basis.
+
+Also as asked by the customer, 90 mtr FOC fabric may be given due to rejection on account of 
+Neps/knots rejection. 
+ 
+   
+Hence, 100 mtr extra fabric in Blue Chambray AND  50+90=140 mtr extra fabric in Pink Chambray 
+(TOTAL=240 METERS) may be given to the customer on FOC basis and 361 mtr fabric (Blue 
+Chambray) may be taken back for replacement.
+
+
+
+Regds.
+VK Sharma    
+
+
+ 
+From: Venkat Bangalore  
+Sent: Wednesday, March 12, 2014 12:47 PM 
+To: Customer Care Cell; Singh, Arwinder | R&D | Phg.; Sharma, Vijay K | R&D | Phg. 
+Cc: Mahajan, Rohit | Marketing | Phg.; Uppal, Umrao S | Marketing | Phg.; Senthil | Bangalore 
+Subject: RE: FABRIC DEFECT
+
+Kind Attn: Mr. Arvinder/ Mr. V K Sharma in reading: Pls revert on below immdly..  Matter Most Urgent.
+
+Best Regards
+Venkat JCT Bangalore
+
+From: Senthil | Bangalore  
+Sent: Wednesday, March 12, 2014 10:15 AM 
+To: Customer Care Cell 
+Cc: Venkat Bangalore; Mahajan, Rohit | Marketing | Phg.; Uppal, Umrao S | Marketing | Phg. 
+Subject: FW: FABRIC DEFECT 
+Importance: High
+
+Dear  VK sharma ji,
+ 
+Pl.  note  below  extra  qty  requirement  from  Vidhi  clothing.
+ 
+For  Pink  fabric  due  to  csv  issue    &  neps , knots,  slubs   factory  asking  624mtrs  extra  fabric .
+ 
+Awaiting  yr  confirmation  to  proceed  the  fabric  in  pink  chambrey  as  factory  hold  the  fabric.
+ 
+ 
+Regards,
+senthil.
+ 
+ 
+From: Izhari [izhari@vidhiclothing.com] 
+Sent: Tuesday, March 11, 2014 1:53 PM 
+To: Senthil | Bangalore; Singh, Surendrapal | Marketing | Phg.; Uppal, Umrao S | Marketing | Phg. 
+Cc: 'Nitesh'; Venkat Bangalore; bangalore@berrycotts.com; mahesh@berrycotts.com 
+Subject: FABRIC DEFECT
+Dear Sir
+ 
+REF: BLUE OXFORD/PINK OXFORD
+ 
+Blue oxford  
+Kindly note the below roll wise details which has heavy defect like Streak mark/Nubs/Knots.
+Roll no
+mtr
+FABRIC WILL 
+RETURNED 
+BACK
+632
+67
+
+637
+144
+
+630
+150
+
+ 
+These Fabric Cannot be used due to heavy problem , during the visit of Mr. Sentil at on 7/03/2014 he 
+inspected the same and confirmed to, we had done re cutting due to the Panel rejection of 100mtrs, 
+which will be debited to you
+ 
+Pink Oxford:
+ 
+we received Qty of 1500mtr of 58” width , the Fabric has Cs problem due to that we are cutting the 
+garment in  48” width (avoiding CS), Mr. Senthil has visited our office on 10/3/2014 for the inspection 
+of the fabric, he told he will advise on the cutting, but we still not received any  confirmation on the 
+same. Kindly advise Can we start the cutting with the extra consumption.
+we are Falling of 533mtr(Due to extra cons)+90mtr(neps/Knots Rejection), totally we required of 624 
+mtr of fabric , required balance fabric within 3-4days ,as there will be wastage of Trims and shortfall of 
+Goods.
+ 
+Kindly advise on priority basis for the balance fabric as the production is on hold(PINK OXFORD)
+ 
+ 
+Thanks & regards
+Izhari
+ 
+ 
+.

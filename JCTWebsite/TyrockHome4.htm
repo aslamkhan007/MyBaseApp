@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="Scripts/jquery-1.4.2.min.js"></script>
+    <!--
+  jCarousel library
+-->
+    <script type="text/javascript" src="Scripts/jquery.jcarousel.min.js"></script>
+    <!--
+  jCarousel skin stylesheet
+-->
+    <!--<link rel="stylesheet" type="text/css" href="../skins/tango/skin.css" />-->
+    <script type="text/javascript">
+
+        function mycarousel_initCallback(carousel) {
+            // Disable autoscrolling if the user clicks the prev or next button.
+            carousel.buttonNext.bind('click', function () {
+                carousel.startAuto(0);
+            });
+
+            carousel.buttonPrev.bind('click', function () {
+                carousel.startAuto(0);
+            });
+
+            // Pause autoscrolling if the user moves with the cursor over the clip.
+            //            carousel.clip.hover(function () {
+            //                carousel.stopAuto();
+            //            }, function () {
+            //                carousel.startAuto();
+            //            });
+        };
+
+        jQuery(document).ready(function () {
+            jQuery('#mycarousel').jcarousel({
+                auto: 2,
+                scroll: 1,
+                wrap: 'last',
+                visible: 1,
+                animation: 600,
+                initCallback: mycarousel_initCallback
+            });
+        });
+
+        //        $(document).ready(function () {
+        //            $('#mycarousel').innerfade({ animationtype: 'slide', speed: 'slow', timeout: 4000, type: 'sequence', containerheight: '220px' 
+        //            });
+        //            });
+
+    </script>
+    <style type="text/css">
+        .style1
+        {
+            width: 1000px;
+            height: 1191px;
+        }
+    </style>
+</head>
+<body>
+    <div style="z-index: 2; margin: auto; height: 115px; width: 100%; position: relative;
+        overflow: hidden; background-image: url('Images/SemiTransHeaderOrange.png');
+        background-repeat: repeat-x;">
+        <div style="z-index: 2; margin: auto; height: 115px; width: 1000px; position: relative;
+            overflow: hidden; background-image: url('Images/SemiTransHeaderOrange-.png');
+            background-repeat: repeat-x;">
+            <div style="background-position: center top; z-index: 100; margin: auto; height: 115px;
+                width: 1000px; position: relative; overflow: hidden; background-image: url('Images/TyrockHeader.png');
+                background-repeat: no-repeat;">
+            </div>
+        </div>
+    </div>
+    <div style="z-index: 2; margin: auto; height: 385px; width: 1000px; position: relative;
+        overflow: hidden; top: 0px; left: 0px;">
+    </div>
+    <div style="z-index: 2; margin: auto; background-position: center top; height: 1200px;
+        background-image: url('Images/TyrockBottom-.jpg'); background-repeat: no-repeat;
+        width: 1000px;">
+        <img alt="" class="style1" src="Images/TyrockBottomNew.jpg" /></div>
+    <div style="margin: auto; height: 500px; width: 100%; position: absolute; overflow: hidden;
+        top: 0px;">
+        <div style="margin: auto; height: 500px; width: 100%; position: relative; overflow: hidden;">
+            <div style="z-index: 0; position: absolute; height: 500px; width: 100%; top: 2px; left: 0px;">
+                <!--<ul id="mycarousel" style="width: 100%; z-index: 0; list-style-type: none; position: absolute;">
+                    <li>
+                        <img src="Images/PosterNew1.jpg" width= "100%" height="500" alt="" /></li>
+                    <li> 
+                        <img src="Images/PosterNew3.jpg" width= "100%" height="500" alt="" /></li>
+                    <li>
+                        <img src="Images/PosterNew2.jpg" width= "100%" height="500" alt="" /></li>
+                </ul>-->
+                <ul id="mycarousel" style="width: 100%; z-index: 0; list-style-type: none; position: absolute;">
+                    <li>
+                        <div style="background-position: center top; background-image: url('Images/PosterNew2.jpg'); background-repeat: no-repeat; width: 100%; height: 500px;"/></li>
+                    <li> 
+                        <div style="background-position: center top; background-image: url('Images/PosterNew1.jpg'); background-repeat: no-repeat; width: 100%; height: 500px;"/></li>
+                    <li>
+                       <div style="background-position: center top; background-image: url('Images/PosterNew3.jpg'); background-repeat: no-repeat; width: 100%; height: 500px;"/></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

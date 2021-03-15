@@ -1,0 +1,80 @@
+﻿/*GridViewCSS White Chrome Style*/
+.GridViewStyle1
+{
+    font-family: Arial, Sans-Serif;
+    font-size:small;
+    table-layout: auto;
+    border-collapse: collapse;
+    border:#999999 1px solid;
+}
+/*Header and Pager styles*/
+.HeaderStyle1, .PagerStyle1 /*Common Styles*/
+{
+    background-image: url(Images/HeaderWhiteChrome.jpg);
+    background-position:center;
+    background-repeat:repeat-x;
+    background-color:#fff;
+	border-bottom:solid 1px #999;
+}
+.HeaderStyle1 th
+{
+    padding: 5px;
+    color: #333;
+}
+.HeaderStyle1 a
+{
+    text-decoration:none;
+    color:#333;
+    display:block;
+    text-align:left;
+    font-weight:normal;
+}
+.PagerStyle1 table
+{
+    text-align:center;
+    margin:auto;
+}
+.PagerStyle1 table td
+{
+    border:0px;
+    padding:5px;
+}
+.PagerStyle1 td
+{
+    border-top: #999999 1px solid;
+}
+.PagerStyle1 a
+{
+    color:#333;
+    text-decoration:none;
+    padding:2px 10px 2px 10px;
+    border-top:solid 1px #fff;
+    border-right:solid 1px #999;
+    border-bottom:solid 1px #999;
+    border-left:solid 1px #fff;
+}
+.PagerStyle1 span
+{
+    font-weight:bold;
+    color:#333;
+    text-decoration:none;
+    padding:2px 10px 2px 10px;
+}
+/*RowStyle1s*/
+.RowStyle1 td, .AltRowStyle1 td, .SelectedRowStyle1 td, .EditRowStyle1 td /*Common Styles*/
+{
+    padding: 5px;
+    border-right: solid 1px #999;
+}
+.RowStyle1 td
+{
+    background-color:#E4E4E4;
+}
+.AltRowStyle1 td
+{
+    background-color: #eee;
+}
+.SelectedRowStyle1 td
+{
+    background-color:#FF9;
+}

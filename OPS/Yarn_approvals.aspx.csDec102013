@@ -1,0 +1,404 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
+using System.Net.Mail;
+using System.Net;
+
+public partial class OPS_Yarn_approvals : System.Web.UI.Page
+{
+
+    SqlConnection conjctgen = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["misjctgen"].ConnectionString);
+    SqlConnection con = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["misjctdev"].ConnectionString);
+    Connection obj = new Connection();
+    Functions obj1 = new Functions();
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("jct_ops_yarn_enq", con);
+                con.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@empcode", SqlDbType.VarChar, 30).Value = Session["EmpCode"].ToString();
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                grdDetail.DataSource = ds.Tables[0];
+                grdDetail.DataBind();
+            }
+            catch (Exception ex)
+            {
+                string script = "alert('Data Not Processed !');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script, true) ;
+            }
+        }
+        
+    }
+
+    protected void lnkApproved_Click(object sender, EventArgs e)
+    {
+
+        SqlCommand cmd;
+
+        for (int i = 0; i <= chklist.Items.Count - 1; i++)
+        {
+            if (chklist.Items[i].Selected == true)
+            {
+                cmd = new SqlCommand("jct_ops_yarn_apprvals", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+                cmd.Parameters.Add("@vendername", SqlDbType.VarChar, 30).Value = chklist.Items[i].Text;
+                cmd.Parameters.Add("@approvedby", SqlDbType.VarChar, 10).Value = Session["Empcode"];
+                cmd.Parameters.Add("@approveRmk", SqlDbType.VarChar, 200).Value = txtRemarks.Text;
+
+                cmd.ExecuteNonQuery();
+                //con.Close();
+                //sendmailVendor();
+                string script = "alert('Vendors Accepted !');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script, true);
+            }
+        }
+
+        // float and freeze yarn request
+        cmd = new SqlCommand("jct_ops_yarn_freeze", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = ViewState["RequestID"];
+        cmd.Parameters.Add("@freeze_by", SqlDbType.VarChar, 20).Value = Session["Empcode"];
+        cmd.ExecuteNonQuery();
+
+        // insert final authorization hierarchy
+
+        cmd = new SqlCommand("Jct_Ops_SanctionNote_InsertDynamic_User", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.Add("@SanctionNote", SqlDbType.VarChar, 15).Value = ViewState["RequestID"];
+        cmd.Parameters.Add("@usercode", SqlDbType.VarChar, 10).Value = Session["Empcode"];
+        cmd.Parameters.Add("@Areacode", SqlDbType.Int).Value = 1044;
+        cmd.Parameters.Add("@StartID", SqlDbType.SmallInt).Value = 0;
+        cmd.Parameters.Add("@plant", SqlDbType.VarChar, 10).Value = ViewState["Plant"];
+        cmd.ExecuteNonQuery();
+        // send mail for authorization to hierarchy 
+        con.Close();
+        sendmail();
+    }
+
+    private void sendmailVendor()
+    {
+        try
+        {
+            string sql = string.Empty;
+            string to = string.Empty;
+            string from = string.Empty;
+            string bcc = string.Empty;
+            string subject = string.Empty;
+            string body = string.Empty;
+
+            sql = "jct_ops_fab_vendor_freeze_mail";
+            SqlCommand cmd = new SqlCommand(sql, obj.Connection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 20).Value = ViewState["RequestID"];
+            cmd.Parameters.Add("@empcode", SqlDbType.VarChar, 10).Value = Session["EmpCode"].ToString();
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    to = dr["sendtomail"].ToString();
+                    body = dr["email_body"].ToString();
+                    subject = dr["subject"].ToString();
+                }
+            }
+            else
+            {
+
+            }
+
+            @from = "Outsourcing@jctltd.com";
+
+            bcc = "rajan@jctltd.com,rbaksshi@jctltd.com,shwetaloria@jctltd.com";
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress(@from);
+            if (to.Contains(","))
+            {
+                string[] tos = to.Split(',');
+                for (int i = 0; i <= tos.Length - 1; i++)
+                {
+                    mail.To.Add(new MailAddress(tos[i]));
+                }
+            }
+            else
+            {
+                mail.To.Add(new MailAddress(to));
+            }
+
+            if (!string.IsNullOrEmpty(bcc))
+            {
+                if (bcc.Contains(","))
+                {
+                    string[] bccs = bcc.Split(',');
+                    for (int i = 0; i <= bccs.Length - 1; i++)
+                    {
+                        mail.Bcc.Add(new MailAddress(bccs[i]));
+                    }
+                }
+                else
+                {
+                    mail.Bcc.Add(new MailAddress(bcc));
+                }
+            }
+
+
+            mail.Subject = subject;
+
+            mail.Body = body;
+            mail.IsBodyHtml = true;
+            mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+            SmtpClient SmtpMail = new SmtpClient("exchange2007");
+            SmtpMail.Send(mail);
+        }
+        catch
+        {
+
+        }
+    }
+
+    protected void lnkreject_Click(object sender, EventArgs e)
+    {
+        foreach (GridViewRow rw in grdDetail2.Rows)
+        {
+            SqlCommand cmd = new SqlCommand("jct_ops_yarn_apprvals_rej", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.Parameters.Add("@requestid", SqlDbType.Int).Value = rw.Cells[1].Text;
+            cmd.Parameters.Add("@approveby", SqlDbType.Int).Value = Session["Empcode"];
+            cmd.Parameters.Add("@vendernamre", SqlDbType.Int).Value = rw.Cells[2].Text;
+            cmd.Parameters.Add("@approveRmk", SqlDbType.VarChar, 200).Value = txtRemarks.Text;
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+            sendmailVendor();
+            //SendMailYarn();
+            string script = "alert('Yarn Vendors Rejected !');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script, true);
+        }
+    }
+
+    protected void grdDetail_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            ViewState["RequestID"] = grdDetail.SelectedRow.Cells[1].Text;
+
+            SqlCommand cmd = new SqlCommand("JCT_OPS_VENDOR_SPECS_COMPARISON", conjctgen);
+            cmd.CommandType = CommandType.StoredProcedure;
+            conjctgen.Open();
+            cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            grdDetail2.DataSource = ds.Tables[0];
+            grdDetail2.DataBind();
+            conjctgen.Close();
+
+            cmd = new SqlCommand("select distinct vendername from jct_ops_yarn_mat_tb  where requestid=@requestid", con);
+            cmd.CommandType = CommandType.Text;
+            con.Open();
+            cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+
+
+            da = new SqlDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds);
+            chklist.DataSource = ds.Tables[0];
+
+            chklist.DataTextField = "vendername";
+            chklist.DataValueField = "vendername";
+            chklist.DataBind();
+
+            con.Close();
+
+            lbcomp.Visible = true;
+            lbvendlst.Visible = true;
+
+            //string sql = "select isnull(a.status_log,'') as status_log from jct_ops_yarn_purchase a where a.requestid='" + grdDetail.SelectedRow.Cells[1].Text + "'";
+            //string status_log = obj1.FetchValue(sql).ToString();
+            //if (status_log == "RMAuth")
+            //{
+            //    chklist.Enabled = false;
+            //}
+            //else if (status_log == "FinalAuth")
+            //{
+            //    chklist.Enabled = true;
+            //}
+            //else if (status_log == "FinalCancel")
+            //{
+            //    chklist.Enabled = false;
+            //}
+            //else
+            //{
+
+            //}
+
+            for (int i = 0; i <= chklist.Items.Count - 1; i++)
+            {
+                string vndrlist;
+                vndrlist = chklist.Items[i].Text;
+                cmd = new SqlCommand("jct_ops_yarn_vndr_list", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+                cmd.Parameters.Add("@vendername", SqlDbType.VarChar, 10).Value = vndrlist;
+                cmd.Parameters.Add("@flag", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+                string output = cmd.Parameters["@flag"].Value.ToString();
+                if (output == "1")
+                {
+                    chklist.Items[i].Selected = true;
+                }
+
+            }
+        }
+        catch
+        { 
+        
+        }
+       
+    }
+
+    private void sendmail()
+    {
+        try
+        {
+            string sql = string.Empty;
+            string to = string.Empty;
+            string from = string.Empty;
+            string bcc = string.Empty;
+            string cc = string.Empty;
+            string subject = string.Empty;
+            string body = string.Empty;
+            string url = string.Empty;
+            string querystring = string.Empty;
+
+            subject = "Outsource Yarn Request " + ViewState["RequestID"];
+            querystring = "RequestID=" + ViewState["RequestID"];
+
+            url = "http://misdev/FusionApps/OPS/MailContentPages/outsource_vendor_comparison.aspx?" + querystring;
+
+            @from = "Outsourcing@jctltd.com";
+
+            sql = "SELECT b.E_MailID FROM dbo.jct_ops_yarn_purchase a INNER JOIN dbo.MISTEL b ON a.usercode=b.empcode WHERE a.RequestID='" + ViewState["RequestID"] + "' AND status='A'";
+            try
+            {
+                to = obj1.FetchValue(sql).ToString();
+            }
+            catch { to = ""; return; }
+
+            to = "jatindutta@jctltd.com";
+            //bcc = "rajan@jctltd.com,rbaksshi@jctltd.com,shwetaloria@jctltd.com";
+            //bcc = "jatindutta@jctltd.com,shwetaloria@jctltd.com,rajan@jctltd.com";
+            bcc = "jatindutta@jctltd.com";
+            //cc = "laxman@jctltd.com,arvindsharma@jctltd.com,dpbadhwar@jctltd.com";
+
+            string Body = GetPage(url);//GetPage("http://misdev/FusionApps/OPS/AuthorizationRemarks.aspx");
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress(@from);
+            if (to.Contains(","))
+            {
+                string[] tos = to.Split(',');
+                for (int i = 0; i <= tos.Length - 1; i++)
+                {
+                    mail.To.Add(new MailAddress(tos[i]));
+                }
+            }
+            else
+            {
+                mail.To.Add(new MailAddress(to));
+            }
+
+            if (!string.IsNullOrEmpty(cc))
+            {
+                if (cc.Contains(","))
+                {
+                    string[] ccs = bcc.Split(',');
+                    for (int i = 0; i <= ccs.Length - 1; i++)
+                    {
+                        mail.CC.Add(new MailAddress(ccs[i]));
+                    }
+                }
+                else
+                {
+                    mail.CC.Add(new MailAddress(cc));
+                }
+            }
+
+            if (!string.IsNullOrEmpty(bcc))
+            {
+                if (bcc.Contains(","))
+                {
+                    string[] bccs = bcc.Split(',');
+                    for (int i = 0; i <= bccs.Length - 1; i++)
+                    {
+                        mail.Bcc.Add(new MailAddress(bccs[i]));
+                    }
+                }
+                else
+                {
+                    mail.Bcc.Add(new MailAddress(bcc));
+                }
+            }
+
+            mail.Subject = subject;
+
+            mail.Body = Body;
+            mail.IsBodyHtml = true;
+            mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+            SmtpClient SmtpMail = new SmtpClient("exchange2007");
+            SmtpMail.Send(mail);
+        }
+        catch
+        {
+            return;
+        }
+
+    }
+
+    protected string GetPage(string page_name)
+    {
+        WebClient myclient = new WebClient();
+        string myPageHTML = null;
+        byte[] requestHTML = null;
+        string currentPageUrl = null;
+
+        currentPageUrl = Request.Url.AbsoluteUri;
+
+        currentPageUrl = currentPageUrl.Replace("http://misdev/FusionApps/OPS/Yarn_approvals.aspx", page_name);
+
+        UTF8Encoding utf8 = new UTF8Encoding();
+
+
+        requestHTML = myclient.DownloadData(currentPageUrl);
+        myPageHTML = utf8.GetString(requestHTML);
+
+        //Response.Write(myPageHTML)
+
+        return myPageHTML;
+
+    }
+
+}

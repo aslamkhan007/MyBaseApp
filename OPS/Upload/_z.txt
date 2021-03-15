@@ -1,0 +1,96 @@
+
+
+---------------------------------------
+
+
+SELECT * FROM  dbo.Jct_Payroll_Employee_Reimburs_Liability 
+SELECT *  INTO Jct_Payroll_Employee_Reimburs_Liability_12nov2018  FROM Jct_Payroll_Employee_Reimburs_Liability 
+
+
+
+SELECT * FROM  dbo.Jct_Payroll_Employee_Reimburs_Liability  WHERE EmployeeCode= '9000000443'
+
+
+SELECT * FROM Jct_Payroll_OnLine_Request ORDER BY CreatedDate desc
+
+
+
+
+SELECT * FROM Jct_Payroll_OnLine_Request
+WHERE EmployeeCode= '9000000453' AND RequestArea= 'Reimbursements'
+AND Autoid = 3591
+AND Status= 'P'
+
+
+UPDATE dbo.Jct_Payroll_OnLine_Request
+SET Status= 'C',
+Remarks= 'testing'
+WHERE EmployeeCode= '9000000453' AND RequestArea= 'Reimbursements'
+AND Status= 'P'
+
+
+SELECT * FROM   Jct_Payroll_Employee_Reimburs_Liability WHERE EmployeeCode = '9000000453'
+DELETE FROM   Jct_Payroll_Employee_Reimburs_Liability WHERE EmployeeCode = '9000000453'
+INSERT INTO dbo.Jct_Payroll_Employee_Reimburs_Liability
+        ( Plant ,
+          Location ,
+          YearMonth ,
+          EmployeeCode ,
+          EmployeeName ,
+          CarRemb ,
+          DriverRemb ,
+          EntRemb ,
+          TeleRemb ,
+          ScooterAlw ,
+          TotalRemb ,
+          MonthDays ,
+          PayDays ,
+          CarPayable ,
+          DriverPayable ,
+          EntPayable ,
+          TelePayable ,
+          ScooterPayable ,
+          TotalPayable ,
+          EnterPersonName ,
+          PersonCompanyName ,
+          PersonDesignation ,
+          PlaceofEnter ,
+          Remarks ,
+          ApproveDate ,
+          Autoid ,
+          Status ,
+          CreatedBy ,
+          CreatedDate ,
+          PaidFlag ,
+          PaidDate ,
+          PaidBy ,
+          DriverName
+        )
+SELECT * FROM dbo.aslamk
+
+SELECT * FROM  dbo.Jct_Payroll_OnLine_Request ORDER BY CreatedDate desc
+
+-------------------------------------------------------------------------------------
+
+SELECT * FROM  dbo.Jct_Payroll_OnLine_Request WHERE EmployeeCode = '9000000537' 
+AND Autoid =  3186
+
+
+UPDATE dbo.Jct_Payroll_OnLine_Request
+SET Status= 'P',
+FLvl1 = null,
+TLvl1 = NULL,
+CLvl1 = NULL,
+
+FLvl2 = null,
+TLvl2 = NULL,
+CLvl2 = NULL,
+
+FLvl3 = null,
+TLvl3 = NULL,
+CLvl3 = NULL,
+
+NextLevel = '9000000334'
+
+WHERE EmployeeCode = '9000000537' 
+AND Autoid =  3186

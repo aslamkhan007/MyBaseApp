@@ -1,0 +1,32 @@
+﻿Imports System
+Imports System.Data.SqlClient
+Imports System.Reflection
+Imports System.Net.Mail
+Imports System.IO
+Imports System.Data
+Partial Class OPS_PackedStock_Vs_Despatched
+    Inherits System.Web.UI.Page
+    Dim objFun As Functions = New Functions
+    Dim Qry As String = ""
+
+    Protected Sub CmdFetch_Click(sender As Object, e As System.EventArgs) Handles CmdFetch.Click
+        '  Qry = "Exec Jct_Ops_PackedStock_Vs_Despatched '" & ddlMonthFrom.SelectedItem.Value & "','" & ddlMonthTo.SelectedItem.Value & "','" & Request.ServerVariables("REMOTE_ADDR") & "'"
+        Qry = "Exec Jct_Ops_PackedStock_Vs_Despatched_New_Test '" & ddlMonthFrom.SelectedItem.Value & "','" & ddlMonthTo.SelectedItem.Value & "','" & Request.ServerVariables("REMOTE_ADDR") & "'"
+        objFun.FillGrid(Qry, GridView1)
+    End Sub
+
+    Protected Sub GridView1_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles GridView1.RowDataBound
+        'e.Row.Cells(5).Visible = False
+        'e.Row.Cells(6).Visible = False 
+    End Sub
+
+    Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles GridView1.SelectedIndexChanged
+        With GridView1
+            Dim MthYr As String
+            MthYr = .SelectedRow.Cells(6).Text & "-" & .SelectedRow.Cells(7).Text
+            Qry = "exec Jctgen..Jct_Ops_Packed_Vs_Despatched_DayWiseDetail '" & ddlMonthFrom.SelectedItem.Value & "','" & ddlMonthTo.SelectedItem.Value & "','" & Request.ServerVariables("REMOTE_ADDR") & "','" & MthYr & "','" & .SelectedRow.Cells(2).Text & "'"
+            objFun.FillGrid(Qry, GridView2)
+        End With
+        'EXEC Jct_Ops_Packed_Vs_Despatched_DayWiseDetail '12','01', '192.168.20.28','12-2012','cotton'
+    End Sub
+End Class

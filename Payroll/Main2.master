@@ -1,0 +1,122 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Main.master.cs" Inherits="Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta name="Textile " content="JCT Limited" />
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width " name="viewport">
+    
+    <title>Employee Portal</title>
+    <!-- js -->
+    <script src="js/jquery.min.2.2.0.js"></script>
+
+    <!-- css -->
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/project.css" rel="stylesheet">
+    <link href="css/persian-datepicker-0.4.5.css" rel="stylesheet">
+
+    <!-- favicon -->
+    <!-- ... -->
+
+    <style>
+        .Expand {
+            height: 100vh;
+        }
+    </style>
+
+</head>
+<body class="page-brand" >
+    
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="100000000">
+    </asp:ScriptManager>
+        <header class="header ui-header">
+            <ul class="nav nav-list pull-right">
+                <li>
+                    <a data-toggle="menu" href="#ui_menu">
+                        <span class="icon icon-lg">menu</span>
+                    </a>
+                </li>
+            </ul>
+            <a class="header-logo margin-right-no" href="/" dir="ltr">
+                <asp:Label ID="lblName" runat="server" Text="X"></asp:Label></a>
+            <ul class="nav nav-list pull-left">
+                <li class="dropdown margin-left">
+                    <a class="dropdown-toggle padding-left-no padding-right-no" data-toggle="dropdown">
+                        <span class="access-hide">Employee</span>
+                        <%--<img alt="alt text for John Smith avatar" src="images/users/avatar-001.jpg"></span>--%>
+                        <span class="avatar avatar-sm">
+                            <img alt="Profile Pic" src="images/users/avatar-001.jpg" runat="server" id="empImg"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-left">
+                        <li>
+                            <a class="padding-left-lg waves-attach" href="Jct_Payroll_Change_Pass.aspx"><span class="icon icon-lg margin-left">account_box</span>Profile Settings</a>
+                        </li>
+						<li>
+                            <a class="padding-left-lg waves-attach" href="Jct_payroll_Contact_Information.aspx"><span class="icon icon-lg margin-left">account_box</span>Update ContactInfo</a>
+                        </li>
+                        <li>
+                            <a class="padding-left-lg waves-attach" href="ComingSoon.Aspx"><span class="icon icon-lg margin-left">add_to_photos</span>Upload Photo</a>
+                        </li>
+                        <li>
+                            <a class="padding-left-lg waves-attach" href="Login.aspx"><span class="icon icon-lg margin-left">exit_to_app</span>Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+
+        <nav aria-hidden="true" class="menu menu-right" id="ui_menu" tabindex="-1">
+            <div class="menu-scroll">
+                <div class="menu-content">
+                    <a class="menu-logo" href="Default.aspx">Home</a>
+                    <ul class="nav">
+
+                        <%--<li>--%>
+                        <asp:Repeater ID="ui_menu_components" runat="server" OnItemDataBound="rptMenu_OnItemBound">
+                            <ItemTemplate>
+                                <%-- <ul class="menu-collapse collapse" id="ui_menu_extras">--%>
+                                <li>
+
+                                    <asp:Literal ID="ltrlSubMenu" runat="server"></asp:Literal>
+                                    <%-- </ul>--%>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <%--</li>--%>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="Expand">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+       </div>
+        
+        <footer class="ui-footer" >
+            <div class="container">
+                <%--<p>JCT Limited </p>--%>
+            </div>
+        </footer>
+        
+        <div class="fbtn-container">
+            <div class="fbtn-inner">
+                <a class="fbtn fbtn-lg fbtn-brand-accent waves-attach waves-circle waves-light" data-toggle="dropdown"><span class="fbtn-text fbtn-text-right">Links</span><span class="fbtn-ori icon">apps</span><span class="fbtn-sub icon">close</span></a>
+                <div class="fbtn-dropup">
+                    <a class="fbtn waves-attach waves-circle" href="JCT_Payroll_Employee_Search.aspx"><span class="fbtn-text fbtn-text-right">EmployeeSearch</span><span class="icon">E</span></a>
+                    <a class="fbtn fbtn-brand waves-attach waves-circle waves-light" href="JCT_Payroll_Employee_LeaveBalance.aspx" target="_blank"><span class="fbtn-text fbtn-text-right">Leave Status</span><span class="icon">L</span></a>
+                    <a class="fbtn fbtn-green waves-attach waves-circle" href="https://JCT.CO.IN/" target="_blank"><span class="fbtn-text fbtn-text-right">JCT Limited</span><span class="icon">link</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- js -->
+        <script src="js/base.js"></script>
+        <script src="js/project.js"></script>
+
+    </form>
+</body>
+</html>

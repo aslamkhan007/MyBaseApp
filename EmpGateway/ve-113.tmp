@@ -1,0 +1,468 @@
+<%@ Page Language="VB" MasterPageFile="~/MasterPage.master" AutoEventWireup="false" CodeFile="Salar.aspx.vb" Inherits="Salar" title="Untitled Page" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    &nbsp;<asp:Panel ID="Panel3" runat="server" Height="50px" Width="792px">
+        <table style="width: 736px">
+            <tr>
+                <td style="width: 7px; height: 24px">
+                <asp:Label ID="Label52" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Smaller" Height="16px" Text="Salary Slip For Month Year" Width="176px"></asp:Label>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<asp:DropDownList ID="DTP2" runat="server" AutoPostBack="True">
+                    <asp:ListItem>January</asp:ListItem>
+                    <asp:ListItem>Februry</asp:ListItem>
+                    <asp:ListItem>March</asp:ListItem>
+                    <asp:ListItem>April</asp:ListItem>
+                    <asp:ListItem>May</asp:ListItem>
+                    <asp:ListItem>June</asp:ListItem>
+                    <asp:ListItem>July</asp:ListItem>
+                    <asp:ListItem>August</asp:ListItem>
+                    <asp:ListItem>September</asp:ListItem>
+                    <asp:ListItem>October</asp:ListItem>
+                    <asp:ListItem>November</asp:ListItem>
+                    <asp:ListItem>December</asp:ListItem>
+                </asp:DropDownList></td>
+                <td style="width: 1px; height: 24px">
+                    &nbsp;<asp:DropDownList ID="DTP3" runat="server" AutoPostBack="True" Width="56px">
+                    <asp:ListItem>2008</asp:ListItem>
+                    <asp:ListItem>2009</asp:ListItem>
+                    <asp:ListItem>2010</asp:ListItem>
+                    <asp:ListItem>2011</asp:ListItem>
+                    <asp:ListItem>2012</asp:ListItem>
+                    <asp:ListItem>2013</asp:ListItem>
+                    <asp:ListItem>2014</asp:ListItem>
+                    <asp:ListItem>2015</asp:ListItem>
+                    <asp:ListItem>2016</asp:ListItem>
+                    <asp:ListItem>2017</asp:ListItem>
+                    <asp:ListItem>2018</asp:ListItem>
+                    <asp:ListItem></asp:ListItem>
+                </asp:DropDownList></td>
+                <td style="width: 99px; height: 24px">
+                    <asp:Label ID="display" runat="server" BackColor="Red" Text="Label" Width="144px"></asp:Label></td>
+            </tr>
+        </table>
+    </asp:Panel>
+    <asp:Panel ID="Panel2" runat="server" Height="50px" Width="768px">
+    <table style="width: 608px">
+        <tr>
+            <td style="width: 50px; height: 25px">
+                <asp:Label ID="Label23" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Smaller" Height="16px" Text="Name" Width="40px"></asp:Label></td>
+            <td style="width: 115px; height: 25px">
+                <asp:TextBox ID="empname" runat="server" Width="184px"></asp:TextBox></td>
+            <td style="width: 32px; height: 25px">
+                <asp:Label ID="Label24" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Desgination" Width="40px"></asp:Label></td>
+            <td style="width: 49px; height: 25px">
+                <asp:TextBox ID="Desg" runat="server" Width="184px"></asp:TextBox></td>
+            <td style="width: 94px; height: 25px">
+                <asp:Label ID="Label25" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Department" Width="40px"></asp:Label></td>
+            <td style="width: 100%; height: 25px">
+                <asp:TextBox ID="Dept" runat="server" Width="96px"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td style="width: 50px; height: 21px">
+                <asp:Label ID="Label26" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Smaller" Height="16px" Text="A/C No." Width="48px"></asp:Label></td>
+            <td style="width: 115px; height: 21px">
+                <asp:TextBox ID="BCODENO" runat="server" Width="184px"></asp:TextBox></td>
+            <td style="width: 32px; height: 21px">
+                <asp:Label ID="Label27" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="PAN" Width="64px"></asp:Label></td>
+            <td style="width: 49px; height: 21px">
+                <asp:TextBox ID="PAN" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 94px; height: 21px">
+            </td>
+            <td style="width: 100%; height: 21px">
+            </td>
+        </tr>
+    </table>
+    </asp:Panel>
+    <asp:Panel ID="Panel1" runat="server" Height="376px" Width="800px">
+    <table style="width: 616px">
+        <tr>
+            <td style="width: 560px; height: 17px">
+            </td>
+            <td style="width: 34255px; height: 17px">
+            </td>
+            <td style="width: 17281px; height: 17px">
+            </td>
+            <td style="width: 17px; height: 17px">
+            </td>
+            <td style="width: 23px; height: 17px">
+            </td>
+            <td style="width: 6px; height: 17px">
+            </td>
+            <td style="width: 2px; height: 17px">
+            </td>
+            <td style="width: 4px; height: 17px">
+            </td>
+            <td style="width: 756px; height: 17px">
+            </td>
+            <td style="width: 87px; height: 17px">
+            </td>
+            <td style="width: 773680px; height: 17px" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 16px">
+                <asp:Label ID="Label28" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Smaller" Height="16px" Text="Basic" Width="40px"></asp:Label></td>
+            <td style="width: 34255px; height: 16px">
+                <asp:TextBox ID="Basic" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 16px">
+            </td>
+            <td style="width: 17px; height: 16px">
+                <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Salary" Width="40px"></asp:Label></td>
+            <td style="width: 23px; height: 16px">
+                <asp:TextBox ID="Salary" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 6px; height: 16px">
+                <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Salary" Width="88px"></asp:Label></td>
+            <td style="width: 2px; height: 16px">
+                <asp:TextBox ID="salary1" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 16px">
+                <asp:Label ID="Label39" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="PF" Width="32px"></asp:Label></td>
+            <td style="width: 756px; height: 16px">
+            </td>
+            <td style="width: 87px; height: 16px">
+                <asp:TextBox ID="PF" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 16px" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px;">
+                <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Smaller" Height="8px" Text="DA" Width="16px"></asp:Label></td>
+            <td style="width: 34255px;">
+                <asp:TextBox ID="TextBox1" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px;">
+            </td>
+            <td style="width: 17px;">
+                <asp:Label ID="Label13" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="FDA" Width="32px"></asp:Label></td>
+            <td style="width: 23px;">
+                &nbsp;<asp:Label ID="FDA" runat="server" Width="64px"></asp:Label></td>
+            <td style="width: 6px;">
+                <asp:Label ID="Label29" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Cycle Rent" Width="88px"></asp:Label></td>
+            <td style="width: 2px;">
+                <asp:TextBox ID="cyclerent" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px;">
+                <asp:Label ID="Label40" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="VPF" Width="88px"></asp:Label></td>
+            <td style="width: 756px;">
+            </td>
+            <td style="width: 87px;">
+                &nbsp;
+                <asp:TextBox ID="vpf" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px;" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 100%">
+                <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Smaller" Height="8px" Text="SPL D.A." Width="56px"></asp:Label></td>
+            <td style="width: 34255px; height: 100%">
+                <asp:TextBox ID="splda" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 100%">
+            </td>
+            <td style="width: 17px; height: 100%">
+                <asp:Label ID="Label14" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="WB/AD/Inc." Width="80px"></asp:Label></td>
+            <td style="width: 23px; height: 100%">
+                <asp:TextBox ID="WBADHOC" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 6px; height: 100%">
+                <asp:Label ID="Label30" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Furn. Rent" Width="88px"></asp:Label></td>
+            <td style="width: 2px; height: 100%">
+                <asp:TextBox ID="furrent" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 100%">
+                <asp:Label ID="Label41" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="F.P.F." Width="48px"></asp:Label></td>
+            <td style="width: 756px; height: 100%">
+            </td>
+            <td style="width: 87px; height: 100%">
+                <asp:TextBox ID="fpf" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 100%" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 100%">
+                <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Smaller" Height="1px" Text="Total Salary" Width="80px"></asp:Label></td>
+            <td style="width: 34255px; height: 100%">
+                <asp:TextBox ID="totsal" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 100%">
+            </td>
+            <td style="width: 17px; height: 100%">
+                <asp:Label ID="Label15" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Per Allow" Width="56px"></asp:Label></td>
+            <td style="width: 23px; height: 100%">
+                <asp:TextBox ID="TextBox13" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 6px; height: 100%">
+                <asp:Label ID="Label31" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Tel. Charge" Width="88px"></asp:Label></td>
+            <td style="width: 2px; height: 100%">
+                <asp:TextBox ID="telchrg" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 100%">
+                <asp:Label ID="Label42" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="P.F. Loan Realised" Width="104px"></asp:Label></td>
+            <td style="width: 756px; height: 100%">
+            </td>
+            <td style="width: 87px; height: 100%">
+                <asp:TextBox ID="pfloan" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 100%" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 100%">
+                <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Smaller" Height="1px" Text="Days Att." Width="64px"></asp:Label></td>
+            <td style="width: 34255px; height: 100%">
+                <asp:TextBox ID="daysattnd" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 100%">
+            </td>
+            <td style="width: 17px; height: 100%">
+                <asp:Label ID="Label16" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Arrear" Width="48px"></asp:Label></td>
+            <td style="width: 23px; height: 100%">
+                <asp:TextBox ID="Arrear" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 6px; height: 100%">
+                <asp:Label ID="Label32" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Elec+Bus+Tea" Width="88px"></asp:Label></td>
+            <td style="width: 2px; height: 100%">
+                <asp:TextBox ID="TextBox23" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 100%">
+                <asp:Label ID="Label43" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="L.I.C. TA.T.G" Width="88px"></asp:Label></td>
+            <td style="width: 756px; height: 100%">
+            </td>
+            <td style="width: 87px; height: 100%">
+                <asp:TextBox ID="lic" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 100%" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 21px">
+                <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Smaller" Height="16px" Text="PL" Width="16px"></asp:Label></td>
+            <td style="width: 34255px; height: 21px">
+                <asp:TextBox ID="pl" runat="server" Height="8px" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 21px">
+            </td>
+            <td style="width: 17px; height: 21px">
+                <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="8px" Text="Total Salary" Width="72px"></asp:Label></td>
+            <td style="width: 23px; height: 21px">
+                &nbsp;<asp:Label ID="totalsal" runat="server" Width="64px"></asp:Label></td>
+            <td style="width: 6px; height: 21px">
+                <asp:Label ID="Label33" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="8px" Text="Advance Staff Exp" Width="104px"></asp:Label></td>
+            <td style="width: 2px; height: 21px">
+                <asp:TextBox ID="ADVSTAFFEXP" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 21px">
+                <asp:Label ID="Label44" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="8px" Text="E.S.I" Width="32px"></asp:Label></td>
+            <td style="width: 756px; height: 21px">
+            </td>
+            <td style="width: 87px; height: 21px">
+                <asp:TextBox ID="esi" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 21px" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 21px">
+                <asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="CL" Width="24px"></asp:Label></td>
+            <td style="width: 34255px; height: 21px">
+                <asp:TextBox ID="cl" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 21px">
+            </td>
+            <td style="width: 17px; height: 21px">
+                <asp:Label ID="Label18" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="House Rent" Width="72px"></asp:Label></td>
+            <td style="width: 23px; height: 21px">
+                <asp:TextBox ID="houserent" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 6px; height: 21px">
+                <asp:Label ID="Label34" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Security Deposit" Width="104px"></asp:Label></td>
+            <td style="width: 2px; height: 21px">
+                <asp:TextBox ID="SECURIDEPOSIT" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 21px">
+                <asp:Label ID="Label45" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Rent Receivable" Width="104px"></asp:Label></td>
+            <td style="width: 756px; height: 21px">
+            </td>
+            <td style="width: 87px; height: 21px">
+                <asp:TextBox ID="rentrece" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 21px" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 21px">
+                <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="SL" Width="16px"></asp:Label></td>
+            <td style="width: 34255px; height: 21px">
+                <asp:TextBox ID="sl" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 21px">
+            </td>
+            <td style="width: 17px; height: 21px">
+                <asp:Label ID="Label19" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="Tran Allow" Width="64px"></asp:Label></td>
+            <td style="width: 23px; height: 21px">
+                <asp:TextBox ID="TextBox17" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 6px; height: 21px">
+                <asp:Label ID="Label35" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="Thapar Staff Club" Width="104px"></asp:Label></td>
+            <td style="width: 2px; height: 21px">
+                <asp:TextBox ID="THAPARSTAFF" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 21px">
+                <asp:Label ID="Label46" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="T.W.C.C. Society" Width="104px"></asp:Label></td>
+            <td style="width: 756px; height: 21px">
+            </td>
+            <td style="width: 87px; height: 21px">
+                <asp:TextBox ID="TWCCSOCIETY" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 21px" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 21px">
+                <asp:Label ID="Label8" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Absent" Width="48px"></asp:Label></td>
+            <td style="width: 34255px; height: 21px">
+                <asp:TextBox ID="absent" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 21px">
+            </td>
+            <td style="width: 17px; height: 21px">
+                <asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Others" Width="48px"></asp:Label></td>
+            <td style="width: 23px; height: 21px">
+                <asp:TextBox ID="othallow" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 6px; height: 21px">
+                <asp:Label ID="Label36" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="ABP Instl.." Width="96px"></asp:Label></td>
+            <td style="width: 2px; height: 21px">
+                <asp:TextBox ID="ABPINST" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 21px">
+                <asp:Label ID="Label47" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="C.T.D./R.D." Width="64px"></asp:Label></td>
+            <td style="width: 756px; height: 21px">
+            </td>
+            <td style="width: 87px; height: 21px">
+                <asp:TextBox ID="ctdrd" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 21px" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 11px">
+                <asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="LWP" Width="32px"></asp:Label></td>
+            <td style="width: 34255px; height: 11px">
+                <asp:TextBox ID="lwp" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 11px">
+            </td>
+            <td style="width: 17px; height: 11px">
+                <asp:Label ID="Label21" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="Col/Elec Allow." Width="88px"></asp:Label></td>
+            <td style="width: 23px; height: 11px">
+                <asp:TextBox ID="COLONYELEC" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 6px; height: 11px">
+                <asp:Label ID="Label37" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="T.W.C. Store" Width="96px"></asp:Label></td>
+            <td style="width: 2px; height: 11px">
+                <asp:TextBox ID="twcstore" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 11px">
+                <asp:Label ID="Label48" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="Income-Tax" Width="96px"></asp:Label></td>
+            <td style="width: 756px; height: 11px">
+            </td>
+            <td style="width: 87px; height: 11px">
+                <asp:TextBox ID="INCOMETAX" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 11px" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 29px">
+                <asp:Label ID="Label11" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="16px" Text="Pays Days" Width="64px"></asp:Label></td>
+            <td style="width: 34255px; height: 29px">
+                <asp:TextBox ID="paysdays" runat="server" Width="72px"></asp:TextBox></td>
+            <td style="width: 17281px; height: 29px">
+            </td>
+            <td style="width: 17px; height: 29px">
+                <asp:Label ID="Label22" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="Gross Salary" Width="88px"></asp:Label></td>
+            <td style="width: 23px; height: 29px">
+                <asp:TextBox ID="grosssal" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 6px; height: 29px">
+            </td>
+            <td style="width: 2px; height: 29px">
+            </td>
+            <td style="width: 4px; height: 29px">
+                <asp:Label ID="Label49" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="Others" Width="96px"></asp:Label></td>
+            <td style="width: 756px; height: 29px">
+            </td>
+            <td style="width: 87px; height: 29px">
+                <asp:TextBox ID="TextBox39" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 29px" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 21px">
+            </td>
+            <td style="width: 34255px; height: 21px">
+            </td>
+            <td style="width: 17281px; height: 21px">
+            </td>
+            <td style="width: 17px; height: 21px">
+            </td>
+            <td style="width: 23px; height: 21px">
+            </td>
+            <td style="width: 6px; height: 21px">
+            </td>
+            <td style="width: 2px; height: 21px">
+            </td>
+            <td style="width: 4px; height: 21px">
+                <asp:Label ID="Label50" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="Toatal Deductions" Width="120px"></asp:Label></td>
+            <td style="width: 756px; height: 21px">
+            </td>
+            <td style="width: 87px; height: 21px">
+                <asp:TextBox ID="totaldeductions" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 21px" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 560px; height: 21px">
+            </td>
+            <td style="width: 34255px; height: 21px">
+            </td>
+            <td style="width: 17281px; height: 21px">
+            </td>
+            <td style="width: 17px; height: 21px">
+            </td>
+            <td style="width: 23px; height: 21px">
+            </td>
+            <td style="width: 6px; height: 21px">
+                <asp:Label ID="Label38" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="Round Off" Width="88px"></asp:Label></td>
+            <td style="width: 2px; height: 21px">
+                <asp:TextBox ID="round" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 4px; height: 21px">
+                <asp:Label ID="Label51" runat="server" Font-Bold="True" Font-Names="Times New Roman"
+                    Font-Size="Small" Height="1px" Text="Net Salary" Width="120px"></asp:Label></td>
+            <td style="width: 756px; height: 21px">
+            </td>
+            <td style="width: 87px; height: 21px">
+                <asp:TextBox ID="netsalary" runat="server" Width="64px"></asp:TextBox></td>
+            <td style="width: 773680px; height: 21px" valign="top">
+            </td>
+        </tr>
+    </table>
+    </asp:Panel>
+</asp:Content>
+

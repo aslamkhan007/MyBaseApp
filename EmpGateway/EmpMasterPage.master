@@ -1,0 +1,271 @@
+<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+<meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.3)">
+<meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.3)">
+
+<script type ="text/javascript" language="JavaScript">
+<!--
+//window.history.forward(1);
+// -->
+//function DoBlur(fld) 
+
+//{
+
+//    fld.className='normalfld';
+
+//}
+
+// 
+
+//function DoFocus(fld)
+
+// {
+
+//    fld.className = 'focusfld';
+
+// }    
+
+</script>
+
+<link href="CalendarControl.css" type="text/css"
+rel="stylesheet"/>
+<script type="text/javascript"  src="CalendarControl.js">
+function ShowMarquee()
+{
+
+ var marquee="<font color="#FF0000"> <marquee scrolldelay=60>MyText</marquee></font>"; 
+ document.write(marquee);
+}
+
+
+</script>
+
+<style type ="text/css">
+/*A:visited {color:salmon}*/
+A:hover {color:#FF4444}
+
+#menu{ /* nothing in here right now */
+}
+
+#menu .Item
+{
+  /* CSS class for non-selected Menu Item */
+  background: url("image/SmallBlackBarNormal2.png") no-repeat;
+  height: 20px;   
+  font-size: 8.6pt;
+}
+
+#menu .ItemSelected
+{
+
+}
+#menu .ItemHover
+{
+  /* CSS class for hovering and selected Menu Item
+     ... which can be split up, of course! */
+  background: url("image/GlassBarNormal.png") no-repeat; 
+  forecolor: Black
+}
+
+/* CSS classes for standard Links, only valid inside the #menu DIV */
+#menu a, #menu a:visited
+{
+  background: transparent ! important;
+  display: block;
+}
+
+#menu a:hover, #menu a:active, #menu a:focus
+{
+  background: transparent ! important;
+  display: block;
+}
+
+</style>
+<link href="EmpGatewayStyleSheet.css" type="text/css" rel="stylesheet"/>
+<title></title>
+</head>
+
+
+
+<body 
+style="font-size: 12pt; margin-top : 0;  background-image: url(Image/Gradiant.png); background-repeat: repeat-x;">
+    <form id="form1" runat="server">
+    <div>
+        <table style="width: 880px; top: 0px;" cellpadding="0" cellspacing="0" contenteditable="" align="center" bgcolor="#ffffff">
+            <tr>
+                <td colspan="3" style="height: 8px; text-align: left; width: 880px; background-color: whitesmoke;" valign="middle">
+                    <asp:Image ID="Image3" runat="server" ImageUrl="~/Image/Header.PNG" Width="880px" Height="115px" /></td>
+            </tr>
+            <tr>
+                <td bgcolor="#ffffff" style="background-image: url(Image/RedBar25px.PNG); width: 150px;
+                    height: 24px; text-align: center" valign="middle">
+                    <strong><span style="font-size: 8pt; color: #ffffff; font-family: Tahoma">Main Menu</span></strong></td>
+                <td rowspan="1" style="background-image: url(Image/SmallBlackBarNormal2.PNG); width: 730px;
+                    height: 24px" valign="middle">
+                    <table style="width: 730px" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="height: 19px">
+                                &nbsp;<asp:Label ID="lblUserName" runat="server" Font-Bold="True" Font-Names="Tahoma" Font-Size="8pt"
+                                    ForeColor="White" Width="265px"></asp:Label><asp:Label ID="Label1" runat="server"
+                                        Font-Bold="True" Font-Names="Tahoma" Font-Size="8pt" ForeColor="White" Width="96px">Today's Knocks : </asp:Label><asp:Label
+                                            ID="Knocks" runat="server" Font-Bold="True" Font-Names="Tahoma" Font-Size="8pt"
+                                            ForeColor="White" Width="135px"></asp:Label><asp:Label ID="Time" runat="server" Font-Bold="True" Font-Names="Tahoma" Font-Size="8pt"
+                                    ForeColor="White" Width="70px"></asp:Label></td>
+                            <td style="text-align: center; height: 19px;">
+                    </td>
+                            <td style="text-align: right; height: 19px;">
+                                <asp:HyperLink ID="HyperLink1" runat="server" BorderStyle="None" Font-Bold="True"
+                        Font-Names="Tahoma" Font-Size="8pt" ForeColor="White" NavigateUrl="~/Default.aspx"
+                        Width="43px">Home</asp:HyperLink>&nbsp;
+                                <asp:LinkButton ID="lnkLogout" runat="server" Font-Bold="True" Font-Names="Tahoma"
+                                    Font-Size="8pt" ForeColor="White" OnClientClick='return confirm("Are you sure you want to Log Out?")'
+                                    PostBackUrl="~/Login.aspx" CausesValidation="False">Log Out</asp:LinkButton>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 150px; height: 315px; background-color: whitesmoke;" valign="top" bgcolor="#ffffff">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    
+                    <div id="menu">       
+                        <asp:Panel ID="Panel1" runat="server" Height="50px" Width="125px">
+                    <asp:Menu ID="Menu1" runat="server" Width="116%"  BackColor="Transparent" DynamicHorizontalOffset="-5" DynamicVerticalOffset = "-3" Font-Bold="True" Font-Names="Tahoma" Font-Size="8.6pt" ForeColor="White" Height="1px" StaticSubMenuIndent="10px" BorderColor="DimGray" BorderWidth="1px" MaximumDynamicDisplayLevels="5" BorderStyle="Solid">
+                        <StaticMenuItemStyle CssClass="Item" />
+                        <StaticSelectedStyle CssClass="ItemSelected" />
+                        <DynamicMenuItemStyle CssClass="Item" HorizontalPadding="6px" />
+                        <DynamicSelectedStyle CssClass="ItemSelected" />
+                        
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="H o m e"></asp:MenuItem>
+                            <asp:MenuItem Text="JCT Family" Value="JCT Family">
+                                <asp:MenuItem NavigateUrl="~/Default5.aspx" Text="JCTians" Value="Employee Information">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/NewJoinee.aspx" Text="New Joinings" Value="New Joinings">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/NonActive.aspx" Text="Left Employees" Value="Left Employees">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Birthday List" Value="Birthday List" NavigateUrl="~/Birthday.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Admin Panel" Value="Admin Panel">
+                                <asp:MenuItem Text="Reset User Password" Value="Reset User Password"></asp:MenuItem>
+                                <asp:MenuItem Text="Encrypt Password" Value="Encrypt Password"></asp:MenuItem>
+                                <asp:MenuItem Text="Create Role" Value="Create Role"></asp:MenuItem>
+                                <asp:MenuItem Text="Assign Role(s) to User(s)" Value="Assign Role(s) to User(s)"></asp:MenuItem>
+                                <asp:MenuItem Text="Add Menu Details" Value="Add Menu Details"></asp:MenuItem>
+                                <asp:MenuItem Text="News Authorisation" Value="News Authorisation"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Define Masters" Value="Define Masters">
+                                <asp:MenuItem NavigateUrl="~/Emp_HOD_Relationship.aspx"
+                                    Text="Employee HOD Relation" Value="Employee HOD Relation"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Area_Master.aspx" Text="Area Master" Value="Area Master">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Sub_Area_Master.aspx" Text="Sub Area Master" Value="Sub Area Master">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Task_Responsibility_Assigment.aspx" Text="Assign Task Responsibility"
+                                    Value="Assign Task Responsibility"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="My Activities" Value="My Activities">
+                                <asp:MenuItem Text="My Work Flow" Value="My Work Flow (External)" NavigateUrl="~/MyWorkArae.aspx">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="My Actions" Value="My Actions">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="My Postal Mails" Value="New Item"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="JCT News" Value="JCT News">
+                                <asp:MenuItem Text="Department Wise" Value="Department Wise" NavigateUrl="~/News.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Human Resource" Value="Human Resource">
+                                <asp:MenuItem Text="Holiday Calender" Value="Holiday Calender" NavigateUrl="~/Calendar.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Check Leave Status" Value="Check Leave Status" NavigateUrl="~/Default2.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Apply For Leave" Value="Apply For Leave" NavigateUrl="~/Leave_Application.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Salary Slip" Value="Salary Slip" NavigateUrl="~/Salar.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Birthday List" Value="Birthday List" NavigateUrl="~/Birthday.aspx"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Default3.aspx" Text="Medical Rembursement" Value="Medical Rembursement">
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Documents" Value="Forms &amp; Process(es)">
+                                <asp:MenuItem NavigateUrl="~/form.aspx" Text="Forms" Value="Forms"></asp:MenuItem>
+                                <asp:MenuItem Text="Processes" Value="Processes"></asp:MenuItem>
+                                <asp:MenuItem Text="Policies" Value="Policies" NavigateUrl="~/Policies/Policies.pdf"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="House Keeping" Value="House Keeping">
+                                <asp:MenuItem Text="Change My Password" Value="Change My Password" NavigateUrl="~/ChangePassword.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Reports" Value="Notepad"></asp:MenuItem>
+                            <asp:MenuItem Text="JCT Presentation" Value="JCT Presentation">
+                                <asp:MenuItem Text="JCT Website" Value="JCT Website" NavigateUrl="http://jcttextiles.com/"></asp:MenuItem>
+                                <asp:MenuItem Text="JCT Football" Value="JCT Football" NavigateUrl="http://www.jctfootball.com/index.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Presentations" Value="Presentations"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Logout" Value="Logout"></asp:MenuItem>
+                            <asp:MenuItem Text="Close Window" Value="Form"></asp:MenuItem>
+                            <asp:MenuItem Text="General" Value="General">
+                                <asp:MenuItem Text="Calculator" Value="Calculator"></asp:MenuItem>
+                                <asp:MenuItem Text="eHelpDesk &amp; Communication" Value="eHelp &amp; Customer Assistance" NavigateUrl="~/TaskManagement.aspx">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Notepad" Value="Notepad"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </Items>
+                        <StaticHoverStyle CssClass ="ItemHover" ForeColor="#777777" BorderStyle="Solid" BorderWidth="0px" />
+                        <DynamicHoverStyle CssClass="ItemHover" ForeColor="#777777" Font-Size="8pt"/>
+                        <DynamicItemTemplate>
+                            <%# Eval("Text") %>
+                        </DynamicItemTemplate>
+                        <StaticItemTemplate>
+                            <%# Eval("Text") %>
+                        </StaticItemTemplate>
+                        <DynamicMenuStyle BorderColor="Gray" BorderStyle="Outset" BorderWidth="3px" />
+                    </asp:Menu>
+                        </asp:Panel>
+                        &nbsp;</div>
+                    </asp:ContentPlaceHolder>
+                </td>
+                <td rowspan="2" style="width: 728px" valign="top">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        <table cellspacing="0" width="100%">
+                            <tr>
+                                <td style="width: 18%; height: 1px">
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="ButtonBack" Font-Bold="True"
+                                        Font-Names="Tahoma" Font-Size="8pt" PostBackUrl="~/MyWorkArae.aspx" Style="vertical-align: bottom;
+                                        text-align: center" Width="232px">My Consent Area</asp:LinkButton></td>
+                                <td style="width: 35%; height: 1px">
+                                    <asp:LinkButton ID="LnkAction" runat="server" CssClass="ButtonBack" Font-Bold="True"
+                                        Font-Names="Tahoma" Font-Size="8pt" PostBackUrl="~/MyActions.aspx" Style="vertical-align: bottom;
+                                        text-align: center" Width="248px">My Action Area</asp:LinkButton></td>
+                                <td style="height: 1px; width: 34%;">
+                                    <asp:LinkButton ID="LnkPostal" runat="server" CssClass="ButtonBack" Font-Bold="True"
+                                        Font-Names="Tahoma" Font-Size="8pt" Style="vertical-align: bottom; text-align: center"
+                                        Width="236px" PostBackUrl="~/UnderConstruction.aspx">My Postal Mails</asp:LinkButton></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="height: 335px">
+                        <asp:Image ID="Image2" runat="server" ImageAlign="Middle" ImageUrl="~/Image/EmpGateway_Back.PNG"
+                            Width="100%" Height="343px" /></td>
+                            </tr>
+                        </table>
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 150px; text-align: center; height: 5px;" valign="top" align="center" bgcolor="#ffffff">
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Image/thapargroup.JPG" Width="81px" Visible="False" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" valign="middle" style="height: 23px" background="Image/SmallBlackBarNormal2.PNG">
+                    <span style="font-size: 8pt; color: #ffffff; font-family: Tahoma; mso-fareast-font-family: 'Times New Roman';
+                        mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+                        <strong><span style="font-size: 10pt">©</span> 2008 Copyright JCT Textiles</strong></span></td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+
+</html>
+

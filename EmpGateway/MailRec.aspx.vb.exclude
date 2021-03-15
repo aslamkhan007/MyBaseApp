@@ -1,0 +1,132 @@
+Imports System.Data.SqlClient
+Partial Class MailRec
+
+    Inherits System.Web.UI.Page
+    Public cmd As New SqlCommand
+    Public obj As New HelpDeskClass
+    Public qry As String
+    Dim i As Integer
+    Dim yr, dys As Integer
+    Public dr As SqlDataReader
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Response.Cache.SetCacheability(HttpCacheability.NoCache)
+        If (Session("empcode").ToString <> "") Then
+            'empcode = Session("empcode")
+        Else
+            Response.Redirect("login.aspx")
+        End If
+
+        If Not IsPostBack = True Then
+            Me.Label1.Text = Request.QueryString.Get("btn")
+            Me.Panel1.GroupingText = "Deputize From " & Request.QueryString.Get("area")
+            Me.Panel2.GroupingText = "Employees of " & Request.QueryString.Get("area")
+            obj.opencn()
+            'qry = "select e_mailID from savior..mistel where e_mailid is not null order by e_mailid "
+            qry = "select empname from savior..empmast a, jct_emp_area_master b, savior..deptmast c where a.deptcode=b.area_code and a.deptcode=c.deptcode and area='" & Request.QueryString.Get("area") & "' order by empname"
+            cmd = New SqlCommand(qry, obj.cn)
+            dr = cmd.ExecuteReader
+            Me.ChkFrom.Items.Clear()
+            If dr.HasRows = True Then
+                While dr.Read()
+                    Me.ChkFrom.Items.Add(Trim(dr.Item(0)))
+                End While
+            End If
+            dr.Close()
+            obj.closecn()
+
+            obj.opencn()
+            'qry = "select empname from savior..empmast where empcode not in (select empcode from savior..mistel where e_mailid is not null) order by empname "
+            qry = "select deptname+ '-' + empname from savior..empmast a,  jct_emp_area_master b, savior..deptmast c where a.deptcode*=b.area_code and a.deptcode=c.deptcode and area<>'" & Request.QueryString.Get("area") & "' order by deptname,empname"
+            cmd = New SqlCommand(qry, obj.cn)
+            dr = cmd.ExecuteReader
+            Me.chkFromEmp.Items.Clear()
+            If dr.HasRows = True Then
+                While dr.Read()
+                    Me.chkFromEmp.Items.Add(Trim(dr.Item(0)))
+                End While
+            End If
+            dr.Close()
+            obj.closecn()
+        End If
+    End Sub
+
+    Protected Sub cmdAdd_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
+        ''For Email IDs
+        Dim j As Integer
+        For i = 0 To Me.ChkFrom.Items.Count - 1
+            If Me.ChkFrom.Items(i).Selected = True Then
+                For j = 0 To Me.LstTo.Items.Count - 1
+                    If Me.ChkFrom.Items(i).Text = Me.LstTo.Items(j).Text Then
+                        Exit For
+                    End If
+                Next
+                If j = Me.LstTo.Items.Count Then
+                    Me.LstTo.Items.Add(Me.ChkFrom.Items(i).Text)
+                End If
+
+            End If
+        Next
+        ''For Employees
+        For i = 0 To Me.chkFromEmp.Items.Count - 1
+            If Me.chkFromEmp.Items(i).Selected = True Then
+                For j = 0 To Me.LstToWithoutMail.Items.Count - 1
+                    If Me.chkFromEmp.Items(i).Text = Me.LstToWithoutMail.Items(j).Text Then
+                        Exit For
+                    End If
+                Next
+                If j = Me.LstToWithoutMail.Items.Count Then
+                    Me.LstToWithoutMail.Items.Add(Me.chkFromEmp.Items(i).Text)
+                End If
+            End If
+        Next
+    End Sub
+
+    Protected Sub cmdDel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdDel.Click
+        ''For EMail IDs
+        For i = 0 To Me.LstTo.Items.Count - 1
+            If Me.LstTo.Items(i).Selected = True Then Me.LstTo.Items.Remove(i)
+        Next
+        ''For Employee Names
+        For i = 0 To Me.LstToWithoutMail.Items.Count - 1
+            If Me.LstToWithoutMail.Items(i).Selected = True Then Me.LstToWithoutMail.Items.Remove(i)
+        Next
+    End Sub
+
+    Protected Sub cmdOK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdOK.Click
+        Dim str1, str2 As String
+        For i = 0 To Me.LstTo.Items.Count - 1
+            If Trim(str1) = "" Then
+                str1 = Me.LstTo.Items(i).Text
+            Else
+                str1 = str1 & "~" & Me.LstTo.Items(i).Text
+            End If
+
+        Next
+
+        For i = 0 To Me.LstToWithoutMail.Items.Count - 1
+            If Trim(str2) = "" Then
+                str2 = Me.LstToWithoutMail.Items(i).Text
+            Else
+                str2 = str2 & "~" & Me.LstToWithoutMail.Items(i).Text
+            End If
+
+        Next
+
+        'For i = 0 To Me.LstToWithoutMail.Items.Count - 1
+        '    If Trim(str1) = "" Then
+        '        str1 = Me.LstToWithoutMail.Items(i).Text
+        '    Else
+        '        str1 = str1 & "~" & Me.LstToWithoutMail.Items(i).Text
+        '    End If
+
+        'Next
+        Response.Redirect("TaskMgmt.aspx?mlr=" & str1 & "&emp=" & str2 & "&btn=" & Trim(Me.Label1.Text))
+    End Sub
+
+    Protected Sub cmdCancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
+        Response.Redirect("TaskMgmt.aspx")
+    End Sub
+
+    
+    
+End Class

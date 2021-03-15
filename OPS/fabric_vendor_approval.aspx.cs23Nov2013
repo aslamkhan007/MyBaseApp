@@ -1,0 +1,141 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+
+public partial class OPS_fabric_vendor_approval : System.Web.UI.Page
+{
+    //SqlConnection conjctgen = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["testjctgen"].ConnectionString);
+    //SqlConnection con = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["test"].ConnectionString);
+
+    SqlConnection conjctgen = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["misjctgen"].ConnectionString);
+    SqlConnection con = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["misjctdev"].ConnectionString);
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        SqlCommand cmd = new SqlCommand("jct_ops_outsrd_dyed_fab_vendr_shrtlst", con);
+        con.Open();
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.Add("@empcode", SqlDbType.VarChar, 10).Value = Session["EmpCode"].ToString();
+        cmd.ExecuteNonQuery();
+
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        grdDetail.DataSource = ds.Tables[0];
+        grdDetail.DataBind();
+        con.Close();
+    }
+    protected void grdDetail_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        SqlCommand cmd = new SqlCommand("JCT_OPS_VENDOR_SPECS_COMPARISON_FAB", conjctgen);
+        cmd.CommandType = CommandType.StoredProcedure;
+        conjctgen.Open();
+        cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        grdDetail2.DataSource = ds.Tables[0];
+        grdDetail2.DataBind();
+        conjctgen.Close();
+
+        cmd = new SqlCommand("select vendor, isnull(approved ,'n') as approved from jct_ops_out_fab_vendor  where requestid=@requestid", con);
+        cmd.CommandType = CommandType.Text;
+        con.Open();
+        cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+
+
+        da = new SqlDataAdapter(cmd);
+        ds = new DataSet();
+        da.Fill(ds);
+        chklist.DataSource = ds.Tables[0];
+
+        chklist.DataTextField = "vendor";
+        chklist.DataValueField = "vendor";
+        chklist.DataBind();
+
+        con.Close();
+        //grdDetail2.DataSource = ds.Tables[0];
+        //grdDetail2.DataBind();
+        //conjctgen.Close();
+        lbcomp.Visible = true;
+        lbvendlst.Visible = true;
+
+        for (int i = 0; i <= chklist.Items.Count - 1; i++)
+        {
+            string vndrlist;
+            vndrlist = chklist.Items[i].Text;
+            cmd = new SqlCommand("jct_ops_fab_vndr_list", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+            cmd.Parameters.Add("@vendor", SqlDbType.VarChar, 10).Value = vndrlist;
+            cmd.Parameters.Add("@flag", SqlDbType.Int).Direction = ParameterDirection.Output;
+            cmd.ExecuteNonQuery();
+            con.Close();
+            string output = cmd.Parameters["@flag"].Value.ToString();
+            if (output == "1")
+            {
+                chklist.Items[i].Selected = true;
+            }
+
+        }
+    }
+    protected void lnkapprove_Click(object sender, EventArgs e)
+    {
+
+        for (int i = 0; i <= chklist.Items.Count - 1; i++)
+        {
+
+            if (chklist.Items[i].Selected == true)
+            {
+                SqlCommand cmd = new SqlCommand("jct_ops_fab_apprvals", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+
+                cmd.Parameters.Add("@vendor", SqlDbType.VarChar, 30).Value = chklist.Items[i].Text;
+                cmd.Parameters.Add("@approvedby", SqlDbType.VarChar, 10).Value = Session["Empcode"];
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                //SendMailYarn();
+                string script = "alert(' record saved sucesfully. and Mail has been sent to float and freeze the same!! ');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script, true);
+            }
+        }
+    }
+    protected void lnkreject_Click(object sender, EventArgs e)
+    {
+        foreach (GridViewRow rw in grdDetail2.Rows)
+        {
+            //    CheckBox chk = (CheckBox)rw.FindControl("chk");
+
+            //    if (chk.Checked)
+            //   {
+
+
+
+            SqlCommand cmd = new SqlCommand("jct_ops_yarn_apprvals_rej", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.Parameters.Add("@requestid", SqlDbType.Int).Value = rw.Cells[1].Text;
+            cmd.Parameters.Add("@approveby", SqlDbType.Int).Value = Session["Empcode"];
+            cmd.Parameters.Add("@vendernamre", SqlDbType.Int).Value = rw.Cells[2].Text;
+            cmd.ExecuteNonQuery();
+            con.Close();
+            //SendMailYarn();
+            //string script = "alert(' record saved sucesfully. and Mail has been sent to float and freeze the same!! ');";
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script, true);
+        }
+    }
+    protected void chklist_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+}

@@ -1,0 +1,363 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+
+public partial class EmpGateway_Medical_Insurance : System.Web.UI.Page
+{
+    string sql;
+    Functions obj1 = new Functions();
+    Connection obj = new Connection();
+    DataTable dt;
+    SqlTransaction tran;
+    SqlCommand cmd;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+           if(Session["Empcode"] == "") 
+        {
+           Response.Redirect("~/login.aspx");
+        }
+
+        if (!Page.IsPostBack)
+        {
+            sql = "Select * from jct_empmast_base where empcode='" + Session["EmpCode"] + "' and EsiNo is Null AND active='Y'";
+            if (obj1.CheckRecordExistInTransaction(sql) == true)
+            {
+                sql = "Select a.Empname,a.cardno,b.deptname,a.desg,Convert(varchar,a.doj,103),Convert(varchar,a.dob,103) from jct_empmast_base a inner join deptmast b on a.deptcode=b.deptcode where a.active ='Y' and a.Empcode='" + Session["EmpCode"] + "'";
+                SqlDataReader dr = obj1.FetchReader(sql);
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        lblName.Text = dr[0].ToString();
+                        lblCardNo.Text = dr[1].ToString();
+                        lblDepartment.Text = dr[2].ToString();
+                        lblDesignation.Text = dr[3].ToString();
+                        lblDoj.Text = dr[4].ToString();
+                        lblDob.Text = dr[5].ToString();
+                        lblEmpCode.Text = Session["EmpCode"].ToString();
+                    }
+                }
+                dr.Close();
+            }
+            else
+            {
+                lnkSubmit.Enabled = false;
+                lnkAddRow.Enabled = false;
+                pnlGrid.Visible = false;
+                ShowAlertMsg("You are not under employee insurance scheme. For further enquiry please contact Varinder Malhotra(Admin.) - 4048.");
+            }
+            sql = "Select * from gmeis where ecode='" + Session["EmpCode"] + "' and status='A' and mode in ('Save','Submit')";
+            if (obj1.CheckRecordExistInTransaction(sql) == true)
+            {
+                Bindgrid();
+            }
+            else
+            {
+                SetInitialRow();
+            }
+        }
+    }
+    private void Bindgrid()
+    {
+        sql = "Select [Relation] as Relation,Name,Convert(varchar,CONVERT(DATETIME,DOB),103)  as [Dob],DATEDIFF(yy,Dob,GETDATE()) as [Age],mode as [Mode] from gmeis where ecode='" + Session["EmpCode"] + "' and status='A' and mode in ('Submit','Save')";
+     
+        SqlCommand cmd = new SqlCommand(sql, obj.Connection());
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+        ViewState["CurrentTable"] = dt;
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+     
+       
+    }
+    private void SetInitialRow()
+    {
+        DataTable dt = new DataTable();
+        DataRow dr = null;
+        dt.Columns.Add(new DataColumn("Relation", typeof(string)));
+        dt.Columns.Add(new DataColumn("Name", typeof(string)));
+        dt.Columns.Add(new DataColumn("DOB", typeof(string)));
+        dt.Columns.Add(new DataColumn("Age", typeof(string)));
+        dr = dt.NewRow();
+        dr["Relation"] = "--Select--";
+        dr["Name"] = string.Empty;
+        dr["DOB"] = string.Empty;
+        dr["Age"] = string.Empty;
+        dt.Rows.Add(dr);
+        //dr = dt.NewRow();
+
+        //Store the DataTable in ViewState
+        ViewState["CurrentTable"] = dt;
+
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+    }
+    private void AddNewRowToGrid()
+    {
+       
+        int rowIndex = 0;
+
+        if (ViewState["CurrentTable"] != null)
+        {
+            DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
+            DataRow drCurrentRow = null;
+            if (dtCurrentTable.Rows.Count > 0)
+            {
+                for (int i = 1; i <= dtCurrentTable.Rows.Count; i++)
+                {
+                    //extract the TextBox values
+                    DropDownList box1 = (DropDownList)GridView1.Rows[rowIndex].Cells[1].FindControl("ddlRelation");
+                    TextBox box2 = (TextBox)GridView1.Rows[rowIndex].Cells[2].FindControl("txtName");
+                    TextBox box3 = (TextBox)GridView1.Rows[rowIndex].Cells[3].FindControl("txtDob");
+                    drCurrentRow = dtCurrentTable.NewRow();
+                    dtCurrentTable.Rows[i - 1]["Relation"] = box1.SelectedValue;
+                    dtCurrentTable.Rows[i - 1]["Name"] = box2.Text;
+                    dtCurrentTable.Rows[i - 1]["DOB"] = box3.Text;
+                   
+                    rowIndex++;
+                }
+                dtCurrentTable.Rows.Add(drCurrentRow);
+                ViewState["CurrentTable"] = dtCurrentTable;
+
+                GridView1.DataSource = dtCurrentTable;
+                GridView1.DataBind();
+            }
+        }
+        else
+        {
+            Response.Write("ViewState is null");
+        }
+
+       // Set Previous Data on Postbacks
+        SetPreviousData();
+    }
+    private void SetPreviousData()
+    {
+        int rowIndex = 0;
+        if (ViewState["CurrentTable"] != null)
+        {
+            DataTable dt = (DataTable)ViewState["CurrentTable"];
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DropDownList box1 = (DropDownList)GridView1.Rows[rowIndex].Cells[1].FindControl("ddlRelation");
+                    TextBox box2 = (TextBox)GridView1.Rows[rowIndex].Cells[2].FindControl("txtName");
+                    TextBox box3 = (TextBox)GridView1.Rows[rowIndex].Cells[3].FindControl("txtDob");
+                    box1.Text = dt.Rows[i]["Relation"].ToString();
+                    box2.Text = dt.Rows[i]["Name"].ToString();
+                    box3.Text = dt.Rows[i]["Dob"].ToString();
+                    rowIndex++;
+                }
+            }
+        }
+    }
+    protected void lnkAddRow_Click(object sender, EventArgs e)
+    {
+        AddNewRowToGrid();
+    }
+    protected void lnkSubmit_Click(object sender, EventArgs e)
+    { 
+        sql = "Select * from  dbo.gmeis where ecode='" + Session["EmpCode"] +"' and Status='A' and Mode='Save'";
+       
+        if (obj1.CheckRecordExistInTransaction(sql))
+        {
+            SqlDataReader dr = obj1.FetchReader(sql);
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    if (dr["Relation"].Equals("Self"))
+                    { 
+                     ViewState["dept"] = dr["dept"].ToString();
+                    ViewState["cat"] = dr["cat"].ToString();
+                    ViewState["desg"]= dr["Designation"].ToString();
+                    }
+                }
+            
+            }
+            dr.Close();
+            obj.ConOpen();
+            tran=obj.Connection().BeginTransaction();
+            try
+            {
+                sql = "Update gmeis set status='D',Updated_Date=getdate(),Updated_By='" + Session["EmpCode"] + "'  where ecode='" + Session["EmpCode"] + "' and Status='A' and mode='Save' ";
+                 cmd = new SqlCommand(sql, obj.Connection(), tran);
+                cmd.ExecuteNonQuery();
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    DropDownList relation = (DropDownList)row.FindControl("ddlRelation");
+                    TextBox Name = (TextBox)row.FindControl("txtName");
+                    TextBox DOb = (TextBox)row.FindControl("txtDob");
+                    sql = "SELECT DATEDIFF(yy,'" + DOb.Text + "',GETDATE()) ";
+                    TextBox AGE = new TextBox();
+                    AGE.Text = obj1.FetchValue(sql).ToString();
+                    sql = "Insert into gmeis(ecode,dept,Name,Designation,Age,DOB,Relation,Entry_Date,Entered_By,Status,Mode)values('" + Session["EmpCode"] + "','" + ViewState["dept"] + "','" + Name.Text + "','" + ViewState["desg"] + "','" + AGE.Text + "','" + DOb.Text + "','" + relation.SelectedItem.Text + "',getdate(),'" + Session["EmpCode"] + "','A','Submit') ";
+                    cmd = new SqlCommand(sql, obj.Connection(), tran);
+                    cmd.ExecuteNonQuery();
+                }
+                tran.Commit();
+
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
+                ShowAlertMsg("Some Error Occured while updating record.");
+            }
+            finally
+            {
+                obj.ConClose();
+            }
+        
+        }
+
+        Bindgrid();
+        ShowAlertMsg("Record Updated Successfully.");
+    }
+
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Remove")
+        {
+            sql = "Update gmeis set Status='D',Updated_date=getdate(),Updated_by='"+ Session["EmpCode"] +"' where [Relation]='"+ e.CommandArgument +"' and ecode='"+ Session["EmpCode"] +"' and status='A'";
+            obj1.UpdateRecord(sql);
+            Bindgrid();
+          //  ShowAlertMsg("Record Deleted Successfully.");
+        }
+      
+    }
+    
+    public void ShowAlertMsg(string error1)
+    {
+        #region msg
+        Page page = HttpContext.Current.Handler as Page;
+        if (page != null)
+        {
+            // error1 = error1.Replace("'", "'")
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "err_msg", "alert('" + error1 + "');", true);
+        }
+        #endregion
+    }
+    protected void lnkExcel_Click(object sender, EventArgs e)
+    {
+        sql = "Select a.ecode as [Salary Code],b.deptname as [Department],a.Name as [Name],a.Designation,a.DOB as [DOB] ,a.Age as [Age],a.Relation as [Relationship] from gmeis a inner join deptmast b on a.dept=b.deptcode and a.status='A' ";
+        SqlCommand cmd = new SqlCommand(sql, obj.Connection());
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        DataTable dt = ds.Tables[0];
+        CreateExcelFile(dt);
+        //lnkReport.Visible = True
+        //lnkReport.Text = "Click here to download the Dispatch detail for Period '" & txtSDate.Text & "' - '" & txtEDate.Text & "'"
+        //Response.ClearContent()
+        Response.ContentType = "application/octet-stream";
+        Response.AddHeader("Content-Disposition", string.Format("attachment; filename = {0}", System.IO.Path.GetFileName("Employee_Medical_Insurance.xls")));
+        Response.AppendHeader("Content-Disposition", "attachment; filename=Employee_Medical_Insurance.xls");
+        Response.TransmitFile(Server.MapPath("Employee_Medical_Insurance.xls"));
+        Response.End();
+        obj.ConClose();
+    }
+
+    public bool CreateExcelFile(DataTable dt)
+    {
+        bool bFileCreated = false;
+        string sTableStart = "<HTML><BODY><TABLE Border=1><TR><TH>Employee Medical Insurance Details</TH></TR>";
+        string sTableEnd = "</TABLE></BODY></HTML>";
+        string sTableData = "";
+        int nRow = 0;
+        int nCol;
+        sTableData += "<TR>";
+        for (nCol = 0; nCol <= dt.Columns.Count - 1; nCol++)
+        {
+            sTableData += "<TD><B>" + dt.Columns[nCol].ColumnName + "</B></TD>";
+        }
+        sTableData += "</TR>";
+        for (nRow = 0; nRow <= dt.Rows.Count - 1; nRow++)
+        {
+            sTableData += "<TR>";
+            for (nCol = 0; nCol <= dt.Columns.Count - 1; nCol++)
+            {
+                sTableData += "<TD>" + dt.Rows[nRow][nCol].ToString() + "</TD>";
+            }
+            sTableData += "</TR>";
+        }
+        string sTable = sTableStart + sTableData + sTableEnd;
+        //  Dim oExcelFile As System.IO.File
+        System.IO.StreamWriter oExcelWrite = null;
+        string sExcelFile = Server.MapPath("Employee_Medical_Insurance.xls");
+        oExcelWrite = System.IO.File.CreateText(sExcelFile);
+        oExcelWrite.WriteLine(sTable);
+        oExcelWrite.Close();
+        bFileCreated = true;
+        return bFileCreated;
+
+    }
+
+    protected void lnkSave_Click(object sender, EventArgs e)
+    {
+        sql = "Select * from  dbo.gmeis where ecode='" + Session["EmpCode"] + "' and Status='A' and Mode <>'Submit'";
+
+        if (obj1.CheckRecordExistInTransaction(sql))
+        {
+            SqlDataReader dr = obj1.FetchReader(sql);
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    if (dr["Relation"].Equals("Self"))
+                    {
+                        ViewState["dept"] = dr["dept"].ToString();
+                        ViewState["cat"] = dr["cat"].ToString();
+                        ViewState["desg"] = dr["Designation"].ToString();
+                    }
+                }
+
+            }
+            dr.Close();
+
+            //sql = "Update gmeis set status='D',Updated_Date=getdate(),Updated_By='" + Session["EmpCode"] + "'  where ecode='" + Session["EmpCode"] + "' and Status='A' ";
+            //obj1.UpdateRecord(sql);
+            obj.ConOpen();
+            tran = obj.Connection().BeginTransaction();
+            try
+            {
+                sql = "Update gmeis set mode='Save', status='D',Updated_Date=getdate(),Updated_By='" + Session["EmpCode"] + "'  where ecode='" + Session["EmpCode"] + "' and Status='A' and mode<>'Submit'";
+                cmd = new SqlCommand(sql, obj.Connection(), tran);
+                cmd.ExecuteNonQuery();
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    DropDownList relation = (DropDownList)row.FindControl("ddlRelation");
+                    TextBox Name = (TextBox)row.FindControl("txtName");
+                    TextBox DOb = (TextBox)row.FindControl("txtDob");
+                    sql = "SELECT DATEDIFF(yy,'" + DOb.Text + "',GETDATE()) ";
+                    TextBox AGE = new TextBox();
+                    AGE.Text = obj1.FetchValue(sql).ToString();
+                    sql = "Insert into gmeis(ecode,dept,Name,Designation,Age,DOB,Relation,Entry_Date,Entered_By,Status,Mode)values('" + Session["EmpCode"] + "','" + ViewState["dept"] + "','" + Name.Text + "','" + ViewState["desg"] + "','" + AGE.Text + "','" + DOb.Text + "','" + relation.SelectedItem.Text + "',getdate(),'" + Session["EmpCode"] + "','A','Save') ";
+                    cmd = new SqlCommand(sql, obj.Connection(), tran);
+                    cmd.ExecuteNonQuery();
+                    
+                }
+                tran.Commit();
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
+                ShowAlertMsg("Some Error ocuured while Saving your record.");
+            }
+            finally { obj.ConClose(); }
+          
+
+        }
+
+        Bindgrid();
+        ShowAlertMsg("Record Saved Successfully.");
+    }
+}

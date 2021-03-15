@@ -1,0 +1,52 @@
+<%@ Page Language="VB" AutoEventWireup="false" CodeFile="MailRec.aspx.vb" Inherits="MailRec" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table width="740">
+            <tr>
+                <td align="center" colspan="3" style="height: 20px; font-weight: bold; color: red; font-family: Tahoma; text-decoration: underline;" valign="middle" background="gradient.JPG">
+                    &nbsp;<asp:Label ID="Label1" runat="server"></asp:Label>
+                    Recepients</td>
+            </tr>
+            <tr>
+                <td style="height: 21px" width="43%">
+                    <asp:Panel ID="Panel2" runat="server" BorderStyle="Inset" Height="187px" ScrollBars="Vertical"
+                        Width="100%" Font-Size="8pt" GroupingText="Employees of " Font-Names="Tahoma">
+                        <asp:CheckBoxList ID="ChkFrom" runat="server" Width="280px">
+                        </asp:CheckBoxList></asp:Panel>
+                    <asp:Panel ID="Panel4" runat="server" BorderStyle="Inset" Font-Size="8pt" GroupingText="Other Employees"
+                        Height="187px" ScrollBars="Vertical" Width="100%" Font-Names="Tahoma">
+                        <asp:CheckBoxList ID="chkFromEmp" runat="server" Width="280px">
+                        </asp:CheckBoxList></asp:Panel>
+                </td>
+                <td style="height: 21px" valign="middle" width="14%" background="gradient.gif">
+                    &nbsp; &nbsp; &nbsp;
+                    <asp:Button ID="cmdAdd" runat="server" Text=">>" Width="40px" /><br />
+                    <br />
+                    &nbsp; &nbsp; &nbsp;
+                    <asp:Button ID="cmdDel" runat="server" Text="<<" Width="40px" /></td>
+                <td style="height: 21px; width: 43%;" valign="top">
+                    <asp:Panel ID="Panel1" runat="server" Height="187px" ScrollBars="Vertical" Width="232px" BorderStyle="Inset" Font-Size="X-Small" GroupingText="Deputize Employees of">
+                        <asp:ListBox ID="LstTo" runat="server" Height="184px" Width="235px" SelectionMode="Multiple" Font-Size="8pt" Font-Names="Tahoma"></asp:ListBox></asp:Panel>
+                    <asp:Panel ID="Panel3" runat="server" BorderStyle="Inset" Font-Size="8pt" GroupingText="Deputize from Other Dept"
+                        Height="187px" ScrollBars="Vertical" Width="245px" Font-Names="Tahoma">
+                        <asp:ListBox ID="LstToWithoutMail" runat="server" Font-Size="X-Small" Height="182px"
+                            Width="235px"></asp:ListBox></asp:Panel>
+                </td>
+            </tr>
+        </table>
+    
+    </div>
+        <asp:Button ID="cmdOK" runat="server" Text="OK" Width="72px" />
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <asp:Button ID="cmdCancel" runat="server" Text="Cancel" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+CREATE TABLE Jct_Asset_Furniture_Accept_Header
+(
+[SrNo] [int] NOT NULL IDENTITY(1, 1),
+[Request_id] [int] NULL,
+[Location] [varchar] (50) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[sub_location] [varchar] (60) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[SharedLoc] [char] (1) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[Items_Accept_Status] [char] (1) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[STATUS] [char] (1) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[module_usedby] [varchar] (30) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[Hostname] [varchar] (15) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[Created_By] [varchar] (30) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[Created_on] [datetime] NULL,
+[updated_By] [varchar] (30) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[updated_on] [datetime] NULL
+) ON [PRIMARY]
+GO
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE  Jct_Asset_Furniture_Accept_Detail
+(
+SrNo	INT,
+Request_id	INT,
+TransNo	INT,
+Location	varchar(50),
+sub_location	varchar(60),
+empcode	varchar(10),
+asset_id	INT,
+asset_type_id	INT,
+item_desc_id	INT,
+item_desc_value	INT,
+manufacture	varchar(100),
+asset_type_name	varchar(100),
+item_desc	varchar(200),
+ALLOCATION_DATE	DATETIME,
+Items_Accepted_No	INT,
+Remarks	varchar(200),
+STATUS	char(1),
+module_usedby	varchar(30),
+Hostname	varchar(15),
+Created_By	varchar(30),
+Created_on	DATETIME,
+updated_By	varchar(30),
+updated_on	datetime
+)
+
+CREATE TABLE [dbo].[Jct_Asset_Furniture_Accept_Header]
+(
+[SrNo] [int] NOT NULL IDENTITY(1, 1),
+[Request_id] [int] NULL,
+[Location] [varchar] (50) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[sub_location] [varchar] (60) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[SharedLoc] [char] (1) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[Items_Accept_Status] [char] (1) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[STATUS] [char] (1) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[module_usedby] [varchar] (30) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[Hostname] [varchar] (15) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[Created_By] [varchar] (30) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[Created_on] [datetime] NULL,
+[updated_By] [varchar] (30) COLLATE SQL_1xCompat_CP850_CI_AS NULL,
+[updated_on] [datetime] NULL
+) ON [PRIMARY]
+GO

@@ -1,0 +1,1683 @@
+﻿/* To Be Used For First Row of Table */
+.tableheader
+{
+/*	font-family:Trebuchet MS;
+	font-size:10pt;
+	font-weight:bold;
+	color:White;
+	background-image:url("../Image/RedBar25px.png");
+	height : 23px;
+*/
+    background-position: 0px -6px; 
+    background-image: url('../Image/Frame/Frame_Vertical_Back.png');
+    font-family : Trebuchet MS;
+    font-size:10pt;
+    height: 37px;
+    text-align: left;
+}
+.BoundColumn_Date
+{
+   width: 80px;
+    }
+    .BoundColumn_long
+{
+   width: 160px;
+    }
+.BoundColumn
+{
+   width: 40px;
+    }
+.tableback
+{
+    background-position: 0px -41px; 
+    background-image: url('../Image/Frame/Frame_Vertical_Back.png');
+    background-repeat:repeat-x ;
+    text-align: left;
+}
+
+.panelbgcolor
+{
+	background-color:White;
+}
+.frameheader
+{
+    background-position: 0px -4px; 
+    background-image: url('../Image/Frame/Frame_Vertical_Back.png');
+    font-family : Trebuchet MS;
+    font-size:10pt;
+    height: 37px;
+    text-align: left;
+}
+
+
+.buttonrt
+{
+
+      background-image: url(../Image/expand.gif);
+      background-repeat :no-repeat ;
+      width: 21px;
+      height: 21px;
+}
+.buttoncmd
+{
+    background : url(../Image/GlossyNormalButton.png);
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+    text-decoration : none;
+    color : White;
+    width : 84px;
+    line-height:22px;
+}
+.buttondn
+
+{
+
+      background-image: url(../Image/collapse.gif);
+
+      background-repeat :no-repeat ;
+
+      width: 21px;
+
+      height: 21px;
+     
+
+}
+.gridheader
+{
+    font-family: Tahoma;
+    font-size: 8pt;
+    font-weight: bold;
+    color: White;
+    background-image: url(../Image/TitleHeader.png);
+    height: 23px;
+    background-color: gray;
+}
+.panelbg
+{
+	background-image:url("../Image/Background/PanelGradient.PNG");
+	background-repeat:repeat-x;
+}
+.panelcells
+{
+    font-family:Tahoma;
+	font-size:8pt;
+    background-image:url("../Image/Background/PanelGradient.PNG");
+	background-repeat:repeat-x;
+	
+}
+
+.smallpanelcells
+{
+    font-family:Tahoma;
+	font-size:8pt;
+    background-image:url("../Image/Background/SmallPanelGradient.PNG");
+	background-repeat:repeat-x;
+	
+}
+
+.gridrowheader
+{
+	font-family:Tahoma;
+	font-size:8pt;
+	font-weight:bold;
+	color:black;
+	background-image:url("../Image/SmallGlassBarNormal.png");
+	height : 23px;	
+	background-repeat:repeat-x;
+}
+
+
+/* To Be Used For Background of Labels and their cells */
+.labelcells
+{
+	font-family: Tahoma;
+	font-size: 8pt;
+	font-weight: bold;
+	color: #555555;
+	/*background-image: url("../Image/Gradient2.PNG");*/
+	background-color:Transparent;
+	margin-top: auto;	
+	vertical-align: top;
+	background-repeat: repeat-y;
+	}
+
+.labelcells_s
+{
+    background-position: left top;
+    font-family: Tahoma;
+    font-size: 8pt;
+    font-weight: bold;
+	color: #555555;
+    background-image: url('../Image/Plain_Footer.png');
+    margin-top: 0;
+    vertical-align: top;
+    background-repeat: no-repeat;
+    text-align: left;
+}
+
+  .HighlightedRow td
+        {
+            padding: 2px;
+            background-color: LightBlue;
+        }
+
+/* To Be Used For Background and setting  of TextBoxes's cells */
+.textcells
+{
+	font-family:Tahoma;
+	font-size:8pt;
+	background-color: Transparent;
+	margin-top:auto;
+	vertical-align:top;
+	height: 13px;
+}
+
+.textcells_s
+{
+    background-position: right top;
+    font-family: Tahoma;
+    font-size: 8pt; /*background-color:#f5f5f5;*/
+    background-image: url('../Image/Plain_Footer.png');
+    background-color: Transparent;
+    margin-top: auto;
+    vertical-align: top;
+    height: 13px;
+    background-repeat: no-repeat;
+}
+
+
+
+/* To Be Used For setting  of TextBoxes */
+.textbox
+{
+	font-family:Tahoma;
+	font-size:8pt;
+	/*text-transform:uppercase;*/
+
+	
+    	background: url('../image/bg_textbox.gif') repeat-x;
+    	border: solid 1px #acabab;
+	padding: 2px;
+
+
+}
+/* To Be Used For setting  of Multiline TextBoxes */
+.multilinetextbox
+{
+	font-family:Tahoma;
+	font-size:8pt;
+	margin-top:auto;
+	padding-top:auto;
+}
+.loading
+{
+	color:Blue;
+	font-family:Tahoma;
+	font-size:10pt;
+	font-weight:bold
+}
+/* To Be Used For setting  of Multiline TextBoxes set height=124px and width=28px
+.buttonc
+{	
+	background-image: url(../Image/Buttons_Tabs/GlossyNormalButtonSm2.png);
+	width: 84px;
+	font-family: Tahoma;
+	font-size: 8pt;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: White;
+	line-height: 22px;
+	border-style:none;
+}
+*/
+
+.buttonc
+{
+    background-image : url('../Image/GlossyNormalButton.png');
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+    text-decoration : none;
+    color : White;
+    display:inline-block;
+    width : 84px;
+    line-height:22px;
+    }
+
+
+.buttonc:hover
+{
+   /* background-image : url(../Image/GlossyBlackButtonsm.png);*/
+    background-image : url(../Image/GlossyHoverButtonSm2.png);
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center ;    
+    color : White;    
+    line-height:22px;
+    width : 84px;
+}
+
+.buttonhover
+{
+   /* background-image : url(../Image/GlossyBlackButtonsm.png);*/
+    background-image : url(../Image/GlossyHoverButtonSm2.png);
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center ;    
+    color : White;    
+    line-height:22px;
+    width : 84px;
+}
+
+.buttondisable
+{
+    background-image : url(../Image/Buttons_Tabs/GlossyDisableButtonsm.png);
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center ;    
+    text-decoration : none;
+    color : White;    
+    line-height:22px;
+    width : 84px;
+}
+
+.buttonm
+{
+    background-image : url(../Image/GlossyBlackButton.png);
+    width : 124px;
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;    
+    text-align : center;
+    text-decoration : none;
+    color : White;
+    line-height:30px;
+}
+
+.buttonhoverm
+{
+    background-image : url(../Image/GlossyGreyButton.png);
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center ;    
+    color : White;
+    line-height:30px;
+    width : 124px;
+}
+.buttondisablem
+{
+    background-image : url(../Image/GlossyDisableButton.png);
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center ;    
+    text-decoration : none;
+    color : White;
+    line-height:30px;
+    width : 124px;
+}
+
+
+.buttonhoverlg
+{
+    background-image : url(../Image/GlossyHoverButtonlg.png);
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center ;    
+    color : White;    
+    line-height:30px;
+    width : 124px;
+}
+.buttondisablelg
+{
+    background-image : url(../Image/GlossyDisableButtonlg.png);
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center ;    
+    text-decoration : none;
+    color : White;    
+    line-height:30px;
+    width : 124px;
+}
+.wARNING
+{
+	border-left-color: #99ccff;
+	border-bottom-color: #99ccff;
+	direction: ltr;
+	border-top-style: groove;
+	border-top-color: #99ccff;
+	line-height: normal;
+	border-right-style: groove;
+	border-left-style: groove;
+	letter-spacing: normal;
+	background-color: aqua;
+	text-align: justify;
+	border-right-color: #99ccff;
+	border-bottom-style: groove;
+}
+.autocomplete_ListItem 
+{ 
+visibility : hidden;
+margin : 0px!important;
+
+background-color : white;
+color : black;
+
+border : buttonshadow;
+border-width : 1px;
+
+border-style : solid; 
+/*cursor : 'default';*/
+
+overflow : auto;
+height : 100px;
+
+text-align : left; 
+list-style-type : none;
+
+font-family: tahoma; 
+font-size: 8pt; 
+}
+
+.autocomplete_ListItem1 
+{ 
+visibility : hidden;
+margin : 0px!important;
+background-color : white; 
+color : black;
+border : buttonshadow; 
+border-width : 1px;
+border-style : solid; 
+/*cursor : 'default';*/
+overflow : auto; 
+height :150px;
+text-align : left; 
+list-style-type : none;
+font-family: tahoma; 
+font-size: 8pt; 
+}
+
+.txtpropercase
+{
+	font-family:Tahoma;
+	font-size:8pt;
+	height:14px;
+	margin-top:auto;
+	text-transform:capitalize;
+}
+.combobox
+{
+	font-family:Tahoma;
+	font-size:8pt;
+	height:20px;
+	margin-top:auto;
+	/*text-transform:uppercase;*/
+	
+    	height: 16px;
+ist-style-image: url('../image/bg_textbox.gif');
+    	background: url('../image/bg_textbox.gif');
+    	background-repeat: repeat-x;
+    	border: solid 1px #acabab;
+	padding: 2px;
+}
+.addmsg
+{
+   font-family : Tahoma;
+   font-size : 8pt;
+   font-weight : bold;
+   color : blue;
+}
+.errormsg
+{
+   font-family : Tahoma;
+   font-size : 8pt;
+   font-weight : bold;
+   color : red;
+}
+
+.buttonbackbar
+{
+ background-image : url(../Image/GlassBarNormal.png);
+ background-repeat :repeat-x ;
+ height : 25px;
+ text-align : center;
+ font-family: Tahoma;
+ font-weight : bold ;
+ font-size :8pt;
+ color : #444444;
+}
+
+
+
+.buttonbackbarV
+{
+ background-image : url(../Image/GlassBarNormalV.png);
+ background-repeat :repeat-y ;
+ height : 5px;
+ width:10PX;
+ text-align : center;
+ font-family: Tahoma;
+ font-weight : bold ;
+ font-size :8pt;
+ color : #444444;
+}
+
+
+.Freezing
+{
+   position:relative;
+   top: expression(this.offsetParent.scrollTop);
+   z-index: 0;
+   /*background-image : url(../Image/GlassBarNormal.png);*/
+   height : 25px;   
+}
+
+.FreezingCol
+{
+   LEFT: expression(document.getElementById("freezingDiv").scrollLeft);
+   /*freezingDiv is the name of the div to make your datagrid scrollable */
+   POSITION: relative;
+   z-index: 1;
+} 
+
+.selectedrow
+{
+    background-color:Silver;
+}
+.subheader
+{
+    background-image: url(../Image/FormHeader.PNG);
+    background-repeat: repeat-x;
+    font-family: Tahoma;
+    font-size: 8pt;
+    font-weight: bold;
+    color: White;
+    height: 21px;
+}
+
+.normalfld
+{
+    font-family:Tahoma;
+	font-size:8pt;
+	height:13px;	
+}
+
+.focusfld
+{
+    font-family:Tahoma;
+	font-size:8pt;
+	height:13px;
+	background-color:#FFDDDD;	
+}
+
+.Tab
+{
+    background-image : url(../Image/Buttons_Tabs/Black_Tab.png);
+    background-repeat : no-repeat ;
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+    text-decoration : none;
+    color : White;
+    display:inline-block;
+    width : 110px;
+    line-height:25px;
+}
+
+.Tab:Hover
+{
+    background-image : url(../Image/Buttons_Tabs/Grey_Tab.png);
+    background-repeat : no-repeat;
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+    text-decoration : none;
+    color : White;
+    display : inline-block;
+    width : 110px;
+    line-height:25px;
+}
+
+.dl_item_hover
+{
+    background-color : #CCCCCC;
+    text-decoration :none;
+    cursor : hand;
+}
+
+.dl_item_normal
+{
+    background-color :Transparent ;
+}
+
+.frame_tab_item
+{
+    background-image : url(../Image/Buttons_Tabs/Black_Tab.png);
+    background-repeat : no-repeat ;
+    font-family : Tahoma;
+    font-size : 8pt;
+    
+    text-align : center;
+    text-decoration : none;
+    color : White;
+    display:inline-block;
+    width : 110px;
+    line-height:25px;
+}
+
+.frame_tab_item:hover
+{
+    background-image : url(../Image/Buttons_Tabs/DarkBlue_Tab.png);
+    background-repeat : no-repeat ;
+    font-family : Tahoma;
+    font-size : 8pt;    
+    text-align : center;
+    text-decoration : none;
+    color : White;
+    display:inline-block;
+    width : 110px;
+    line-height:25px;
+}
+
+.frame_tab_item_selected
+{
+    background-image : url(../Image/Buttons_Tabs/Blue_Tab.png);
+    background-repeat : no-repeat ;
+    font-family : Tahoma;
+    font-size : 8pt;
+    text-align : center;
+    text-decoration : none;
+    display:inline-block;
+    width : 110px;
+    line-height:25px;
+}
+
+
+.combobox
+{
+	font-family:Tahoma;
+	font-size:8pt;
+	height:20px;
+	margin-top:auto;
+	/*text-transform:uppercase;*/
+}
+
+.titletext
+{
+    font-family:Trebuchet MS;
+	font-size:10pt;
+	font-weight: bold;
+}
+
+div#AdjResultsDiv { 
+width: 100%; 
+height: 186px; 
+overflow: scroll; 
+position: relative;
+	top: 0px;
+	left: -1px;
+}
+
+div#AdjResultsDiv th {   
+top: expression(document.getElementById("AdjResultsDiv").scrollTop-2); 
+left: expression(parentNode.parentNode.parentNode.parentNode.scrollLeft); 
+position: relative; 
+z-index: 20; 
+} 
+
+
+
+div#AdjResultsDiv1 { 
+width: 100%; 
+height: 186px; 
+overflow: scroll; 
+position: relative;
+top: 0px;
+left: -1px;
+}
+
+div#AdjResultsDiv1 th {   
+top: expression(document.getElementById("AdjResultsDiv1").scrollTop-2); 
+left: expression(parentNode.parentNode.parentNode.parentNode.scrollLeft); 
+position: relative; 
+z-index: 20; 
+} 
+
+div#AdjResultsDiv2 { 
+width: 100%; 
+height: 186px;
+overflow: scroll; 
+position: relative;
+top: 0px;
+left: -1px;
+}
+
+div#AdjResultsDiv2 th {
+top: expression(document.getElementById("AdjResultsDiv2").scrollTop-2);
+left: expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
+position: relative;
+z-index: 1;
+}
+
+div#AdjResultsDiv3 {
+width: 100%; 
+height: 186px;
+overflow: scroll; 
+position: relative;
+top: 0px;
+left: -1px;
+}
+
+div#AdjResultsDiv3 th {
+top: expression(document.getElementById("AdjResultsDiv3").scrollTop-2);
+left: expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
+position: relative;
+z-index: 1;
+}
+
+div#AdjResultsDiv4 {
+width: 100%; 
+height: 186px;
+overflow: scroll; 
+position: relative;
+top: 0px;
+left: -1px;
+}
+
+div#AdjResultsDiv4 th {
+top: expression(document.getElementById("AdjResultsDiv4").scrollTop-2);
+left: expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
+position: relative;
+z-index: 1;
+}
+
+#hintbox{ /*CSS for pop up hint box */
+position:absolute;
+top: 0;
+background-color: yellow;
+width:auto ; /*Default width of hint.*/ 
+padding: 3px;
+border:1px solid black;
+font:normal 11px Verdana;
+line-height:18px;
+z-index:100;
+border-right: 3px solid black;
+border-bottom: 3px solid black;
+visibility: hidden;
+}
+/* style sheet for grid ---   gridviewstyle*/
+/*GridViewCSS*/
+
+
+.GridViewStyle
+
+{
+
+    font-family:Tahoma;
+
+    font-size:8pt;
+
+    table-layout: auto;
+
+    border-collapse: collapse;
+
+    border: #1d1d1d 5px solid;
+
+}
+
+/*Header and Pager styles*/
+
+.HeaderStyle, .PagerStyle /*Common Styles   HeaderGlassBlack.jpg);*/
+
+{
+
+    background-image: url(../Image/GridHeader.png);
+  
+
+    background-position:center;
+
+    background-repeat:repeat-x;
+
+    background-color:#1d1d1d;
+
+}
+
+.HeaderStyle th
+
+{
+
+    padding: 5px;
+
+    color: #ffffff;
+
+}
+
+.HeaderStyle a
+
+{
+
+    text-decoration:none;
+
+    color:#ffffff;
+
+    display:block;
+
+    text-align:left;
+
+    font-weight:normal;
+
+}
+
+.PagerStyle table
+
+{
+
+    text-align:center;
+
+    margin:auto;
+
+}
+
+.PagerStyle table td
+
+{
+
+    border:0px;
+
+    padding:5px;
+
+}
+
+.PagerStyle td
+
+{
+
+    border-top: #1d1d1d 3px solid;
+
+}
+
+.PagerStyle a
+
+{
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    padding:2px 10px 2px 10px;
+
+    border-top:solid 1px #777777;
+
+    border-right:solid 1px #333333;
+
+    border-bottom:solid 1px #333333;
+
+    border-left:solid 1px #777777;
+
+}
+
+.PagerStyle span
+
+{
+
+    font-weight:bold;
+
+    color:#FFFFFF;
+
+    text-decoration:none;
+
+    padding:2px 10px 2px 10px;
+
+}
+
+/*RowStyles*/
+
+ .HighlightedRow td
+        {
+            padding: 2px;
+            background-color: LightBlue;
+        }
+
+.RowStyle td, .AltRowStyle td, .SelectedRowStyle td, .EditRowStyle td /*Common Styles*/
+
+{
+
+    padding: 5px;
+
+    border-right: solid 1px #1d1d1d;
+
+}
+
+.RowStyle td
+
+{
+
+    background-color: #c9c9c9;
+    color:Black;
+
+}
+
+.AltRowStyle td
+
+{
+
+    background-color: #f0f0f0;
+    color:Black;
+
+}
+
+.SelectedRowStyle td
+
+{
+
+    background-color: #ffff66;
+    cursor: pointer;
+
+}
+
+
+/* End of-- style sheet for grid ---   gridviewstyle*/
+
+.buttonlg
+{   
+    background-image : url('../Image/GlossyNormalButtonLg.png');
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+ 
+    color : White;
+    width : 84px;
+    line-height:18px;
+}
+
+.closebutton
+{
+	background-image: url(../Image/exit.png);
+	width: 24px;
+	font-family: verdana;
+	font-size: 8pt;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: White;
+	line-height: 24px;
+}
+.watermark
+{
+   font-family:Tahoma;
+	font-size:8pt;
+    color: Gray;
+   
+    
+}
+.normalrow
+  {  
+    font-family:Tahoma;
+	font-size:8pt;
+    background-image:none;
+	background-repeat:repeat-x 
+  }  
+ .highlightrow  
+ {  
+  background-color:#cccccc;  
+ }  
+  .NewsTab .ajax__tab_header 
+{
+    color: Black ;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: White;
+    margin-left: 10px;
+}
+.NewsTab .ajax__tab_outer
+{
+    background-color: White;
+}
+.NewsTab .ajax__tab_inner
+{
+    padding: 3px;
+    margin-right: 1px;
+    margin-left: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    background-color:Gray; 
+}
+.NewsTab .ajax__tab_hover .ajax__tab_outer
+{
+    background-color: Black;
+}
+.NewsTab .ajax__tab_hover .ajax__tab_inner
+{
+  /*  background-color: Black;*/
+  background-image:url(../EmployeePortal/Image/Titleheader.png);
+  color:White;
+}
+.NewsTab .ajax__tab_active .ajax__tab_outer
+{
+    background-color: White;
+}
+.NewsTab .ajax__tab_active .ajax__tab_inner
+{
+    background-color: #fefdf7;
+}
+
+
+/* ajax__tab_technorati-theme theme */
+.ajax__tab_technorati-theme .ajax__tab_header 
+{
+    font-family:"Helvetica Neue", Arial, Sans-Serif;
+    background:url(../EmployeePortal/image/technorati/tab-line.png) repeat-x bottom;
+    font-size:12px;
+    display:block;
+}
+.ajax__tab_technorati-theme .ajax__tab_header .ajax__tab_outer 
+{
+    background:url(../EmployeePortal/image/technorati/tab.png) no-repeat left top;
+    border-color:#222;
+    color:#222;
+    padding-left:10px;
+    margin-right:3px;
+}
+.ajax__tab_technorati-theme .ajax__tab_header .ajax__tab_inner 
+{
+    background:url(../EmployeePortal/image/technorati/tab.png) no-repeat right top;
+    border-color:#666;
+    color:#666;
+    padding:3px 10px 2px 0px;
+}
+.ajax__tab_technorati-theme .ajax__tab_hover .ajax__tab_inner 
+{
+    color:#000000;
+}
+.ajax__tab_technorati-theme .ajax__tab_active .ajax__tab_outer 
+{
+    background:url(../EmployeePortal/image/technorati/tab.png) no-repeat 0pt -40px;
+    border-bottom-color:#ffffff;
+}
+.ajax__tab_technorati-theme .ajax__tab_active .ajax__tab_inner 
+{
+    background:url(../EmployeePortal/image/technorati/tab.png) no-repeat right -40px;
+    color:#000000;
+    border-color:#333
+}
+.ajax__tab_technorati-theme .ajax__tab_body 
+{
+    font-family:verdana,tahoma,helvetica;
+    font-size:10pt;
+    padding:8px;
+    background-color:#ffffff;
+    border:solid 1px #d7d7d7;
+    border-top-width:0;
+}
+.buttonArrow
+{
+	/*background-image: url(../Image/GlossyBlackButtonsm.png); */
+	/*background-image: url(../Image/GlossyGreyButtonSm.png); */
+	background-image: url(../Image/GlossyNormalButtonSm2.png);
+
+	font-family: Tahoma;
+	font-size: 8pt;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: White;
+	
+}
+.buttonSearch
+{
+    background: url(../Image/Icons/Search3small.PNG);
+    height:23px;
+    width:23px;
+}
+.modalBackground
+{
+ background-color:Gray;
+ filter:alpha(opacity=70);
+ opacity:0.7;
+padding=3px;
+
+}
+.search
+{
+	background-image: url(../EmployeePortal/Image/search3small.png);
+	width: 25px;
+	font-family: verdana;
+	font-size: 8pt;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: White;
+	line-height: 25px;
+}
+.RadioButtonList
+{
+ font-size:1.4em;
+  color:#243C7A;
+  padding-left:6px;    
+  width:100%;
+  line-height:1.4em;  
+  margin:2px 25px 0 0; 
+}
+.panel
+{
+	position: relative;
+	margin-left: 1%;
+	margin-right: 1%;
+	width: auto;
+	height: auto;
+	padding: 0px 0px 0px 0px;
+	margin-top: 0;
+	margin-bottom: 0;
+	/*background-color: #CCCCCC;*/
+	border-style: solid;
+	border-width: 1px;
+	border-color: Gray;
+}
+/* Class of Close button of modalpopup extender Created By Ashish Sharma on 29-jan-2010 */
+.close {	
+    DISPLAY: block;	
+    BACKGROUND: url(../Image/close24.png) no-repeat 0px 0px;	
+    LEFT: 300px;	
+    WIDTH: 26px;	
+    TEXT-INDENT: -1000em;	
+    POSITION: absolute;	
+    TOP: -5px;	
+    HEIGHT: 26px;	
+}   
+/* Class of Panel button of modalpopup extender Created By Ashish Sharma on 29-jan-2010 */
+.confirm-dialog {	
+    BACKGROUND: url(../Image/bg/dialog24.png) no-repeat left top; 
+
+
+   
+
+
+    MARGIN: 0px auto;	
+    WIDTH: 330px;	
+    PADDING-TOP: 14px;	
+    POSITION: relative;
+}
+
+.confirm-dialog .inner {	
+    PADDING-RIGHT: 20px;	
+    PADDING-LEFT: 20px;	
+    PADDING-BOTTOM: 11px;
+   BACKGROUND: url(../Image/bg/dialog24.png) no-repeat left bottom;	
+    FLOAT: left;	
+    MARGIN: 0px 0px -20px 0px;	
+    WIDTH: 290px;	
+    PADDING-TOP: 0px;
+} 
+
+.buttonClear
+{
+    background: url(../Image/Icons/ClearAll.PNG);
+    height:23px;
+    width:23px;
+}
+.WizardStepHead
+{
+    background-position: right top;
+    font-family: Tahoma;
+    font-size: 8pt; /*background-color:#f5f5f5;*/
+    background-image: url('../Image/Plain_Footer.png');
+    background-color: Transparent;
+    margin-top: auto;
+    vertical-align: top;
+    height: 17px;
+    text-align:center;
+    background-repeat: no-repeat;
+    font-weight:bold;
+}
+.chartbackground
+{ 
+    background : url('../Image/chart_background/Plain_background_1.jpg');
+    background-position:center;
+    background-repeat:repeat-x;
+     
+
+}
+
+
+
+
+/*----------------------Hitesh For Export Documnet------------------*/
+ /* table level rules */
+.grid
+{
+	font-family: Verdana;
+	font-size: 8px;
+	border: solid 1px #7f7f7f;
+	border-bottom-width:1px;
+    border-collapse:collapse;
+    color: #333333;
+    width:100%
+}
+
+
+/* header column rules */
+.grid th 
+{
+    background: url(../Image/sprite.png) repeat-x 0px 0px;
+    border-color: #989898 #cbcbcb #989898 #989898;
+    border-style: solid solid solid none;
+    border-width: 1px 1px 1px medium;
+    color: #000;
+    padding: 4px 5px 4px 10px;
+    vertical-align: bottom;
+    text-align:left;
+}  
+
+.grid th a
+{
+	color:#333333;
+    font-weight: bold;
+	text-decoration: none;
+	display: block;
+    padding-right: 10px;
+}
+
+/* data cell and data row rules */
+.grid td 
+{
+	color:#333333;
+    padding: 4px 10px 4px 10px;
+    border-bottom: solid 1px #BBD9EE;
+}
+
+.grid .altrow
+{
+    background-color: #EBF4FA;
+} 
+
+.grid .row
+{
+    background-color: #fff;
+}  
+
+.grid .rownum
+{
+	width:15px;
+    text-align:center;
+    padding-left:0px;
+    font-weight:bold;
+    color:#333333;
+}
+
+/* group header */
+.grid .group span
+{
+	padding:10px 0px 2px 0px;
+	color:#666666;
+	text-align:left;
+	font-size:9px;
+	/* hitesh font-weight:bold;*/
+	cursor:pointer;
+} 
+.grid .group Image
+{
+	cursor:pointer;
+}
+
+
+
+.dialog
+{
+    font-family:Verdana;
+    font-size:11pt;
+    color:#222222;
+    background-color:#fff;
+}    
+
+/* header styles */
+.header
+{
+    position:relative;
+    color:#fff;        
+    cursor:move; /* So the user knows they can drag the panel */
+}
+.header .outer
+{
+    background:url(../Image/top-right.png) right no-repeat;
+    padding-right:40px;
+}
+.header .inner
+{
+    background:url(../Image/top-left.png) left no-repeat;
+    padding-left:9px;
+}
+.header .content
+{
+    height:35px;
+    background:url(../Image/top-mid.png) repeat-x;
+}
+.header .content H2
+{
+    font-size:12pt;
+    font-weight:bold;
+    color:#fff;
+    padding-top:6px;
+    margin:0;
+}
+.header .close
+{
+    /* the image is 35x35 pixels wide */
+    height:25px;
+    width:35px;	
+    /* position the image */
+    position:absolute;	
+    top:4px;
+    right:7px;	
+    background:url(../Image/close.png) no-repeat;	
+    cursor:pointer;
+}
+.header .close:hover
+{
+    /* set the hover image */
+    background:url(../Image/close-hover.png) no-repeat;	
+}        
+
+/* dialog body styles */
+.body
+{
+}
+.body .outer
+{
+    background:url(../Image/right.png) right repeat-y;
+    padding-right:7px;
+}
+.body .inner
+{
+    background:url(../Image/left.png) left repeat-y;
+    padding-left:7px;
+}
+.body .content
+{
+}  
+.body .content H2
+{
+    padding:10px;
+    margin:0px;
+    text-align:center;
+    font-size:11pt;
+    color:#222222;            
+    font-weight:normal;
+}           
+.body .content .footer
+{
+    /* footer image is 41 pixels tall */    
+    background:url(../Image/footer.gif) repeat-x bottom;
+    height:41px;
+}
+.body .content .footer .commands
+{
+    text-align:right;
+    padding:8px;
+}           
+.body .content .footer .commands INPUT
+{
+    /* keep the buttons a consistent size */    
+    width:75px;        
+}                   
+
+
+
+/* dialog footer styles */
+.footer
+{
+}
+.footer .outer
+{
+    background:url(../Image/bottom-right.png) right top no-repeat;
+    padding-right:9px;
+}
+.footer .inner
+{
+    background:url(../Image/bottom-left.png) left top no-repeat;
+    padding-left:9px;
+}
+.footer .content
+{
+    height:7px;
+    background:url(../Image/bottom-mid.png) repeat-x;        
+}   
+        
+.updating
+{
+    color:#808080;
+    background:url(../Image/activity.gif) no-repeat center;
+}  
+
+
+
+.pager
+{
+    height:30px;
+    background:url(../Image/pager_bg.gif) repeat-x;
+}
+.pager .container
+{
+    padding:4px;
+}
+.pager .command
+{
+    float:left;
+    padding-right:5px;
+}    
+.pager .info
+{
+    font-size:12px;
+    padding:4px 0px;
+    float:right;
+}
+
+/*----------------------Hitesh------------------*/
+
+.modalPopup {
+	background-color:#ffffdd;
+	border-width:3px;
+	border-style:solid;
+	border-color:Gray;
+	padding:3px;
+	width:250px;
+}
+
+
+/*----------------------Jatin - For Sampling Grid Footer Styles------------------*/
+
+.FooterStyleRed
+{
+    
+     font-style:normal;
+     color:Red;
+    }
+.FooterStyleNormal
+{
+     font-style:normal;
+     color:Black;
+      font-weight:bold;
+    }
+    /*----------------------End - For Sampling Grid Footer Styles------------------*/
+    
+/* added by jatin for autocomplete extender  */
+
+  .AutoExtender
+		{
+		  /*  font-family: Verdana, Helvetica, sans-serif;*/
+		  font-family :tahoma;
+			font-size: .8em;
+			font-weight: normal;
+		   /* border: solid 1px #006699; */
+		   border: solid 1px gray;
+			line-height: 20px;
+			padding: 10px;
+			background-color: White;
+			margin-left:10px;
+			overflow :scroll;
+						
+		}
+		.AutoExtenderList
+		{
+		   /* border-bottom: dotted 1px #006699;*/
+		   border-bottom :dotted 1px gray;
+			cursor: pointer;
+			color: black;
+		}
+		.AutoExtenderHighlight
+		{
+			color: White;
+		   /* background-color: #006699; */
+		   background-color: gray;
+			cursor: pointer;
+		}
+		#divwidth
+		{
+		  width: 400px !important;    
+		  height : 200px;
+		
+		}
+	
+	   
+	   #divwidth1
+		{
+		  width: 400px !important;    
+		  height : 200px;
+		}
+	
+
+	   
+.autocomplete_ListItem1 
+{ 
+visibility : hidden;
+margin : 0px!important;
+background-color : white; 
+color : black;
+border : buttonshadow; 
+border-width : 1px;
+border-style : solid; 
+/*cursor : 'default';*/
+overflow : auto; 
+height :150px;
+text-align : left; 
+list-style-type : none;
+font-family: tahoma; 
+font-size: 8pt; 
+}
+
+/*----------------------End - ------------------*/
+/*----------------------Added By Ashish for Xport To XL button ------------------*/
+
+.buttonXL
+{
+    background-image : url('../Image/XportXLFinal.png');
+    background-repeat:no-repeat;
+    width : 32px;
+    height:32px;
+    
+}
+
+
+
+.buttonPrint
+{
+    background-image : url('../Image/print_icon.png');
+    background-repeat:no-repeat;
+    width : 32px;
+    height:32px;
+    
+}
+
+/*---------------------- Ends Here-- Added By Ashish for Xport To XL button ------------------*/
+
+
+.mytable { width: 100%; }
+}
+
+.searchgreen
+{
+	background-image: url(../Image/searchGreen.png);
+	width: 32px;
+	text-decoration: none;
+	color: White;
+	line-height: 32px;
+}
+.searchbluesmall
+{
+	background-image: url('../Image/searchBlueSmall.png');
+	text-decoration: none;
+	color: White;
+	line-height: 16px;
+}
+
+
+.searchblue
+{
+	background-image: url('../Image/searchBlue.png');
+	text-decoration: none;
+	color: White;
+	line-height: 32px;
+}
+
+
+
+
+.btncheck
+{
+    background-image : url('../Image/check.png');
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+    text-decoration : none;
+    color : White;
+    display:inline-block;
+    width : 24px;
+    line-height:21px;
+}
+
+.btncross
+{
+    background-image : url('../Image/del.png');
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+    text-decoration : none;
+    color : White;
+    display:inline-block;
+    width : 24px;
+    line-height:21px;
+}
+
+ /* StyleeSheetBy Ashish ---------------------------------*/
+  .HighlightBox
+{
+    border: medium solid #CCCCCC;
+    font-weight: bold;
+    font-size: 20pt;
+    text-align: center;
+    
+    height: 50px; /*background-image: url(../Image/LeftMenuItemNormal.png);vertical-align: middle;*/
+    background-image: url(../Image/Block.png);
+    background-repeat: repeat-X;
+    text-transform: capitalize; /*color: #4d4d4d;*/
+    color: white;
+    font-family: Tahoma;
+   
+}
+
+
+
+.buttonPDF
+{
+    background-image : url('../Image/ExportPdf.png');
+    background-repeat:no-repeat;
+    width : 32px;
+    height:32px;
+    
+}
+
+
+
+ .GridviewScrollHeader TH, .GridviewScrollHeader TD
+{
+    padding: 5px;
+    font-weight: bold;
+    white-space: nowrap;
+    border-right: 1px solid #AAAAAA;
+    border-bottom: 1px solid #AAAAAA;
+    background-color: #EFEFEF;
+    vertical-align: bottom;
+    text-align: left;
+}
+.GridviewScrollItem TD
+{
+    padding: 5px;
+    white-space: nowrap;
+    border-right: 1px solid #AAAAAA;
+    border-bottom: 1px solid #AAAAAA;
+    background-color: #FFFFFF;
+}
+.GridviewScrollItem .Freeze
+{
+    background-color: #EFEFEF;
+}
+.GridviewScrollItemHover TD
+{
+    padding: 5px;
+    white-space: nowrap;
+    border-right: 1px solid #AAAAAA;
+    border-bottom: 1px solid #AAAAAA;
+    background-color: #CCCCCC;
+    cursor: pointer;
+}
+.GridviewScrollItemHover .Freeze
+{
+    background-color: #CCCCCC;
+}
+.GridviewScrollItemSelected TD
+{
+    padding: 5px;
+    white-space: nowrap;
+    border-right: 1px solid #AAAAAA;
+    border-bottom: 1px solid #AAAAAA;
+    background-color: #999999;
+    color: #FFFFFF;
+}
+.GridviewScrollItemSelected .Freeze
+{
+    background-color: #999999;
+}
+.GridviewScrollPager 
+{
+    border-top: 1px solid #AAAAAA;
+    background-color: #FFFFFF;
+}
+.GridviewScrollPager TD
+{
+    padding-top: 3px;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.GridviewScrollPager A
+{
+    color: #666666;
+}
+
+.GridviewScrollPager SPAN
+{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.emailicon
+{
+     background-image: url('../Image/Emailsmall.png');
+     text-decoration: none;
+
+     line-height: 16px;
+}
+
+
+/* To Be Used For Labels */
+.FormatLeft
+{
+      font-family: Tahoma;
+    font-size: 8pt;
+     width: 122px;   
+}
+

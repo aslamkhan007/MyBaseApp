@@ -1,0 +1,286 @@
+﻿body {
+}
+
+@media print {body {display:none;}}
+
+
+.GridHeader
+{
+    background-position: center top;
+    font-weight: bold;
+    font-size: 10pt;
+    background-image: url(../Image/GridHeader.png);
+    background-color : #555555;
+    text-transform: capitalize;
+    color: white;
+    font-family: 'Trebuchet MS' , Tahoma;
+    height: 27px;    
+    background-repeat: repeat-x;
+}
+
+
+
+
+
+/* So the overflow scrolls */
+.container {overflow:auto;}
+
+/* Keep the header cells positioned as we scroll */
+.container table th {position:relative;}
+
+/* For alignment of the scroll bar */
+.container table tbody {overflow-x:hidden;} 
+
+
+
+.InvisibleGridHeader
+{    
+    background-position: center top;
+    font-weight: bold;
+    font-size: 10pt;
+    text-transform: capitalize;
+    color: white;
+    font-family: 'Trebuchet MS' , Tahoma;
+    height: 1px;
+    background-repeat: repeat-x;
+}
+
+.GridItem
+{
+    background-position: center -5px;
+    font-weight: bold;
+    font-size: 8pt;
+    background-image: url(../Image/plain_footer.png);
+
+    text-transform: capitalize;
+    color: #4d4d4d;
+    height: 20px;
+    font-family: Tahoma;
+    background-repeat: no-repeat;
+}
+
+.Grid
+{
+    height:auto ;
+}
+
+.GridSelectedItem
+{
+    font-weight: bold;
+    font-size: 8pt;
+    /*background-image: url(../Image/Red_Bar.png);*/
+	background-image: url(../Image/DetailField.png);
+    color: #FFFFFF;
+    font-family: Tahoma;
+}
+
+.GridAI
+{
+     background-position: center -15px;
+    font-weight: bold;
+    font-size: 8pt;
+    /*background-image: url(../Image/LeftMenuItemNormal.png);*/
+/*background-image: url(../Image/DetailField.png);*/
+	 background-image: url(../Image/AlternateGridRow.png);
+    text-transform: capitalize;
+    /*color: #4d4d4d;*/
+    /*color: white;*/
+	color: #1d1d1d;
+    height: 20px;
+    font-family: Tahoma;
+}
+
+
+.GridRowBlue
+{    
+    font-weight: bold;
+    font-size: 8pt;
+    background-image: url(../Image/Blue_Bar.png);
+    background-color : Blue; 
+    color: #FFFFFF;
+    height: 20px;
+    font-family: Tahoma;
+    background-repeat: repeat-x;
+}
+
+.GridRowGreen
+{   
+    font-weight: bold;
+    font-size: 8pt;
+    background-image: url(../Image/Green_Bar.png);
+    background-color : Green; 
+    color: #FFFFFF;
+    height: 20px;
+    font-family: Tahoma;
+    background-repeat: repeat-x;
+}
+
+
+
+
+.GridRowPurple
+{   
+    font-weight: bold;
+    font-size: 8pt;
+    background-image: url(../Image/Purple_Bar.png);
+   
+    color: #FFFFFF;
+    height: 20px;
+    font-family: Tahoma;
+    background-repeat: repeat-x;
+}
+
+
+
+
+
+.GridRowRed
+{   
+    font-weight: bold;
+    font-size: 8pt;
+    background-image: url(../Image/Red_Bar.png);
+   
+    color: #FFFFFF;
+    height: 20px;
+    font-family: Tahoma;
+    background-repeat: repeat-x;
+}
+
+.DetailField
+{
+    background-position: left top;
+    font-weight: bold;
+    font-size: 8pt;
+    background-image: url(../Image/plain_footer.png);
+    text-transform: capitalize;
+    color: #4d4d4d;
+    height: 20px;
+    font-family: Tahoma;
+    background-repeat: no-repeat;
+}
+
+.TextBack
+{
+    color: #444444;
+    border-width: 1px;
+    border-style : solid;
+    border-color : Gray;
+    height: 17px
+}
+
+.HighlightLabel
+{
+    background: url(Image/SmallGlassBarNormal.png);
+    color: #444444;
+}
+
+
+.ButtonBack
+{
+    /*background: url(../Image/GlossyBlackButtonsm.png);
+    color: #FFFFFF;
+    border-style : none;
+    font-family : Tahoma;
+    font-size: 8pt;
+    font-weight : bold;     
+    height : 28px;   
+    width : 124px     
+    */
+    background-image : url('../Image/GlossyNormalButton.png');
+    border : none;
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+    
+    color : White;
+    display:inline-block;
+    width : 84px;
+    height: 22px;   
+    
+}
+.ButtonBackH
+{
+    background: url(Image/GlossyGreyButton.png);
+    color: #FFFFFF;
+    border-style : none;
+    font-family : Tahoma;
+    font-size: 8pt;
+    font-weight : bold;     
+    height : 28px;   
+    width : 124px     
+}
+.ButtonBack:hover
+{
+    /*background: url(Image/GlossyNormalButton.png);
+    color: #444444;
+    border-style : none;    
+    font-family : Tahoma;
+    font-size: 8pt;
+    font-weight : bold;
+    height : 25px;   
+    width : 90px*/
+    
+    background-image : url('../Image/GlossyHoverButtonSm2.png');
+    border : none;
+    font-family : Tahoma;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+    
+    color : White;
+    display:inline-block;
+    width : 84px;
+    height: 22px;
+    
+}
+
+.BigButtonBack
+{
+    background: url(Image/GlossyNormalButtonlg.png);
+    color: #FFFFFF;
+    font-family : Tahoma;
+    font-size: 8pt;
+    font-weight : bold;
+    border-style : none;
+    height : 25px;   
+    width : 175px
+}
+
+.BigButtonBack:hover
+{
+    background: url(Image/GlossyHoverButtonlg.png);
+    color: #444444;
+    border-style : none;
+    font-family : Tahoma;
+    font-size: 8pt;
+    font-weight : bold;
+    height : 25px;   
+    width : 175px     
+    
+}
+
+.DropDownItem
+{
+    font-size: 8pt;
+    background-image: url(Image/SmallGlassBarNormal.png);
+    text-transform: capitalize;
+    color: #4d4d4d;
+    height: 15px;
+    font-family: Tahoma;       
+}
+
+.PanelBack
+{
+    background : url(Image/PanelGradient.PNG) fixed repeat-x;
+}
+
+.FormTitle
+{
+    background : url(Image/redbar25px.PNG) repeat-x;
+}
+.ValidationSummary
+{
+    background-image: url(Image/Gradient2.PNG);
+    background-repeat: repeat-y;
+}

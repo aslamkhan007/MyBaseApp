@@ -1,0 +1,251 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+
+public partial class OPS_budgetentry : System.Web.UI.Page
+{
+    Connection obj = new Connection();
+    SqlTransaction Tran;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+
+        if (Session["Empcode"] == "")
+        {
+            Response.Redirect("~/Login.aspx");
+        }
+        if (!IsPostBack)
+        {
+            SqlCommand cmd = new SqlCommand("select  budget_no as [BudgetNo],entry_by as [EnteredBy],convert(varchar,budget_entry_dt,101) as [Dated],convert(varchar,eff_to,101) as [effective To],convert(varchar,eff_from,101) as [effective from],dept_name as [Department],budget_amt as [budget amount],hod as [HOD],balance_budget_amt as [balance Amount] from jct_ops_budget_entry where status='a'", obj.Connection());
+
+            cmd.CommandType = CommandType.Text;
+
+            cmd.ExecuteNonQuery();
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            grdDetail.DataSource = ds.Tables[0];
+            grdDetail.DataBind();
+        }
+   
+  
+    }
+    protected void lnkadd_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (txtbdgamt.Text == "" || txtefffrm.Text == "" || txteffto.Text == "")
+            {
+                string script2 = "alert('error occured!!! All fields are Compulsory);";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script2, true);
+            }
+            else
+            {
+                Tran = obj.Connection().BeginTransaction();
+
+                string budget_no = string.Empty;
+
+                SqlCommand cmd = new SqlCommand("jct_ops_budget_insert", obj.Connection());
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@entry_by", SqlDbType.VarChar, 20).Value = Session["Empcode"];
+                cmd.Parameters.Add("@eff_to", SqlDbType.DateTime).Value = txteffto.Text;
+                cmd.Parameters.Add("@eff_from", SqlDbType.DateTime).Value = txtefffrm.Text;
+                cmd.Parameters.Add("@dept_name", SqlDbType.VarChar, 30).Value = ddldept.SelectedItem.Value;
+                cmd.Parameters.Add("@budget_amt", SqlDbType.Decimal).Value = txtbdgamt.Text;
+                cmd.Parameters.Add("@hod", SqlDbType.VarChar, 30).Value = ddlhod.SelectedItem.Value;
+                cmd.Parameters.Add("@budget_no", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+
+                cmd.Transaction = Tran;
+                cmd.ExecuteNonQuery();
+                budget_no = cmd.Parameters["@budget_no"].Value.ToString();
+                for (int i = 0; i <= chklist.Items.Count - 1; i++)
+                {
+
+                    if (chklist.Items[i].Selected == true)
+                    {
+                        cmd = new SqlCommand("jct_ops_indenter_tab_insert", obj.Connection());
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@budget_no", SqlDbType.VarChar, 30).Value = budget_no;
+                        cmd.Parameters.Add("@indenter_code", SqlDbType.VarChar, 30).Value = chklist.Items[i].Value;
+                        cmd.Transaction = Tran;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+
+                cmd = new SqlCommand("select entry_by as [enteredBy],budget_entry_dt as [Dated],eff_to as [effective To],eff_from as [effective from],dept_name as [Department],budget_amt as [budget amount],hod as [HOD],balance_budget_amt as [balance Amount] from jct_ops_budget_entry where status='a'", obj.Connection());
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Transaction = Tran;
+                cmd.ExecuteNonQuery();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                grdDetail.DataSource = ds.Tables[0];
+                grdDetail.DataBind();
+                Tran.Commit();
+                string script2 = "alert('Record Saved Successfully.!!!');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script2, true);
+            }
+        }
+
+        catch (Exception ex)
+        {
+            Tran.Rollback();
+            string script2 = "alert('error occured!!! " + ex.Message + " ');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script2, true);
+        }
+    
+
+    }
+    protected void ddldept_TextChanged(object sender, EventArgs e)
+    {
+        SqlCommand cmd = new SqlCommand("select distinct c.req_emp_no,a.empname from jct_empmast_base  a join deptmast b on a.deptcode=b.deptcode join jct_indentor_code c  on replace(a.empcode,'-','')= c.req_emp_no where a.active='Y' and a.company_code='JCT00LTD' and  a.deptcode= '" + ddldept.SelectedItem.Value + "'", obj.Connection());
+        cmd.CommandType = CommandType.Text;
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        chklist.DataSource = ds.Tables[0];
+
+        chklist.DataTextField = "empname";
+        chklist.DataValueField = "req_emp_no";
+        chklist.DataBind();
+
+
+        ddlhod.DataSourceID = "SqlDataSource2";
+        ddlhod.DataBind();
+        //cmd = new SqlCommand("SELECT distinct a.empname from  dbo.JCT_EmpMast_Base a join  dbo.JCT_Emp_Catg_Desg_Mapping b on  a.catg=b.catg where a.active='Y' and a.company_code='JCT00LTD' and a.catg='SM1' and deptcode=@deptcode", obj.Connection());
+        //cmd.CommandType = CommandType.Text;
+        //da = new SqlDataAdapter(cmd);
+        //cmd.Parameters.Add("@deptcode", SqlDbType.VarChar).Value = ddldept.SelectedItem.Value;
+        // ds = new DataSet();
+        //da.Fill(ds);
+        //ddlhod.DataSource = ds.Tables[0];
+
+        //ddlhod.DataTextField = "empname";
+     
+        //ddlhod.DataBind();
+
+    }
+    protected void grdDetail_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      
+      ViewState["budget_no"] = grdDetail.SelectedRow.Cells[1].Text;
+      txteffto.Text = grdDetail.SelectedRow.Cells[4].Text.Replace("&nbsp;", ""); 
+      txtefffrm.Text = grdDetail.SelectedRow.Cells[5].Text.Replace("&nbsp;", "");
+      ddldept.SelectedIndex = ddldept.Items.IndexOf(ddldept.Items.FindByValue(grdDetail.SelectedRow.Cells[6].Text));
+      ddlhod.SelectedIndex = ddlhod.Items.IndexOf(ddlhod.Items.FindByText(grdDetail.SelectedRow.Cells[8].Text));
+      txtbdgamt.Text = grdDetail.SelectedRow.Cells[7].Text.Replace("&nbsp;", "");
+      SqlCommand cmd = new SqlCommand("select distinct c.req_emp_no,a.empname from jct_empmast_base  a join deptmast b on a.deptcode=b.deptcode join jct_indentor_code c  on replace(a.empcode,'-','')= c.req_emp_no where a.active='Y' and a.company_code='JCT00LTD' and  a.deptcode= '" + ddldept.SelectedItem.Value + "'", obj.Connection());
+      cmd.CommandType = CommandType.Text;
+      SqlDataAdapter da = new SqlDataAdapter(cmd);
+      DataSet ds = new DataSet();
+      da.Fill(ds);
+      chklist.DataSource = ds.Tables[0];
+
+      chklist.DataTextField = "empname";
+      chklist.DataValueField ="req_emp_no";
+
+      chklist.DataBind();
+
+      for (int i = 0; i <= chklist.Items.Count - 1; i++)
+      {
+          //string list;
+          //list = chklist.Items[i].Text;
+          cmd = new SqlCommand("jct_ops_indenter_list", obj.Connection());
+          cmd.CommandType = CommandType.StoredProcedure;
+
+          cmd.Parameters.Add("@budget_no", SqlDbType.VarChar, 10).Value = ViewState["budget_no"];
+      
+          cmd.Parameters.Add("@flag", SqlDbType.Int).Direction = ParameterDirection.Output;
+          cmd.ExecuteNonQuery();
+
+          string output = cmd.Parameters["@flag"].Value.ToString();
+          if (output == "1")
+          {
+              chklist.Items[i].Selected = true;
+          }
+
+      }
+    
+    }
+  
+    
+    protected void ddldept_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+
+
+
+    protected void lnkupdate_Click(object sender, EventArgs e)
+    {
+        string sql;
+        string return_val;
+        SqlCommand cmd;
+
+        sql = "jct_ops_budget_update";
+        cmd = new SqlCommand(sql, obj.Connection());
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.Add("@budget_no", SqlDbType.Int).Value = ViewState["budget_no"];
+        cmd.Parameters.Add("@updated_by", SqlDbType.VarChar, 20).Value = Session["Empcode"];
+        cmd.Parameters.Add("@eff_to", SqlDbType.DateTime).Value = txteffto.Text;
+        cmd.Parameters.Add("@eff_from", SqlDbType.DateTime).Value = txtefffrm.Text;
+        cmd.Parameters.Add("@dept_code", SqlDbType.VarChar, 30).Value = ddldept.SelectedItem.Value;
+        cmd.Parameters.Add("@budget_amt", SqlDbType.Decimal).Value = txtbdgamt.Text;
+        cmd.Parameters.Add("@hod", SqlDbType.VarChar, 30).Value = ddlhod.SelectedItem.Value;
+        cmd.Parameters.Add("@return_val", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+        try
+        {
+            cmd.ExecuteNonQuery();
+        }
+        catch
+        { }
+
+        return_val = cmd.Parameters["@return_val"].Value.ToString();
+
+        for (int i = 0; i <= chklist.Items.Count - 1; i++)
+        {
+            if (chklist.Items[i].Selected == true)
+            {
+                cmd = new SqlCommand("jct_ops_indenter_tab_insert", obj.Connection());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@budget_no", SqlDbType.VarChar, 30).Value = return_val;
+                cmd.Parameters.Add("@indenter_code", SqlDbType.VarChar, 30).Value = chklist.Items[i].Value;
+   
+                cmd.ExecuteNonQuery();
+            }
+        }
+        string script2 = "alert(' record  updated sucesfully.!!!  ');";
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script2, true);
+    }
+
+    protected void lnkdel_Click(object sender, EventArgs e)
+    {
+        string sql;
+   
+        SqlCommand cmd;
+
+        sql = "jct_ops_budget_delete";
+        cmd = new SqlCommand(sql, obj.Connection());
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.Add("@budget_no", SqlDbType.Int).Value = ViewState["budget_no"];
+        cmd.Parameters.Add("@deleted_by", SqlDbType.VarChar, 20).Value = Session["Empcode"];
+        cmd.ExecuteNonQuery();
+        string script2 = "alert(' record deleted  sucesfully.!!!  ');";
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script2, true);
+    }
+}
+    

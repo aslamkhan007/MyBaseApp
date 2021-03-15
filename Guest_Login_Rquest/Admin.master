@@ -1,0 +1,110 @@
+﻿<%@ Master Language="VB" CodeFile="Admin.master.vb" Inherits="Guest_Login_Rquest_Admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Guest Login Request</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="nivo-slider.css" type="text/css" media="screen" />
+<link href="FormatingSheet.css" rel="stylesheet" type="text/css" />
+<link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<form id="form1" runat="server">
+<div id="bg_top">
+<div id="main">
+<!-- header begins -->
+<div id="logo"><a href="#">Welcome Guest ..!! </a>
+		<h2><a href="#" id="metamorph">Warm welcome from JCT Family..!!</a></h2></div>
+
+<div id="header">	
+	<div id="wrapper">
+		<div id="slider-wrapper">        
+			<div id="slider" class="nivoSlider">
+				<img src="images/1.png" alt="" />
+				<img src="images/2.png" alt=""/>
+                <img src="images/3.png" alt=""/>
+                <img src="images/4.png" alt=""/>
+                <img src="images/5.png" alt=""/>
+                <img src="images/6.png" alt=""/>
+                <img src="images/7.png" alt=""/>
+			</div>        
+		</div>
+
+<script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
+	<script type="text/javascript" src="lib/jquery.nivo.slider.pack.js"></script>
+	<script type="text/javascript">
+	    $(window).load(function () {
+	        $('#slider').nivoSlider();
+	    });
+	</script>
+</div>	
+</div>
+<!-- header ends -->
+<!-- content begins -->
+
+  <div id="content">
+	<div id="right">
+	<br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+		<%--<div id="categories">
+				<h2>IT-HelpDesk</h2>
+                <hr />
+                 <div id="Div8">
+                    <h2>  <asp:Label ID="Label2" runat="server" Text="For any query Contact IT-Helpdesk at EPBAX no.- 4212 (ext.)
+                or 9888988740 , 9915846943"></asp:Label></h2>
+                    </div>
+		 </div>--%>
+			<%--	<div id="partners">
+				<h2>Administrators</h2>
+				<ul>
+					<li><a href="#">Harendra Sharma </a></li>
+					<li><a href="#">Neque eros a nequestibulum</a></li>
+					<li><a href="#">Primis in faucibus orci luctus</a></li>
+					<li><a href="#">Posuere cubilia Curae</a></li>
+					<li><a href="#">Ulla risus risus sagittis in</a></li>
+					<li><a href="#">Lobortis sed tincidunt at est.</a></li>
+					<li><a href="#">Donec posuere egestas ipsum</a></li>
+					<li><a href="#">Cras ac magna vel justo</a></li>
+					<li><a href="#">Sollicitudin viverra.</a></li>
+					<li><a href="#">Nullam elementum nibh ut </a></li>
+				</ul>
+		 </div>--%>
+		</div>
+			<%--<div id="left">--%>
+			<asp:ScriptManager ID="ScriptManager1" runat="server">
+      </asp:ScriptManager>
+			<br />
+			<br />
+			<div id="left">
+			<h1> Create New User/Change Password</h1>
+                <p> &nbsp;</p>
+			<br />
+			<asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>   
+			</div> 
+			</div>
+				
+<!-- content ends -->
+<!-- footer begins -->
+<div id="footer">
+  <p>Copyright  2011. Designed by JCT-IT Team</p>
+		<p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> </p></div>
+<!-- footer ends -->
+</div>
+</div>
+
+	</form>
+
+</body>
+  <%--  <form id="form1" runat="server">
+		<asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+	</form>--%>
+</html>

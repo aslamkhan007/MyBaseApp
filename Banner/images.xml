@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<slideshow>
+	<photo image="banner/images/01.jpg" target="_blank" duration="5" effect="zoom" hpos="right" slide="false">
+	<![CDATA[<head>JCT Limited</head><body><font family = "Trebuchet"> Phagwara </font></body>]]></photo>
+	
+	<photo image="banner/images/02.jpg"  target="_blank" duration="6">
+	<![CDATA[<head>Pioneer in Textile Manufacturing</head><body>Global Supplier of Quality Products</body>]]></photo>
+	
+	<photo image="banner/images/03.jpg"  target="_blank" duration="6">
+	<![CDATA[<head>JCT Limited</head><body>Phagwara</body>]]></photo>
+	
+	<photo image="banner/images/05.jpg"  target="_blank" duration="6">
+	<![CDATA[<head>Pioneer in Textile Manufacturing</head><body>Global Supplier of Quality Products</body>]]></photo>
+	
+	<photo image="banner/images/04.jpg"  target="_blank" duration="7" >
+	<![CDATA[<head><a href = "http://test2k/employeegateway/"> Employee Gateway</a></head><body>The text could be CSS formatted as well</body>]]></photo>
+		
+	<photo image="banner/images/06.jpg" url="" target="_blank" duration="7">
+	<![CDATA[<head>JCT Website</head><body><a href = "http://jct.co.in">http://jct.co.in</a></body>]]></photo>
+</slideshow>

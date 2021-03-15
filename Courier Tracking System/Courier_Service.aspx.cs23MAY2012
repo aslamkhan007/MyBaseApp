@@ -1,0 +1,120 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+
+public partial class Courier_Tracking_System_Courier_Service : System.Web.UI.Page
+{
+    Connection obj = new Connection();
+    Functions obj1 = new Functions();
+    string sql;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void lnkAdd_Click(object sender, EventArgs e)
+    {
+        sql = "Select empname from jct_empmast_base where empcode='" + Session["EmpCode"] + "' and Active='Y'";
+        string empname = sql;
+
+        sql = "Insert into jct_Courier_Service_Master(UserCode,UserName,Courier_Service,DESCRIPTION,Remarks,STATUS,EntryDate,Contact_Person_Name,Local_Address,PhoneNo,Email_Address,OfficeNumber,FaxNumber,WebSite,EffecFrom,EffecTo ) values(@UserCode,@UserName,@Courier_Service,@Description,@Remarks,@Status,@EntryDate,@Contact_Person_Name,@Local_Address,@PhoneNo,@Email_Address,@OfficeNumber,@FaxNumber,@WebSite,@EffecFrom,@EffecTo)";
+        SqlCommand cmd = new SqlCommand(sql, obj.Connection());
+        cmd.Parameters.Add("@UserCode", SqlDbType.VarChar, 7).Value = Session["EmpName"];
+        cmd.Parameters.Add("@UserName", SqlDbType.VarChar, 50).Value = empname;
+        cmd.Parameters.Add("@Courier_Service", SqlDbType.VarChar, 100).Value = txtCourier.Text;
+        cmd.Parameters.Add("@Description", SqlDbType.VarChar, 500).Value = txtDescription.Text;
+        cmd.Parameters.Add("@Remarks", SqlDbType.VarChar, 500).Value = txtRemarks.Text;
+        cmd.Parameters.Add("@Status", SqlDbType.Char, 1).Value = 'A';
+        cmd.Parameters.Add("@EntryDate", SqlDbType.DateTime).Value = DateTime.UtcNow;
+        cmd.Parameters.Add("@Contact_Person_Name", SqlDbType.VarChar, 50).Value = txtName.Text;
+        cmd.Parameters.Add("@Local_Address", SqlDbType.VarChar, 200).Value = txtLocalAddress.Text;
+        cmd.Parameters.Add("@PhoneNo", SqlDbType.VarChar, 12).Value = txtPhone.Text;
+        cmd.Parameters.Add("@Email_Address", SqlDbType.VarChar, 50).Value = txtEmail.Text;
+        cmd.Parameters.Add("@OfficeNumber", SqlDbType.VarChar, 12).Value = txtOfficeNo.Text;
+        cmd.Parameters.Add("@FaxNumber", SqlDbType.VarChar, 20).Value = txtFax.Text;
+        cmd.Parameters.Add("@WebSite", SqlDbType.VarChar, 50).Value = txtWebSite.Text;
+        cmd.Parameters.Add("@EffecFrom", SqlDbType.DateTime).Value = txtEffecFrom.Text;
+        cmd.Parameters.Add("@EffecTo", SqlDbType.DateTime).Value = txtEffecTo.Text;
+        cmd.ExecuteNonQuery();
+        ShowAlertMsg("Record Inserted Successfuly.");
+    }
+    public void ShowAlertMsg(string error1)
+    {
+        Page page = HttpContext.Current.Handler as Page;
+        if (page != null)
+        {
+            // error1 = error1.Replace("'", "'")
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "err_msg", "alert('" + error1 + "');", true);
+        }
+    }
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        #region Update Record
+
+        lnkEdit.Text = "Update";
+        sql="Select * from jct_Courier_Service_Master where Sr_no ='" +GridView1.SelectedRow.Cells[1].Text.ToString() +"'" ;
+        SqlDataReader dr = obj.FetchReader(sql);
+        if (dr.HasRows)
+        {
+            while (dr.Read())
+            {
+                txtCourier.Text = dr["Courier_Service"].ToString();
+                txtDescription.Text = dr["Description"].ToString();
+                txtRemarks.Text = dr["Remarks"].ToString();
+                txtName.Text = dr["Contact_Person_Name"].ToString();
+                txtLocalAddress.Text = dr["Local_Address"].ToString();
+                txtPhone.Text = dr["PhoneNo"].ToString();
+                txtEmail.Text = dr["Email_Address"].ToString();
+                txtOfficeNo.Text = dr["OfficeNumber"].ToString();
+                txtFax.Text = dr["FaxNumber"].ToString();
+                txtWebSite.Text = dr["Website"].ToString();
+                txtEffecFrom.Text = dr["EffecFrom"].ToString();
+                txtEffecTo.Text = dr["EffecTo"].ToString();
+
+            }
+        
+        }
+        #endregion
+    }
+    protected void lnkEdit_Click(object sender, EventArgs e)
+    {
+        if (lnkEdit.Text == "Update")
+        {
+            try
+            {
+                sql = "Update jct_Courier_Service_Master set Contact_Person_Name='" + txtName.Text + "',Local_Address='" + txtLocalAddress.Text + "',PhoneNo='" + txtPhone.Text + "',Email_Address='" + txtEmail.Text + "',OfficeNumber='" + txtOfficeNo.Text + "',FaxNumber='" + txtFax.Text + "',Website='" + txtWebSite.Text + "',EffecFrom='" + txtEffecFrom.Text + "',EffecTo='" + txtEffecTo.Text + "' where Sr_No = '" + GridView1.SelectedRow.Cells[1].Text.ToString() + "'";
+                obj1.UpdateRecord(sql);
+                ShowAlertMsg("Record Updated Successfully");
+                Response.Redirect("Courier_Service.aspx");
+                lnkEdit.Text = "Edit";
+            }
+            catch (Exception ex)
+            {
+                ShowAlertMsg("Some Error Occured while updating record."+ ex.ToString());
+            }
+            finally
+            { 
+            
+            }
+            }
+           
+    }
+    protected void lnkDelete_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            sql = "Update jct_Courier_Service_Master set Status='D' where  Sr_no ='" + GridView1.SelectedRow.Cells[1].Text.ToString() + "'";
+            obj1.UpdateRecord(sql);
+            Response.Redirect("Courier_Service.aspx");
+            ShowAlertMsg("Record Deleted Successfully.");
+        }
+        catch (Exception ex)
+        {
+            ShowAlertMsg("Error Occured while deleting record. " + ex.ToString());
+        }
+    }
+}

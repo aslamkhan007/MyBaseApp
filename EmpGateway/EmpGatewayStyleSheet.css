@@ -1,0 +1,222 @@
+﻿body {
+}
+.GridHeader
+{
+    font-weight: bold;
+    font-size: 10pt;    
+    background-image: url(Image/blackbarnormal.png);
+    text-transform: capitalize;
+    color: white;
+    font-family: 'Trebuchet MS' , Tahoma;
+    height: 24px;    
+}
+
+.GridItem
+{
+    font-weight: bold;
+    font-size: 8pt;
+    background-image: url(Image/GlassBarNormal.PNG);
+    text-transform: capitalize;
+    color: #4d4d4d;
+    height: 20px;
+    font-family: Tahoma;    
+}
+
+.Grid
+{
+    height:auto ;
+}
+
+.GridSelectedItem
+{
+    font-weight: bold;
+    font-size: 8pt;
+    background-image: url(Image/RedBar25px.png);
+    text-transform: capitalize;
+    color: black;
+    font-family: Tahoma;
+}
+
+.GridAI
+{
+    font-weight: bold;
+    font-size: 8pt;    
+    background-image: url(Image/GlassBarNormalDark.PNG);
+    text-transform: capitalize;
+    color: white;
+    height: 20px;
+    font-family: Tahoma;
+}
+
+.DetailField
+{
+    font-weight: bold;
+    font-size: 8pt;
+    background-image: url(Image/GlassBarNormalDark.PNG);
+    text-transform: capitalize;
+    color: white;    
+    height : 20px;
+    font-family: Tahoma;
+}
+.buttonbackbar
+{
+	background-image: url(Image/GlassBarNormal.PNG);
+	background-repeat: repeat-x;
+	height: 25px;
+	text-align: center;
+	font-family: Tahoma;
+	font-weight: bold;
+	font-size: 8pt;
+	color: #444444;
+}
+
+.TextBack
+{
+    color: #444444;
+    border-width: 1px;
+    border-style : solid;
+    border-color : Gray;
+    height: 17px
+}
+
+.HighlightLabel
+{
+    background: url(Image/SmallGlassBarNormal.PNG);
+    color: #444444;
+}
+
+
+.ButtonBack
+{
+    background: url(Image/BlackBarNormal.png);
+    color: #FFFFFF;
+    border-style : none;
+    font-family : Tahoma;
+    font-size: 8pt;
+    font-weight : bold;     
+    height : 25px;   
+    width : 90px     
+}
+
+.ButtonBack:hover
+{
+    background: url(Image/GlassBarNormal.png);
+    color: #444444;
+    border-style : none;    
+    font-family : Tahoma;
+    font-size: 8pt;
+    font-weight : bold;
+    height : 25px;   
+    width : 90px     
+}
+
+.BigButtonBack
+{
+    background: url(Image/BlackBarNormal.png);
+    color: #FFFFFF;
+    font-family : Tahoma;
+    font-size: 8pt;
+    font-weight : bold;
+    border-style : none;
+    height : 25px;   
+    width : 175px
+}
+
+.BigButtonBack:hover
+{
+    background: url(Image/GlassBarNormal.png);
+    color: #444444;
+    border-style : none;
+    font-family : Tahoma;
+    font-size: 8pt;
+    font-weight : bold;
+    height : 25px;   
+    width : 175px     
+    
+}
+.errormsg
+{
+   font-family : Tahoma;
+   font-size : 8pt;
+   font-weight : bold;
+   color : red;
+}
+.DropDownItem
+{
+    font-size: 8pt;
+    background-image: url(Image/SmallGlassBarNormal.PNG);
+    text-transform: capitalize;
+    color: #4d4d4d;
+    height: 15px;
+    font-family: Tahoma;       
+}
+
+.PanelBack
+{
+    background : url(Image/PanelGradient.PNG) fixed repeat-x;
+}
+
+.FormTitle
+{
+    background : url(Image/redbar25px.PNG) repeat-x;
+}
+.ValidationSummary
+{
+    background-image: url(Image/Gradient2.PNG);
+    background-repeat: repeat-y;
+}
+.RL
+{
+	font-family: Verdana;
+	font-size: 8pt;
+	font-weight: bold;
+	margin-top: auto ;
+	vertical-align :top ;
+	
+	word-spacing : 20px; 
+	padding-top: 0;
+	top: 0;
+	vertical-align: top  ;
+	background-repeat: repeat-x;
+}
+
+  .normalfld
+
+{
+
+      background-color: #FFFFFF;
+
+      font-family:verdana;
+
+      font-size:8pt;
+
+      height:13px;
+
+      margin-top:auto;
+
+      text-transform:uppercase;
+
+}
+
+.focusfld
+
+{
+
+      background-color: #FFFFCC;
+
+      font-family:verdana;
+
+      font-size:8pt;
+
+      height:13px;
+
+      margin-top:auto;
+
+      text-transform:uppercase;
+
+}
+
+
+
+ 
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- 
+This is the XML from which the SWF file reads the following data:
+
+image - the thumb image in the menu.
+bigimage - the big image shown in Lightbox;  ignore it if you're not using Lightbox
+url - the address to go to when clicking the image
+target - _self - opens the url in the same browser page
+	 - _blank - opens the url in a new browser page
+	- a number - executes _root.gotoAndPlay(number); in Flash - available only in the commercial package
+lightboxInfo - the description for the bigimage;  ignore it if you're not using Lightbox
+
+The tooltip text is recorded as CDATA. You can use HTML tags like "<br>"
+-->
+<Carousel centeredImage="images/logo.png">
+	<photo image="carousel/images/01.jpg" bigimage="images/big/01.jpg" url="javascript:GroupDelegate('img1')" target="_self" lightboxInfo="Optional description for image 1" info="Héllo">
+    <![CDATA[Download the new<br>3D Carousel]]></photo>
+	<photo image="carousel/images/02.jpg" bigimage="images/big/02.jpg" url="javascript:GroupDelegate('img2')" target="_self" lightboxInfo="Optional description for image 2">
+    <![CDATA[It's FREE]]></photo>
+	<photo image="carousel/images/03.jpg" bigimage="images/big/03.jpg" url="javascript:GroupDelegate('img3')" target="_self" lightboxInfo="Optional description for image 3">
+    <![CDATA[Test all 50 changeable<br>properties below]]></photo>
+	<photo image="carousel/images/04.jpg" bigimage="images/big/04.jpg" url="javascript:GroupDelegate('img4')" target="_self" lightboxInfo="Optional description for image 4">
+    <![CDATA[You can customize it<br>completely without Flash]]></photo>
+	<photo image="carousel/images/05.jpg" bigimage="images/big/05.jpg" url="javascript:GroupDelegate('img5')" target="_self" lightboxInfo="Optional description for image 5">
+    <![CDATA[Fully XML customizable]]></photo>
+	<photo image="carousel/images/06.jpg" bigimage="images/big/06.jpg" url="javascript:GroupDelegate('img6')" target="_self" lightboxInfo="Optional description for image 6">
+    <![CDATA[Very easy to integrate<br>in any website]]></photo>
+
+</Carousel>

@@ -1,0 +1,275 @@
+﻿.autocomplete_completionListElement
+{
+	font-size: 8pt;
+	font-family: Tahoma;
+	color: black;
+	border: buttonshadow;
+	border-width: 1px;
+	border-style: solid;
+	cursor: 'default';
+	overflow: auto;
+	height: 200px;
+	text-align: left;
+}
+
+.autocomplete_highlightedListItem
+{
+	background-color: #ff0000;
+	color: White;
+	padding: 1px;
+	font-weight:bold;
+}
+
+.autocomplete_listItem 
+{
+	font-size: 8pt;
+	font-family: Tahoma;
+	background-color:  Silver;
+	color: black;
+	padding : 1px;
+}
+
+.GridAItem
+{
+	background-image: url(../Image/GlassBarNormalDark2.PNG);
+}
+
+.GridHoverItem
+{
+	background-image: url(../Image/RedBar25px.PNG);
+}
+
+.ButtonC
+{
+	background-image : url(../Image/GlossyBlackButton.png);
+	font-family : Tahoma;
+	font-size : 8pt;
+	font-weight : bold;
+	text-align : center;
+	color : White;
+	height : 28px;
+	line-height:28px;
+	width : 124px;
+}
+
+.ButtonHover
+{
+	background-image : url(../Image/GlossyGreyButton.png);
+	font-family : Tahoma;
+	font-size : 8pt;
+	font-weight : bold;
+	text-align : center ;    
+	color : White;    
+	line-height:28px;
+	width : 124px;
+}
+
+.ButtonDisable
+{
+	background-image : url(../Image/GlossyDisableButton.png);
+	font-family : Tahoma;
+	font-size : 8pt;
+	font-weight : bold;
+	text-align : center;
+	color : White;    
+	line-height:28px;
+	width : 124px;
+}
+
+.Normal
+{
+	background-image : url(../Image/MenuBar.png);
+	background-repeat : repeat-x ;
+	font-family : Tahoma;
+	color : Black;
+	font-size : 8pt;
+	font-weight : bold;    
+	text-align : center;    
+	height : 24px;    
+}
+
+.NormalText
+{    
+	font-family : Tahoma;
+	font-size : 8pt;
+    font-weight : bold;   
+	text-align : left;
+	color : Black;
+	display : block;
+}
+
+.HoverMenu
+{
+	background-image : url(../Image/MenuItem.png);
+	font-family : Tahoma;
+	font-size : 8pt;
+	font-weight : bold;
+	color : Red;
+	text-align : left;    
+	line-height : 24px;
+	display : block;
+}
+
+.LeftMenuItemNormal
+{
+	/*background-image : url(../Image/LeftMenuItemNormal.png);*/
+	font-family : Trebuchet MS;
+	font-size : 10pt;
+	font-weight : bold;
+	color : #333333;
+	text-align : left;
+	line-height : 25px;
+	display : block;
+}
+
+.DynamicMenuItemNormal
+{
+	background-position: left -1px;
+	background-image: url(../Image/Detailfield2.png);
+	font-family: Trebuchet MS;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: left;
+	line-height: 25px;
+	display: block;
+	background-repeat: repeat-x;
+	
+	/*background-color: #F1F1F1 !important;
+	border: solid 1px #999999 !important;
+	padding: 2px 2px 0px 2px !important;
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX='3', OffY='3', Color='#E0E0E0', Positive='true');
+*/
+	
+}
+
+.LeftMenuItemHover
+{
+	background-image : url(../Image/Red_Bar.png);
+	font-family : Trebuchet MS;
+	font-size : 10pt;
+	font-weight : bold;
+	color : white;
+	text-align : left;
+	line-height : 25px;
+	display : block;
+}
+
+.Login
+{
+	
+}
+
+-------------------------
+
+div.figure {
+  float: right;
+  width: 25%;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+div.figure p {
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+}
+
+img.scaled {
+  width: 100%;
+}
+
+.shadow
+{
+   /*background-color: #F1F1F1 !important;
+	border: solid 1px #999999 !important;
+	padding: 2px 2px 0px 2px !important;*/
+	/*filter: progid:DXImageTransform.Microsoft.dropshadow(OffX='3', OffY='3', Color='#999999', Positive='true');*/
+	filter:shadow(color:gray,strength:10, direction:135);
+}
+
+.Marquee
+{
+	/*background-image : url(../Image/Detailfield2.png);*/
+	background-position: center top;
+	background-image: url(../Image/red_bar2.png);
+	font-family: Trebuchet MS;
+	font-size: 10pt;
+	font-weight: bold;
+	color: white;
+	text-align: left;
+	height: 25px;
+	display: block;
+	background-repeat: repeat-x;
+}
+
+.ob_show_panel {
+		overflow:  visible;
+}
+
+/* ****************** RatingStar ****************** */
+.ratingStar
+{
+	white-space:nowrap;
+	margin:1em;
+	height:14px;
+}
+.ratingStar .ratingItem {
+	font-size: 0pt;
+	width: 13px;
+	height: 12px;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	background-repeat: no-repeat;
+	cursor:pointer;
+}
+.ratingStar .Filled {
+	background-image: url(../Image/Ratings/ratingStarFilled.png);
+}
+.ratingStar .Empty {
+	background-image: url(../Image/Ratings/ratingStarEmpty.png);
+}
+.ratingStar .Saved {
+	background-image: url(../Image/Ratings/ratingStarSaved.png);
+}
+ 
+
+/* ************************************************* */
+
+
+/* BY jatin */
+
+.ImageZoom
+{
+	margin:0px;
+	padding:0px;
+	 background-position:top;
+	}
+	
+/*AslamTooltip*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}	

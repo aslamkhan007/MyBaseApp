@@ -1,0 +1,68 @@
+
+         JCT LTD PHAGWARA
+From  :-->COSTING (STD.2011-12)(VALID 1 MONTH ONLY)Kind Att:->G.M(Mktg)
+Memo No :--> 4933   (Export)            Date : 27/06/2013
+
+Ref Cost for :-  ROHIT(JOB WORK ZERO SELL EXP)                                   
+
+Mixing :               Warp      30*16 COT SPNDX     
+                       Weft      30*16 COT SPNDX     
+Rate\Candy\kg (Rs.):-> Warp     134890.84      Per/Candy
+                       Weft     134890.84      Per/Candy
+-----------------------------------------------------------------------
+Sort No.                   CSUE 34272 JOB                                
+-----------------------------------------------------------------------
+Description                        DYD COT-PART 4/1 STN PRSH
+     Warp count1->                 30*16 COT SPNDX GRY.PUR  
+     Warp count2->                  
+     Weft count1->                 30*16 COT SPNDX GRY.PUR       Cost/mtr(Rs.)
+     Weft count2->                  
+Yarn Dyed Coverage                  0.00                 RAW MTRL *************
+
+Reed\Pick on Loom                  52/5       62         MFG COST          0.00 Spinning   Exp./Mtr.    0.00
+                                                                                Size       Exp./Mtr.    0.00
+Reed\Pick on Table                 178.31        62      GRY COST        154.78 Sizing     Exp./Mtr.    0.00
+
+Finish Width                       140 CM     55 "       MND COST          0.00 Drawing-in Exp./Mtr.    0.00
+
+Loom Size                          977    AUTO\CIMMCO     PRC COST          6.02 Weaving    Exp./Mtr.    0.00
+
+R.P.M.                             500                   DYC COST         13.26
+
+Wvg. Efficiency                    85.00                 CLP COST          3.11
+
+Prod\Loom\Day Fin.mtr              250.71                SHR COST          0.00
+
+Prod\Loom\Day Pkd.mtr              239.52                FIN COST        177.74
+
+Yarn Wt.\mtr (kg.)                 0.408                 VAL LOSS         10.85
+Finish wt\per sqr mtr              0.268                 SELL EXP          0.00
+Val Recovery                       0.9500
+-----------------------------------------------------------------------
+Cost\mtr (Rs.) (Net of Modvat Dyes & Chemical            Total           188.59
+Input non Modvat                                                           0.00
+    Dnv Cost                      188.59
+
+    Dep Cost                        0.82
+
+    Foh Cost                        3.11
+-----------------------------------------------------------------------
+Total Cost\mtr (Rs.)              192.52
+-----------------------------------------------------------------------
+Dyes\Chem\Cost\(Rs.) for Dyg/ kg  27.50      (REACTIVE avg.dyd)
+
+Dyes\Chem\Cost\(Rs.) for Ptg/mtr   0.00
+
+Finishing Cost/Kgms                5.00
+
+Selling Exp. %                     0.00
+************************************************************************
+Selling Price should be/Mtr        217.00       227.85       238.70
+
+Cont./mtr on D&V (Rs.)              28.41        39.26        50.11
+Cont./mtr on D&V (%)                15.06        20.82        26.57
+Remarks ->:  SHIRKAGE ZERO DISCUSS WITH KSD 
+PL ADD MUMBAI FREIGHT RS.3.50/KG IN DNV COST
+Checked by                                   DGM.(Costing)  
+
+

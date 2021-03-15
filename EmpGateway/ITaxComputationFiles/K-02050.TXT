@@ -1,0 +1,93 @@
+
+
+		               Jct Limited Phagwara				  
+Financial Year  2015 - 2016                        Assessment Year   2016 - 2017
+EMP. CODE  K-02050 EMP. NAME  KAMALJEET KAUR            DEPT.  RDQ   DESG.  MANAGER                  
+MONTH     SALARY     H. R.     U.K.A.  TRPT ALW.  P. F.  I. T.   UNIF.ALW. MONTH    SALARY      H. R.     U.K.A.  TRPT.ALW.  P. F.  I. T. Unif.Alw.
+Apr.      23915.00      0.00  11144.00   1600.00   2510     84     500     May.     11572.20      0.00   5392.10    774.20   1214     84     242
+Jun.      21922.10      0.00  10215.70   1466.60   2301      0     458     Jul.     23915.00      0.00  11144.00   1600.00   2510      0     500
+Aug.      20444.00      0.00   9526.90   1367.80   2145      0     427     Sep.     20726.30      0.00   9658.70   1386.60   2175      0     433
+Oct.      22372.10      0.00  10424.90   1496.80   2685     78     468     Nov.     23117.80      0.00  10772.30   1546.60   2774     27     483
+Dec.      23143.50      0.00  10784.90   1548.40   2777   3558     484     Jan.     23915.00      0.00  11144.00   1600.00   2870   3105     500
+Feb.      23915.00      0.00  11144.00   1600.00   2870   4081     500     Mar.     23915.00      0.00  11144.00   1600.00   2870      0     500
+Arrear        0.00      0.00                       1844      0
+Bonus         0.00                                           0
+Lv. enc.      0.00                                    0      0
+Cash Alw.                         0.00
+Total    262873.00      0.00 122496.00  17587.00  31545  11017    5496
+Computation of tax on the income chargeable under the head 'Salaries'
+          P a r t i c u l a r s                 Rupees      Rupees            Rupees   
+1.  Salary, Leave Encashment and Bonus etc.       262873
+2.  Other Allowances                              145579
+3.  House Rent allowance                               0
+4.  Entertainment Allowance		               0
+6.  ** Total **                                                               408452
+7.i)Deduct amount of HRA exempt u/s 10(13A) 
+    a) HRA as per 3 above                                          0
+    b) Actual Rent paid as per Receipts                0
+       Less 10%  of Salary                             0         0
+    c) 40% / 50% of the Salary                                     0
+    Amount exempt (least of a,b & c)                               0
+ ii)Transport Allowance                                        17587
+iii)Uniform Allowance                                           5496           23083
+8.  ** Balance **                                                             385369
+9.  Value of Perquisites
+    a) Accomodation                                28903
+    b) Furniture                                       0
+    c) Electricity                                     0
+    d) Water				             600
+    e) Movable Assets 		                       0
+    f) Intrest Free Loan		               0
+    g) Transfer Of Assets 		               0
+    h) LTA                                         23915
+    i)Reimb. of med. exp.in excess of Rs 15000         0
+    j) Conveyance                                  17700
+    k) Reimb.of Ins & Road Tax                      5200
+    l) Int.Credited to PF a/c in excess of the
+       rate fixed by the central government            0
+    m) Others                               
+         ***sub total ****                         76318                       76318
+10. Gross Income from Salaries                                                461687
+11. Add any other income reported by the employee        0
+12(a)Interest Accrued on NSC VI/VIII issue               0
+  (b)Interest Accrued on NSC for 6th Year                0                         0
+13. Gross Total Income (10+11+12a+12b)                                        461687
+14. Deductions eligible u/s 80C in respect
+    of following investments/savings 
+    a) Payment of Life Insurance Premium           13288
+    b) Contribution to Unit Linked Ins. Plan           0
+    c) Contributio to Provident Fund & V.P.F       31545
+    d) Contribution to Public Provident Fund           0
+    e) Subscription to N.S.C VIII Issue                0
+    f) Interest accured on N.S.C VIII issue            0
+    g) Investment Made in Bank FDR Schema               0
+    h) Re-payment of Housing Loan {HLA}                0
+    i) Investment in ELSS (Infra)                      0
+    j) Tuition fees                                    0
+    k) Pension Fund u/s 80CCC                       0
+15. i) Total (a) to (l)                                                        44833
+
+16. Balance                                                                   416854
+    Deduction u/s 80CCF (Infra)                         0
+17. Deduction u/s 80D (Rest.to Rs.25000/30000)       1600
+18. Deduction u/s 80DD(Restricted to Rs.100000)          0
+19  Deduction u/s 80E                                    0
+20  Deduction u/s 80G                                    0
+21. Deduction u/s 80U (Restricted to Rs.100000)          0
+22. Deduction u/s 80CCD (Restricted to Rs.50000)          0
+23. ** Total Admissible Deductions **                                           1600
+24. ** Net Taxable Income **                                                  415250
+    (i) Rebate u/s 87A                              2000
+25. Income Tax on taxable income                                               14525
+    Surcharge                                                                      0
+26. Surcharge/Edu Cess @ 2%                                                      291
+27. Secondary & Higher Eduction Cess                                             145
+28. Total Income Tax(Incl.Surcharg & Cess)                                     14961
+29 i) Total Tax Deductible (As Per 26 Above)                                   14961
+  ii) Total Tax Deducted                                                       11017
+ iii) Balance                                                                   3944
+  iv) Income tax installment                                                    3829
+   v) Cess installment                                                            77
+   vi) S.& H. Educ. Cess Installment                                              38
+  vii) Refund amount                                                               0
+

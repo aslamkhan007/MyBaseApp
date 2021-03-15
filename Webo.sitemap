@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode title="Home" url="~/ResourceCenter/Default.aspx"  description="Welcome to Resource Center">
+        <siteMapNode title="Category master" url="~/ResourceCenter/Categorymaster.aspx"  description="Category Master" />
+        <siteMapNode title="Upload File Extension" url="~/ResourceCenter/FileTypeMaster.aspx"  description="upload File Extension " />
+      <siteMapNode title="Upload File" url="~/ResourceCenter/Upload.aspx"  description="Upload File" />
+      <siteMapNode title="Search" url="~/ResourceCenter/SimpleSearch.aspx"  description="Search" />
+    </siteMapNode>
+</siteMap>

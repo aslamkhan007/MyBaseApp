@@ -1,0 +1,347 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
+using System.Net.Mail;
+
+public partial class OPS_Yarn_approvals : System.Web.UI.Page
+{
+
+    SqlConnection conjctgen = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["misjctgen"].ConnectionString);
+    //SqlConnection con = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["test"].ConnectionString);
+    SqlConnection con = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["misjctdev"].ConnectionString);
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        try
+        {
+            SqlCommand cmd = new SqlCommand("jct_ops_yarn_vendor_shortlst", con);
+            con.Open();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@empcode", SqlDbType.VarChar, 10).Value = Session["EmpCode"].ToString();
+            cmd.ExecuteNonQuery();
+            con.Close();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            grdDetail.DataSource = ds.Tables[0];
+            grdDetail.DataBind();
+        }
+        catch (Exception ex)
+        {
+            string script = "alert('Data not processed!!! ');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script, true); ;
+        }
+    }
+    protected void lnkApproved_Click(object sender, EventArgs e)
+    {
+
+        for (int i = 0; i <= chklist.Items.Count - 1; i++)
+        {
+
+            if (chklist.Items[i].Selected == true)
+            {
+                SqlCommand cmd = new SqlCommand("jct_ops_yarn_apprvals", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+           
+                cmd.Parameters.Add("@vendername", SqlDbType.VarChar, 30).Value = chklist.Items[i].Text;
+                cmd.Parameters.Add("@approvedby", SqlDbType.VarChar, 10).Value = Session["Empcode"];
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                //SendMailYarn();
+                string script = "alert(' record saved sucesfully. and Mail has been sent to float and freeze the same!! ');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script, true);
+            }
+        }
+    }
+
+
+    private void SendMailYarn()
+    {
+
+        string @from = null;
+        string to = null;
+        string bcc = null;
+        string cc = null;
+        string subject = null;
+        string body = null;
+
+        con.Open();
+        string sql = "SELECT b.EMPCODE,c.empname,d.E_MailID AS Email FROM jct_ops_yarn_purchase a INNER JOIN dbo.JCT_OPS_SanctionNote_AUTHORIZATION_LISTING b ON CONVERT(VARCHAR,a.Requestid) = b.ID AND a.pending_at=CONVERT(VARCHAR,b.USERLEVEL) INNER JOIN dbo.JCT_EmpMast_Base c ON c.empcode=b.EMPCODE LEFT OUTER JOIN dbo.MISTEL d on d.empcode=b.EMPCODE where CONVERT(VARCHAR,a.Requestid) ='" + ViewState["requestID"] + "'";
+        SqlCommand cmd = new SqlCommand(sql, con);
+        SqlDataReader Dr = cmd.ExecuteReader();
+        if (Dr.HasRows)
+        {
+            while (Dr.Read())
+            {
+                ViewState["PendingAtName"] = Dr["empname"].ToString();
+                ViewState["PendingAtEmpCode"] = Dr["empcode"].ToString();
+                ViewState["PendingAtEmail"] = Dr["Email"].ToString();
+            }
+        }
+        Dr.Close();
+
+        sql = "Select a.empname,b.e_mailid as email from jct_empmast_base a left outer join mistel b on a.empcode=b.empcode where a.empcode='" + Session["Empcode"].ToString() + "'";
+        cmd = new SqlCommand(sql, con);
+        Dr = cmd.ExecuteReader();
+        if (Dr.HasRows)
+        {
+            while (Dr.Read())
+            {
+                ViewState["RequestBy"] = Dr["empname"].ToString();
+                ViewState["RequestByEmail"] = Dr["email"].ToString();
+            }
+        }
+        else
+        {
+            ViewState["RequestBy"] = "";
+            ViewState["RequestByEmail"] = "shwetaloria@jctltd.com";
+        }
+
+        Dr.Close();
+        //con.Close();
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine("<html>");
+        sb.AppendLine("<head>");
+        sb.AppendLine("<style type=\"text/css\">");
+        sb.AppendLine("table.gridtable {font-family: verdana,arial,sans-serif;font-size:11px;color:#333333;border-width: 1px;border-color: #666666;border-collapse: collapse;}");
+        sb.AppendLine("table.gridtable th {border-width: 1px;padding: 8px;border-style: solid;border-color: #666666;background-color: #dedede;}");
+        sb.AppendLine("table.gridtable td {border-width: 1px;padding: 8px;border-style: solid;border-color: #666666;background-color: #ffffff;}");
+        sb.AppendLine("</style>");
+        sb.AppendLine("</head>");
+
+        sb.AppendLine("Hi,<br/>");
+        sb.AppendLine("Outsourced Yarn Request has been generated in OPS by : " + ViewState["RequestBy"] + "<br/><br/>");
+        sb.AppendLine("RequestID for your request is : " + ViewState["requestID"] + " <br/><br/>");
+        sb.AppendLine("Approval Pending At : " + ViewState["PendingAtName"] + " <br/><br/>");
+        sb.AppendLine("Details are Shown below : <br/><br/>");
+        sb.AppendLine("<table class=gridtable>");
+
+        sql = "jct_ops_yarn_mail_content ";
+        cmd = new SqlCommand(sql, con);
+
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.Add("@Requestid", SqlDbType.VarChar, 10).Value = ViewState["requestID"].ToString();
+        Dr = cmd.ExecuteReader();
+        if ((Dr.HasRows))
+        {
+            while ((Dr.Read()))
+            {
+
+                sb.AppendLine("<tr><td align='center' colspan='4'> JCT LTD, PHAGWARA</td></tr> ");
+                sb.AppendLine("<tr><td colspan='4'> GENERAL MANAGER - MARKETING</td></tr> ");
+                sb.AppendLine("<tr><td colspan='4'>SUBJECT - OUTSOURCED DYED FABRIC</td> </tr>");
+                sb.AppendLine("<tr><td> CONSTRUCTION</td>  <td>   </tr>");
+                sb.AppendLine("<tr><td>requestID </td> <td>" + Dr["requestid"].ToString() + "</td>  </tr>");
+                sb.AppendLine("<tr><td>Purchase By </td> <td>" + Dr["purchaseby"].ToString() + "</td>  </tr>");
+                sb.AppendLine("<tr><td>Sort no <td> " + Dr["SortNo"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr><td>Quality</td><td>" + Dr["Quality"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr> <td>SaleOrder</td><td> " + Dr["SaleOrder"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr> <td>ReqQty</td><td> " + Dr["ReqQty"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr> <td>YarnReq</td><td> " + Dr["YarnReq"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr><td>Actual(count/Denier)</td><td>" + Dr["Actual(count/Denier)"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr> <td>Blend%</td> <td> " + Dr["Blend %"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr><td>ClassimateFaults</td><td>" + Dr["ClassimateFaults"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr> <td>AllFaults</td><td> " + Dr["AllFaults"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr><td> MajorShortThick</td><td> " + Dr["MajorShortThick"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr><td> ShortThick</td><td>" + Dr["ShortThick"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr> <td>MajorThin</td> <td> " + Dr["MajorThin"].ToString() + "</td> </tr>");
+                sb.AppendLine("<tr> <td>Plant</td><td> " + Dr["plant"].ToString() + "</td> </tr>");
+
+
+
+
+            }
+        }
+
+        Dr.Close();
+        con.Close();
+        sb.AppendLine("</table>");
+
+        sb.AppendLine("<br /><br/>");
+
+        sb.Append("<a href='http://misdev/fusionapps/OPS/AuthorizeSanctionNote10.aspx'> Click here to view details and authorize the request...!! </a><br />");
+
+        sb.AppendLine("</table><br />");
+
+        sb.AppendLine("This is a system generated mail and sent through OPS online mail management system. Please donot reply.<br/> <br/>");
+        sb.AppendLine("Thank you<br />");
+        sb.AppendLine("</html>");
+
+
+        body = sb.ToString();
+        @from = "noreply@jctltd.com";
+
+        to = ViewState["PendingAtEmail"].ToString() + "," + ViewState["RequestByEmail"].ToString();
+
+        bcc = "shwetaloria@jctltd.com";
+        subject = "Outsourced Yarn Request - " + ViewState["requestID"];
+        MailMessage mail = new MailMessage();
+        mail.From = new MailAddress(@from);
+        if (to.Contains(","))
+        {
+            string[] tos = to.Split(',');
+            for (int i = 0; i <= tos.Length - 1; i++)
+            {
+                mail.To.Add(new MailAddress(tos[i]));
+            }
+        }
+        else
+        {
+            mail.To.Add(new MailAddress(to));
+        }
+
+        if (!string.IsNullOrEmpty(bcc))
+        {
+            if (bcc.Contains(","))
+            {
+                string[] bccs = bcc.Split(',');
+                for (int i = 0; i <= bccs.Length - 1; i++)
+                {
+                    mail.Bcc.Add(new MailAddress(bccs[i]));
+                }
+            }
+            else
+            {
+                mail.Bcc.Add(new MailAddress(bcc));
+            }
+        }
+        //If Not String.IsNullOrEmpty(cc) Then
+        //    If cc.Contains(",") Then
+        //        Dim ccs As String() = cc.Split(","c)
+        //        For i As Integer = 0 To ccs.Length - 1
+        //            mail.CC.Add(New MailAddress(ccs(i)))
+        //        Next
+        //    Else
+        //        mail.CC.Add(New MailAddress(bcc))
+        //    End If
+        //    mail.CC.Add(New MailAddress(cc))
+        //End If
+
+        mail.Subject = subject;
+        mail.Body = body;
+        mail.IsBodyHtml = true;
+        mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+        SmtpClient SmtpMail = new SmtpClient("exchange2007");
+
+        //SmtpMail.SmtpServer = "exchange2007";
+        SmtpMail.Send(mail);
+
+
+
+
+    }
+    protected void lnkreject_Click(object sender, EventArgs e)
+    {
+        foreach (GridViewRow rw in grdDetail2.Rows)
+        {
+            //    CheckBox chk = (CheckBox)rw.FindControl("chk");
+
+            //    if (chk.Checked)
+            //    {
+
+            SqlCommand cmd = new SqlCommand("jct_ops_yarn_apprvals_rej", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.Parameters.Add("@requestid", SqlDbType.Int).Value = rw.Cells[1].Text;
+            cmd.Parameters.Add("@approveby", SqlDbType.Int).Value = Session["Empcode"];
+            cmd.Parameters.Add("@vendernamre", SqlDbType.Int).Value = rw.Cells[2].Text;
+            cmd.ExecuteNonQuery();
+            con.Close();
+            //SendMailYarn();
+            //string script = "alert(' record saved sucesfully. and Mail has been sent to float and freeze the same!! ');";
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script, true);
+        }
+    }
+
+    protected void grdDetail_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        SqlCommand cmd = new SqlCommand("JCT_OPS_VENDOR_SPECS_COMPARISON", conjctgen);
+        cmd.CommandType = CommandType.StoredProcedure;
+        conjctgen.Open();
+        cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        DataSet ds = new DataSet();
+
+        da.Fill(ds);
+        if (ds.Tables.Count >0)
+        {
+            grdDetail2.DataSource = ds.Tables[0];
+
+            grdDetail2.DataBind();
+        }
+        else
+        {
+            string script = "alert('Vendors has not been freezed against this Request');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ServerControlScript", script, true);
+            return;
+        }
+        conjctgen.Close();
+
+        cmd = new SqlCommand("select distinct vendername from jct_ops_yarn_mat_tb  where requestid=@requestid", con);
+        cmd.CommandType = CommandType.Text;
+        con.Open();
+        cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+
+
+        da = new SqlDataAdapter(cmd);
+        ds = new DataSet();
+        da.Fill(ds);
+        chklist.DataSource = ds.Tables[0];
+
+        chklist.DataTextField = "vendername";
+        chklist.DataValueField = "vendername";
+        chklist.DataBind();
+
+        con.Close();
+        //grdDetail2.DataSource = ds.Tables[0];
+        //grdDetail2.DataBind();
+        //conjctgen.Close();
+        lbcomp.Visible = true;
+        lbvendlst.Visible = true;
+
+        for ( int i = 0; i <= chklist.Items.Count - 1; i++)
+        {
+            string vndrlist;
+            vndrlist = chklist.Items[i].Text;
+          cmd = new SqlCommand("jct_ops_yarn_vndr_list", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.Parameters.Add("@requestid", SqlDbType.VarChar, 10).Value = grdDetail.SelectedRow.Cells[1].Text;
+            cmd.Parameters.Add("@vendername", SqlDbType.VarChar, 10).Value = vndrlist;
+            cmd.Parameters.Add("@flag",SqlDbType.Int).Direction = ParameterDirection.Output;
+            cmd.ExecuteNonQuery();
+          
+            string output = cmd.Parameters["@flag"].Value.ToString();
+            if (output =="1")
+            {
+                chklist.Items[i].Selected = true;
+            }
+            con.Close();
+        }
+    }
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+                
